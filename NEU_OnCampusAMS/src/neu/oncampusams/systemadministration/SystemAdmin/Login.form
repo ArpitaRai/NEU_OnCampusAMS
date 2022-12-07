@@ -101,7 +101,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/neu/oncampusams/images/neulogo (1).png"/>
+              <Image iconType="3" name="/neu/oncampusams/images/neulogo1.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -131,7 +131,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/neu/oncampusams/images/icons8-lock-24.png"/>
+              <Image iconType="3" name="/neu/oncampusams/images/password.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -143,7 +143,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/neu/oncampusams/images/icons8-user-30 (1).png"/>
+              <Image iconType="3" name="/neu/oncampusams/images/user.png"/>
             </Property>
           </Properties>
           <Constraints>
