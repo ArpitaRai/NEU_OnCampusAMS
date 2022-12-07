@@ -131,14 +131,12 @@ public class ITAdmin extends javax.swing.JFrame {
         jComboBox9.setBackground(new java.awt.Color(242, 242, 242));
         jComboBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
-        jComboBox9.setBorder(null);
         jPanel5.add(jComboBox9);
         jComboBox9.setBounds(270, 270, 190, 30);
 
         jComboBox10.setBackground(new java.awt.Color(242, 242, 242));
         jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin" }));
-        jComboBox10.setBorder(null);
         jComboBox10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox10ActionPerformed(evt);
@@ -260,14 +258,12 @@ public class ITAdmin extends javax.swing.JFrame {
         jComboBox11.setBackground(new java.awt.Color(242, 242, 242));
         jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
-        jComboBox11.setBorder(null);
         jPanel6.add(jComboBox11);
         jComboBox11.setBounds(270, 270, 190, 30);
 
         jComboBox12.setBackground(new java.awt.Color(242, 242, 242));
         jComboBox12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin" }));
-        jComboBox12.setBorder(null);
         jComboBox12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox12ActionPerformed(evt);
@@ -359,7 +355,7 @@ public class ITAdmin extends javax.swing.JFrame {
         jLabel6.setText("Management System");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 270, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/neulogo (1).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/neulogo1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 170, 150));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
