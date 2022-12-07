@@ -45,9 +45,9 @@ public class Template extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Name of role who logged in");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1600, 1000));
-        setMinimumSize(new java.awt.Dimension(1600, 1000));
-        setPreferredSize(new java.awt.Dimension(1600, 1000));
+        setMaximumSize(new java.awt.Dimension(1500, 700));
+        setMinimumSize(new java.awt.Dimension(1500, 700));
+        setPreferredSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
