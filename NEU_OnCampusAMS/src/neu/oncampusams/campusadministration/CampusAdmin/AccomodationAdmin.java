@@ -124,7 +124,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox10.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        jComboBox10.setBorder(null);
         jComboBox10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox10ActionPerformed(evt);
@@ -151,7 +150,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox11.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Studio", "1 BHK", "2 BHK" }));
-        jComboBox11.setBorder(null);
         jComboBox11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox11ActionPerformed(evt);
@@ -238,7 +236,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox9.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        jComboBox9.setBorder(null);
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox9ActionPerformed(evt);
@@ -265,7 +262,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox12.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "meena", "kareena", "beena", "leena", "heena", "teena" }));
-        jComboBox12.setBorder(null);
         jComboBox12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox12ActionPerformed(evt);
@@ -316,7 +312,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox13.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "meena", "kareena", "beena", "leena", "heena", "teena" }));
-        jComboBox13.setBorder(null);
         jComboBox13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox13ActionPerformed(evt);
@@ -365,7 +360,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jLabel6.setText("Management System");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 270, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/neulogo (1).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/neulogo1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 170, 150));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
