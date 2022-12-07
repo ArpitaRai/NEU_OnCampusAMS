@@ -196,9 +196,6 @@
                         <StringItem index="4" value="Building 5"/>
                       </StringArray>
                     </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox10ActionPerformed"/>
@@ -266,9 +263,6 @@
                         <StringItem index="1" value="1 BHK"/>
                         <StringItem index="2" value="2 BHK"/>
                       </StringArray>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -553,9 +547,6 @@
                         <StringItem index="4" value="Building 5"/>
                       </StringArray>
                     </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox9ActionPerformed"/>
@@ -622,9 +613,6 @@
                         <StringItem index="4" value="heena"/>
                         <StringItem index="5" value="teena"/>
                       </StringArray>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -819,9 +807,6 @@
                     <StringItem index="5" value="teena"/>
                   </StringArray>
                 </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox13ActionPerformed"/>
@@ -947,7 +932,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/neu/oncampusams/images/neulogo (1).png"/>
+              <Image iconType="3" name="/neu/oncampusams/images/neulogo1.png"/>
             </Property>
           </Properties>
           <Constraints>
