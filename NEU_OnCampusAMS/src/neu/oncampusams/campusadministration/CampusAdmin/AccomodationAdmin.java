@@ -27,7 +27,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     public AccomodationAdmin() {
         initComponents();
         populateQueryTable();
-        populateBuildingTable();
     }
 
     /**
@@ -640,28 +639,5 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         }
     }
 
-public void populateBuildingTable(){
-        Connection connection = JDBCConnection.Connect() ;
-        try {
-            Statement statement = (Statement) connection.createStatement();
-            String sql = "SELECT * FROM BuildingTable";
-            ResultSet rs = statement.executeQuery(sql);
-            
-            while(rs.next()){
-                String buildingId = rs.getString(1);
-                String buildingName = rs.getString(2);
-                String availability = rs.getString(3);
-                String wardenAssigned = rs.getString(4);
-                String studentResiding = rs.getString(5);
-           
-              
-                String tbData[] = {buildingId,buildingName,availability,wardenAssigned,studentResiding};
-                DefaultTableModel tblModel = (DefaultTableModel)tblBuilding.getModel();
-                tblModel.addRow(tbData);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
 }
