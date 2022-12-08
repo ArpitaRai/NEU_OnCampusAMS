@@ -71,9 +71,11 @@ public class CampusAdmin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Name of role who logged in");
+        setTitle("Campus Administrator Portal");
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(1600, 1000));
+        setMaximumSize(new java.awt.Dimension(1500, 700));
+        setMinimumSize(new java.awt.Dimension(1500, 700));
+        setPreferredSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,7 +100,7 @@ public class CampusAdmin extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 1160, 110));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 1040, 110));
 
         jTabbedPane1.addTab("Gym Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/dumbbell.png")), jPanel2); // NOI18N
 
@@ -117,7 +119,7 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 1160, 110));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1080, 110));
 
         jTabbedPane1.addTab("Canteen Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/food.png")), jPanel3); // NOI18N
 
@@ -139,16 +141,16 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 160));
+        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 160));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Details of Hostel Admins");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 450, 40));
+        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 450, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Building name");
-        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 170, 40));
+        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 170, 40));
 
         jComboBox9.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -158,7 +160,7 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jComboBox9ActionPerformed(evt);
             }
         });
-        jPanel7.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 240, 30));
+        jPanel7.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 240, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -169,9 +171,9 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 90, 40));
+        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 90, 40));
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 930, 590));
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 930, 480));
 
         jTabbedPane1.addTab("Hostel Admins", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin-with-cogwheels.png")), jPanel4); // NOI18N
 
@@ -193,16 +195,16 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 160));
+        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, 160));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Student Room Assignment");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 780, 40));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 780, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setText("Building name");
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 170, 40));
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, 40));
 
         jComboBox10.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -212,7 +214,7 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jComboBox10ActionPerformed(evt);
             }
         });
-        jPanel8.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 240, 30));
+        jPanel8.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 240, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -224,11 +226,11 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 90, 30));
+        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 90, 30));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setText("Room Type");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 170, 40));
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 170, 40));
 
         jComboBox11.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -238,7 +240,7 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jComboBox11ActionPerformed(evt);
             }
         });
-        jPanel8.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 240, 30));
+        jPanel8.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 240, 30));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -249,14 +251,14 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 90, 40));
+        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 90, 40));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Student details");
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 450, 40));
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 450, 40));
 
-        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 930, 590));
+        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 930, 500));
 
         jTabbedPane1.addTab("Student Assignement", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel5); // NOI18N
 
@@ -276,14 +278,14 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable5);
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 1160, 110));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1060, 110));
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Search");
         jTextField1.setToolTipText("");
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 230, 40));
+        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 230, 40));
 
         jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), jPanel6); // NOI18N
 
@@ -342,7 +344,7 @@ public class CampusAdmin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 640, 90, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 90, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
 

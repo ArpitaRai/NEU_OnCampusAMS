@@ -36,7 +36,6 @@ public class ITAdmin extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jSeparator10 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
         fName = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
@@ -48,8 +47,6 @@ public class ITAdmin extends javax.swing.JFrame {
         createButton = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
-        jLabel29 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         lName = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
@@ -82,6 +79,7 @@ public class ITAdmin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("IT Administrator Portal");
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
@@ -95,15 +93,11 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setLayout(null);
 
-        jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel5.add(jSeparator10);
-        jSeparator10.setBounds(270, 220, 240, 30);
-
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel30.setText("First Name");
         jPanel5.add(jLabel30);
-        jLabel30.setBounds(120, 90, 100, 33);
+        jLabel30.setBounds(120, 140, 100, 33);
 
         fName.setBackground(new java.awt.Color(242, 242, 242));
         fName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -176,35 +170,17 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator11);
-        jSeparator11.setBounds(270, 120, 240, 20);
+        jSeparator11.setBounds(270, 170, 240, 20);
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator12);
         jSeparator12.setBounds(270, 270, 240, 10);
 
-        jLabel29.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel29.setText("Email");
-        jPanel5.add(jLabel29);
-        jLabel29.setBounds(150, 190, 70, 33);
-
-        jTextField14.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField14.setBorder(null);
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField14);
-        jTextField14.setBounds(270, 190, 240, 30);
-
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel37.setText("Last Name");
         jPanel5.add(jLabel37);
-        jLabel37.setBounds(120, 140, 100, 33);
+        jLabel37.setBounds(120, 190, 100, 33);
 
         lName.setBackground(new java.awt.Color(242, 242, 242));
         lName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -219,7 +195,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator16);
-        jSeparator16.setBounds(270, 170, 240, 20);
+        jSeparator16.setBounds(270, 220, 240, 20);
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 680, 540));
 
@@ -295,7 +271,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jComboBox12.setBackground(new java.awt.Color(242, 242, 242));
         jComboBox12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin" }));
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Finance Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin", "Student" }));
         jComboBox12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox12ActionPerformed(evt);
@@ -662,7 +638,6 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -679,7 +654,6 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
