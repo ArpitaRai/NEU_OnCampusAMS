@@ -79,7 +79,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Accomodation Admin");
+        setTitle("Accomodation Administrator Portal");
         setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1500, 700));
         setMinimumSize(new java.awt.Dimension(1500, 700));
