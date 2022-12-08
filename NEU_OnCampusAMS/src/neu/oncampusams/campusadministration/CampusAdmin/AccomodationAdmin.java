@@ -56,7 +56,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jSeparator11 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tblBuilding = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -208,9 +208,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jPanel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblBuilding.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblBuilding.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblBuilding.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -218,7 +218,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 "Building ID", "Building Name", "Availability", "Warden Assigned", "Students Residing"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(tblBuilding);
 
         jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 1160, 110));
 
@@ -591,11 +591,11 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JComboBox<String> jcbStatus;
     private javax.swing.JTable tblAccQuery;
+    private javax.swing.JTable tblBuilding;
     private javax.swing.JTextArea txtArNote;
     private javax.swing.JTextField txtQueryId;
     // End of variables declaration//GEN-END:variables
@@ -638,7 +638,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
             Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 
 }
