@@ -4,6 +4,13 @@
  */
 package neu.oncampusams.systemadministration.SystemAdmin;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import neu.oncampusams.databaseConnection.JDBCConnection;
+
 /**
  *
  * @author Yamini Manral
@@ -30,18 +37,18 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        fName = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        campusCombo = new javax.swing.JComboBox<>();
+        roleCombo = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        createButton = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel37 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        lName = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -74,9 +81,7 @@ public class ITAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("IT Administrator Portal");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1500, 700));
         setMinimumSize(new java.awt.Dimension(1500, 700));
-        setPreferredSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -94,27 +99,27 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5.add(jLabel30);
         jLabel30.setBounds(120, 140, 100, 33);
 
-        jTextField15.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField15.setBorder(null);
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        fName.setBackground(new java.awt.Color(242, 242, 242));
+        fName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fName.setBorder(null);
+        fName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                fNameActionPerformed(evt);
             }
         });
-        jPanel5.add(jTextField15);
-        jTextField15.setBounds(270, 140, 240, 30);
+        jPanel5.add(fName);
+        fName.setBounds(270, 90, 240, 30);
 
-        jTextField16.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField16.setBorder(null);
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        password.setBackground(new java.awt.Color(242, 242, 242));
+        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password.setBorder(null);
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-        jPanel5.add(jTextField16);
-        jTextField16.setBounds(270, 240, 240, 30);
+        jPanel5.add(password);
+        password.setBounds(270, 240, 240, 30);
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -128,22 +133,22 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5.add(jLabel17);
         jLabel17.setBounds(150, 300, 70, 33);
 
-        jComboBox9.setBackground(new java.awt.Color(242, 242, 242));
-        jComboBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
-        jPanel5.add(jComboBox9);
-        jComboBox9.setBounds(270, 300, 190, 30);
+        campusCombo.setBackground(new java.awt.Color(242, 242, 242));
+        campusCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
+        jPanel5.add(campusCombo);
+        campusCombo.setBounds(270, 300, 190, 30);
 
-        jComboBox10.setBackground(new java.awt.Color(242, 242, 242));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Finance Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin", "Student" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+        roleCombo.setBackground(new java.awt.Color(242, 242, 242));
+        roleCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin" }));
+        roleCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+                roleComboActionPerformed(evt);
             }
         });
-        jPanel5.add(jComboBox10);
-        jComboBox10.setBounds(270, 350, 190, 30);
+        jPanel5.add(roleCombo);
+        roleCombo.setBounds(270, 350, 190, 30);
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -151,17 +156,17 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5.add(jLabel32);
         jLabel32.setBounds(150, 350, 70, 33);
 
-        jButton8.setBackground(new java.awt.Color(255, 0, 0));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Create");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        createButton.setBackground(new java.awt.Color(255, 0, 0));
+        createButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        createButton.setForeground(new java.awt.Color(255, 255, 255));
+        createButton.setText("Create");
+        createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                createButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton8);
-        jButton8.setBounds(310, 430, 90, 40);
+        jPanel5.add(createButton);
+        createButton.setBounds(310, 430, 90, 40);
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator11);
@@ -173,20 +178,20 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel37.setText("LastName");
+        jLabel37.setText("Last Name");
         jPanel5.add(jLabel37);
         jLabel37.setBounds(120, 190, 100, 33);
 
-        jTextField20.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField20.setBorder(null);
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        lName.setBackground(new java.awt.Color(242, 242, 242));
+        lName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lName.setBorder(null);
+        lName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                lNameActionPerformed(evt);
             }
         });
-        jPanel5.add(jTextField20);
-        jTextField20.setBounds(270, 190, 240, 30);
+        jPanel5.add(lName);
+        lName.setBounds(270, 140, 240, 30);
 
         jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator16);
@@ -397,21 +402,151 @@ public class ITAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_jTextField14ActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void fNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_fNameActionPerformed
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
+    }//GEN-LAST:event_passwordActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void roleComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_roleComboActionPerformed
+
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        // TODO add your handling code here:
+        Registration registration = new Registration();
+        registration.setFirstName(fName.getText());
+        registration.setLastName(lName.getText());
+        String lastN = fName.getText();
+        String emailId;
+        emailId = (lName.getText() + '.' + lastN.charAt(0) + "@northeastern.edu").toLowerCase();
+        registration.setPassword(password.getText());
+        registration.setRoles((String) roleCombo.getSelectedItem());
+        registration.setCampus((String) campusCombo.getSelectedItem());
+
+        if ( registration.getPassword() == null || registration.getPassword().trim().isEmpty() || "".equals(registration.getPassword())
+                || registration.getFirstName() == null || registration.getFirstName().trim().isEmpty() || "".equals(registration.getFirstName())
+                || registration.getLastName() == null || registration.getLastName().trim().isEmpty() || "".equals(registration.getLastName())) {
+            JOptionPane.showMessageDialog(this, "Please Enter all the Fields!");
+            return;
+        }
+        if("Student".equals((String)roleCombo.getSelectedItem())){
+
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`StudentTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "',  '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Student Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }}
+        
+        if("Head System Admin".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`HeadSysAdmin` " + "(fName, lName, password, campus,  emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "', '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Head System Admin Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }}
+         if("System Admin".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`SysAdminTable` " + "(fName, lName, password, campus,  emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "',  '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "System Admin Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }} 
+         
+         if("Campus Admin".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`CampusAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "',  '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Campus Admin Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }}    
+         
+         if("Building Admin".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`BuildingAdminTable` " + "(fName, lName, password, campus,  emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "',  '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Building Admin Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }}   
+         
+         if("Warden".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`WardenTable` " + "(fName, lName, password, campus,  emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "',  '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Warden Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }}         
+         if("Mailing Services Admin".equals((String)roleCombo.getSelectedItem())){
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`MailAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName()+ "' , '" + registration.getPassword()+ "', '" + registration.getCampus()+ "', '" + emailId+ "');";
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Mailing Services Admin Registered secccessfully");
+            fName.setText("");
+            lName.setText("");
+            password.setText("");
+            connection.close();
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            JOptionPane.showMessageDialog(this, exception);
+        }} 
+    }//GEN-LAST:event_createButtonActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -441,9 +576,9 @@ public class ITAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+    private void lNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
+    }//GEN-LAST:event_lNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -488,15 +623,15 @@ public class ITAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> campusCombo;
+    private javax.swing.JButton createButton;
+    private javax.swing.JTextField fName;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -526,11 +661,12 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
+    private javax.swing.JTextField lName;
+    private javax.swing.JTextField password;
+    private javax.swing.JComboBox<String> roleCombo;
     // End of variables declaration//GEN-END:variables
 }
