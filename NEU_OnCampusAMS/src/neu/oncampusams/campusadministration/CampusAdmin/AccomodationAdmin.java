@@ -4,6 +4,15 @@
  */
 package neu.oncampusams.campusadministration.CampusAdmin;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import neu.oncampusams.databaseConnection.JDBCConnection;
 import neu.oncampusams.systemadministration.SystemAdmin.*;
 
 /**
@@ -17,6 +26,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
      */
     public AccomodationAdmin() {
         initComponents();
+        populateQueryTable();
     }
 
     /**
@@ -57,15 +67,15 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jComboBox12 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        tblAccQuery = new javax.swing.JTable();
+        txtQueryId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox13 = new javax.swing.JComboBox<>();
+        txtArNote = new javax.swing.JTextArea();
+        jcbStatus = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -276,9 +286,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jPanel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblAccQuery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblAccQuery.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblAccQuery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -286,12 +296,17 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 "Query ID", "Raised By", "Contact", "Status", "Description", "Note"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblAccQuery.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAccQueryMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblAccQuery);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 1070, 110));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
+        txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel3.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -303,37 +318,37 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jLabel18.setText("Query ID");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 90, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtArNote.setColumns(20);
+        txtArNote.setRows(5);
+        jScrollPane1.setViewportView(txtArNote);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
-        jComboBox13.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "meena", "kareena", "beena", "leena", "heena", "teena" }));
-        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+        jcbStatus.setBackground(new java.awt.Color(204, 204, 204));
+        jcbStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jcbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Query Raised", "In-Progress", "Query Resolved" }));
+        jcbStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox13ActionPerformed(evt);
+                jcbStatusActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 250, 40));
+        jPanel3.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 250, 40));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("Note");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 90, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Update Query");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setBackground(new java.awt.Color(255, 0, 0));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update Query");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 140, 50));
+        jPanel3.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 140, 50));
 
         jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel3); // NOI18N
 
@@ -414,9 +429,20 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox9ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        int queryId = Integer.parseInt(txtQueryId.getText());
+        updateQueryTable(queryId);
+        
+        DefaultTableModel model = (DefaultTableModel) tblAccQuery.getModel();
+        model.setRowCount(0);
+        
+        populateQueryTable();
+        txtQueryId.setText(" ");
+        txtArNote.setText(" ");
+        jcbStatus.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
         // TODO add your handling code here:
@@ -438,9 +464,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox12ActionPerformed
 
-    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+    private void jcbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox13ActionPerformed
+    }//GEN-LAST:event_jcbStatusActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -449,6 +475,28 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField15ActionPerformed
+
+    private void tblAccQueryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAccQueryMouseClicked
+        // TODO add your handling code here:
+        int index = tblAccQuery.getSelectedRow();
+        
+        DefaultTableModel tblModel = (DefaultTableModel)tblAccQuery.getModel();
+        
+        String queryId = tblModel.getValueAt(index, 0).toString();
+        String status = tblModel.getValueAt(index, 3).toString();
+        
+        txtQueryId.setText(queryId);
+        if(status.equals("Query Raised")){
+              jcbStatus.setSelectedIndex(0); 
+             }
+            if(status.equals("In-Progress")){
+              jcbStatus.setSelectedIndex(1); 
+             }
+            if(status.equals("Query Resolved")){
+              jcbStatus.setSelectedIndex(2);
+             }
+             
+    }//GEN-LAST:event_tblAccQueryMouseClicked
 
     /**
      * @param args the command line arguments
@@ -501,15 +549,14 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
     private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -543,12 +590,55 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> jcbStatus;
+    private javax.swing.JTable tblAccQuery;
+    private javax.swing.JTextArea txtArNote;
+    private javax.swing.JTextField txtQueryId;
     // End of variables declaration//GEN-END:variables
+
+    public void populateQueryTable(){
+        Connection connection = JDBCConnection.Connect() ;
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "SELECT * FROM AccQueryTable";
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while(rs.next()){
+                String queryId = rs.getString(1);
+                String raisedBy = rs.getString(2);
+                String contact = rs.getString(3);
+                String status = rs.getString(4);
+                String description = rs.getString(5);
+                String note = rs.getString(6);
+              
+                String tbData[] = {queryId,raisedBy,contact,status,description,note};
+                DefaultTableModel tblModel = (DefaultTableModel)tblAccQuery.getModel();
+                tblModel.addRow(tbData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+ public void updateQueryTable(int queryId){
+        Connection connection = JDBCConnection.Connect() ;
+        String note = txtArNote.getText();
+        String status = jcbStatus.getSelectedItem().toString();
+        try {
+            PreparedStatement  pst = connection.prepareStatement("update AccQueryTable set note = ?, status = ? where idAccQuery = ?");
+            pst.setString(1, note);
+            pst.setString(2,status);
+            pst.setInt(3,queryId);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
 }
