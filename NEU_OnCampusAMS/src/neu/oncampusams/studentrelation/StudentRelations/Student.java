@@ -4,6 +4,7 @@
  */
 package neu.oncampusams.studentrelation.StudentRelations;
 
+import javax.swing.JOptionPane;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
 
 /**
@@ -15,6 +16,8 @@ public class Student extends javax.swing.JFrame {
     /**
      * Creates new form Warden1
      */
+    
+    StudentInfoDirectory studentDir = new StudentInfoDirectory();
     public Student() {
         initComponents();
         
@@ -87,11 +90,16 @@ public class Student extends javax.swing.JFrame {
         jComboBox11 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        lblEmailId = new javax.swing.JLabel();
+        lblPrsnlEmail = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtEmailId = new javax.swing.JTextField();
+        txtPrsnlEmail = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        pwdPass = new javax.swing.JPasswordField();
+        btnUpdate = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -370,25 +378,55 @@ public class Student extends javax.swing.JFrame {
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setText("Preference for room type");
-        jPanel7.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 170, 40));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel36.setText("Dob");
-        jPanel7.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 170, 40));
+        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmailId.setText("Email Id");
+        jPanel9.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, 40));
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel37.setText("Mother's name");
-        jPanel7.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 170, 40));
+        lblPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPrsnlEmail.setText("Personal Email Id");
+        jPanel9.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 170, 40));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel38.setText("Father's name");
-        jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 40));
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhone.setText("Phone Number");
+        jPanel9.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 40));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel39.setText("Husky card");
-        jPanel7.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 170, 40));
+        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPassword.setText("Password");
+        jPanel9.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 170, 40));
+
+        txtEmailId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailIdActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 230, -1));
+
+        txtPrsnlEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrsnlEmailActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 230, -1));
+
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 230, -1));
+        jPanel9.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 230, -1));
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+
+        jPanel7.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         jTabbedPane1.addTab("Update details", jPanel7);
 
@@ -410,6 +448,46 @@ public class Student extends javax.swing.JFrame {
     private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox11ActionPerformed
+
+    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailIdActionPerformed
+
+    private void txtPrsnlEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrsnlEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrsnlEmailActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+
+        String emailId = txtEmailId.getText();
+        String personalEmailId = txtPrsnlEmail.getText();
+        String phone = txtPhone.getText();
+        String password = pwdPass.getText();
+
+        boolean validation = FormValidation();
+
+        if(validation){
+
+            StudentInfo student = new StudentInfo();
+
+            student.setEmailId(emailId);
+            student.setPersonalEmailId(personalEmailId);
+            student.setPhone(phone);
+            student.setPassword(password);
+
+            studentDir.updateStudentInfo(student);
+            JOptionPane.showMessageDialog(this, "Updated Student Info.");
+
+            populateForm(emailId);
+
+        }
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,6 +528,7 @@ public class Student extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -488,11 +567,6 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -506,6 +580,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -513,5 +588,54 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lblEmailId;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblPrsnlEmail;
+    private javax.swing.JPasswordField pwdPass;
+    private javax.swing.JTextField txtEmailId;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtPrsnlEmail;
     // End of variables declaration//GEN-END:variables
+
+private boolean FormValidation(){
+    boolean validation = true;
+    if(!txtPhone.getText().matches("^[0-9]{10}$") || txtPhone.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Phone Number Incorrect");
+           validation = false;
+       }
+       if(!txtEmailId.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$") || txtEmailId.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Email Id Incorrect");
+           validation = false;
+       }
+       if(!txtPrsnlEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$") || txtPrsnlEmail.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Personal Email Id Incorrect");
+           validation = false;
+       }
+       if( pwdPass.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Password Field is Empty");
+           validation = false;
+       }
+       
+     return validation;  
+}
+
+private void populateForm(String emailId){
+    StudentInfo student = studentDir.getStudentInfo(emailId);
+    txtEmailId.setText(student.getEmailId());
+    txtPrsnlEmail.setText(student.getPersonalEmailId());
+    txtPhone.setText(student.getPhone());
+    pwdPass.setText(student.getPassword());
+    
+}
+
+
+
+
+
+
 }
