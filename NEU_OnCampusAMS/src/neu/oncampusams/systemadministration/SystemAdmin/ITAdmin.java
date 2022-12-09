@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package neu.oncampusams.systemadministration.SystemAdmin;
- 
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Yamini Manral
@@ -51,7 +52,7 @@ public class ITAdmin extends javax.swing.JFrame {
         search = new javax.swing.JButton();
         jSeparator13 = new javax.swing.JSeparator();
         jLabel33 = new javax.swing.JLabel();
-        updateName = new javax.swing.JTextField();
+        updatefName = new javax.swing.JTextField();
         updatePassword = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -64,6 +65,8 @@ public class ITAdmin extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         delete = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
+        updateLName = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -213,7 +216,7 @@ public class ITAdmin extends javax.swing.JFrame {
             }
         });
         jPanel6.add(search);
-        search.setBounds(510, 70, 90, 40);
+        search.setBounds(530, 70, 90, 40);
 
         jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
         jPanel6.add(jSeparator13);
@@ -221,20 +224,20 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel33.setText("Name");
+        jLabel33.setText("fName");
         jPanel6.add(jLabel33);
-        jLabel33.setBounds(150, 190, 70, 33);
+        jLabel33.setBounds(100, 140, 70, 33);
 
-        updateName.setBackground(new java.awt.Color(242, 242, 242));
-        updateName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        updateName.setBorder(null);
-        updateName.addActionListener(new java.awt.event.ActionListener() {
+        updatefName.setBackground(new java.awt.Color(242, 242, 242));
+        updatefName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updatefName.setBorder(null);
+        updatefName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateNameActionPerformed(evt);
+                updatefNameActionPerformed(evt);
             }
         });
-        jPanel6.add(updateName);
-        updateName.setBounds(270, 190, 240, 30);
+        jPanel6.add(updatefName);
+        updatefName.setBounds(270, 140, 240, 30);
 
         updatePassword.setBackground(new java.awt.Color(242, 242, 242));
         updatePassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -251,13 +254,13 @@ public class ITAdmin extends javax.swing.JFrame {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel34.setText("Password");
         jPanel6.add(jLabel34);
-        jLabel34.setBounds(150, 240, 70, 33);
+        jLabel34.setBounds(110, 240, 70, 33);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel18.setText("Campus");
         jPanel6.add(jLabel18);
-        jLabel18.setBounds(150, 300, 70, 33);
+        jLabel18.setBounds(110, 300, 70, 33);
 
         updateCampus.setBackground(new java.awt.Color(242, 242, 242));
         updateCampus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -274,13 +277,13 @@ public class ITAdmin extends javax.swing.JFrame {
             }
         });
         jPanel6.add(updateRole);
-        updateRole.setBounds(270, 350, 190, 30);
+        updateRole.setBounds(210, 30, 190, 30);
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel35.setText("Role");
         jPanel6.add(jLabel35);
-        jLabel35.setBounds(150, 350, 70, 33);
+        jLabel35.setBounds(80, 30, 70, 33);
 
         updateButton.setBackground(new java.awt.Color(255, 0, 0));
         updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -331,6 +334,23 @@ public class ITAdmin extends javax.swing.JFrame {
         });
         jPanel6.add(delete);
         delete.setBounds(370, 430, 90, 40);
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel38.setText("lName");
+        jPanel6.add(jLabel38);
+        jLabel38.setBounds(100, 190, 70, 33);
+
+        updateLName.setBackground(new java.awt.Color(242, 242, 242));
+        updateLName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        updateLName.setBorder(null);
+        updateLName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateLNameActionPerformed(evt);
+            }
+        });
+        jPanel6.add(updateLName);
+        updateLName.setBounds(270, 190, 240, 30);
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 680, 540));
 
@@ -420,131 +440,173 @@ public class ITAdmin extends javax.swing.JFrame {
         String firstName = fName.getText();
         String lastName = lName.getText();
         String emailId;
-        emailId = (lName.getText() + '.' + lastName.charAt(0) + "@northeastern.edu").toLowerCase();
+        emailId = (lName.getText() + '.' + firstName.charAt(0) + "@northeastern.edu").toLowerCase();
         String password1 = (String) password.getText();
         String role1 = (String) roleCombo.getSelectedItem();
         String campus = (String) campusCombo.getSelectedItem();
         boolean validation = FormValidation();
-        
+
         if (validation) {
             if ("Student".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerStudent(registration);
-            JOptionPane.showMessageDialog(this, "Student Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
-        
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerStudent(registration);
+                JOptionPane.showMessageDialog(this, "Student Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
+
             if ("Head System Admin".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerHeadSystemAdmin(registration);
-            JOptionPane.showMessageDialog(this, "Head System Admin Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerHeadSystemAdmin(registration);
+                JOptionPane.showMessageDialog(this, "Head System Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
             if ("System Admin".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerSystemAdmin(registration);
-            JOptionPane.showMessageDialog(this, "System Admin Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerSystemAdmin(registration);
+                JOptionPane.showMessageDialog(this, "System Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
             if ("Campus Admin".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerCampusAdmin(registration);
-            JOptionPane.showMessageDialog(this, "Campus Admin Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerCampusAdmin(registration);
+                JOptionPane.showMessageDialog(this, "Campus Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
 
             if ("Building Admin".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerBuildingAdmin(registration);
-            JOptionPane.showMessageDialog(this, "Building Admin Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerBuildingAdmin(registration);
+                JOptionPane.showMessageDialog(this, "Building Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
 
             if ("Warden".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerWarden(registration);
-            JOptionPane.showMessageDialog(this, "Warden Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
-        }
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerWarden(registration);
+                JOptionPane.showMessageDialog(this, "Warden Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
             if ("Mailing Services Admin".equals((String) roleCombo.getSelectedItem())) {
-            Registration registration = new Registration();
-            registration.setFirstName(firstName);
-            registration.setLastName(lastName);
-            registration.setEmailID(emailId);
-            registration.setPassword(password1);
-            registration.setRoles(role1);
-            registration.setCampus(campus);
-            registration.setEmailID(emailId);
-            registrationDirectory.registerMailAdmin(registration);
-            JOptionPane.showMessageDialog(this, "Mailing Admin Registered secccessfully");
-            fName.setText("");
-            lName.setText("");
-            password.setText("");
+                Registration registration = new Registration();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registrationDirectory.registerMailAdmin(registration);
+                JOptionPane.showMessageDialog(this, "Mailing Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+                password.setText("");
+            }
         }
-}
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
+        String email1 = email.getText();
+        String rolel1 = (String) updateRole.getSelectedItem();
+        Registration registration = new Registration();
+        registration.setEmailID(email1);
+        registration.setRoles(rolel1);
+
+        Registration reg = registrationDirectory.findDetails(registration);
+
+        updatefName.setText(reg.getFirstName());
+        updateLName.setText(reg.getLastName());
+        updatePassword.setText(reg.getPassword());
+        String campusUpdate = reg.getCampus();
+
+        System.out.println(campusUpdate);
+        if ("London".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(8);
+        }
+        if ("Vancouver".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(7);
+        }
+        if ("Toronto".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(6);
+        }
+        if ("Portland (Maine)".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(5);
+        }
+        if ("Silicon Valley".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(4);
+        }
+        if ("Seattle".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(3);
+        }
+        if ("San Francisco".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(2);
+        }
+        if ("Charlotte".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(1);
+        }
+        if ("Boston".equals(campusUpdate)) {
+            updateCampus.setSelectedIndex(0);
+        }
+
     }//GEN-LAST:event_searchActionPerformed
 
-    private void updateNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateNameActionPerformed
+    private void updatefNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatefNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_updateNameActionPerformed
+    }//GEN-LAST:event_updatefNameActionPerformed
 
     private void updatePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePasswordActionPerformed
         // TODO add your handling code here:
@@ -556,6 +618,130 @@ public class ITAdmin extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
+        String email1 = email.getText();
+       // String rolel1 = (String) updateRole.getSelectedItem();
+        String updateFirstname = updatefName.getText();
+        String updateLastname = updateLName.getText();
+        String updatePassword1 = updatePassword.getText();
+        String campus1 = (String) updateCampus.getSelectedItem();
+        //  boolean validation = FormValidation();
+//        if (validation) {
+        if ("Student".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateStudent(registration);
+            JOptionPane.showMessageDialog(this, "Student Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+        }
+
+        if ("Head System Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateHeadSystemAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Head System Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("System Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateSystemAdmin(registration);
+            JOptionPane.showMessageDialog(this, "System Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("Campus Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateCampusAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Campus Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+        if ("Building Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateBuildingAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Building Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+        if ("Warden".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateWarden(registration);
+            JOptionPane.showMessageDialog(this, "Warden Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("Mailing Services Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.updateMailAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Mailing Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
@@ -564,11 +750,139 @@ public class ITAdmin extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
+        String email1 = email.getText();
+        String rolel1 = (String) updateRole.getSelectedItem();
+        String updateFirstname = updatefName.getText();
+        String updateLastname = updateLName.getText();
+        String updatePassword1 = updatePassword.getText();
+        String campus1 = (String) updateCampus.getSelectedItem();
+        //  boolean validation = FormValidation();
+//        if (validation) {
+        if ("Student".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteStudent(registration);
+            JOptionPane.showMessageDialog(this, "Student Deleted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+        }
+
+        if ("Head System Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteHeadSystemAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Head System Admin Deleted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("System Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteSystemAdmin(registration);
+            JOptionPane.showMessageDialog(this, "System Admin Deleted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("Campus Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteCampusAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Campus Admin Deleted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+        if ("Building Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteBuildingAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Building Admin Deletd secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+        if ("Warden".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteWarden(registration);
+            JOptionPane.showMessageDialog(this, "Warden Delete secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+        if ("Mailing Services Admin".equals((String) updateRole.getSelectedItem())) {
+            Registration registration = new Registration();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
+
+            registrationDirectory.deleteMailAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Mailing Admin Delted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
+
+
     }//GEN-LAST:event_deleteActionPerformed
 
     private void lNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lNameActionPerformed
+
+    private void updateLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateLNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateLNameActionPerformed
     private boolean FormValidation() {
 
         if (fName.getText().length() == 0) {
@@ -662,6 +976,7 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -682,9 +997,10 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JButton search;
     private javax.swing.JButton updateButton;
     private javax.swing.JComboBox<String> updateCampus;
-    private javax.swing.JTextField updateName;
+    private javax.swing.JTextField updateLName;
     private javax.swing.JTextField updatePassword;
     private javax.swing.JComboBox<String> updateRole;
+    private javax.swing.JTextField updatefName;
     // End of variables declaration//GEN-END:variables
 
 }
