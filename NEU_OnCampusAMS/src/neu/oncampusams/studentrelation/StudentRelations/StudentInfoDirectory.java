@@ -119,4 +119,120 @@ public class StudentInfoDirectory {
         }
     }
     
+    
+    public void addFinanceQuery(String emailId,String description){
+        
+        Connection connection = JDBCConnection.Connect();
+        String status = "Query Raised";
+        String role = "Student";
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into FinanceQueryTable (raisedBy,status,description,role) values(?,?,?,?)");
+            pst.setString(1,emailId);
+            pst.setString(2, status);
+            pst.setString(3, description);
+            pst.setString(4,role);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public void addMailQuery(String emailId,String description,String contact){
+        
+        Connection connection = JDBCConnection.Connect();
+        String status = "Query Raised";
+        String role = "Student";
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into MailPkQueryTable (raisedBy,status,description,role,contact) values(?,?,?,?,?)");
+            pst.setString(1,emailId);
+            pst.setString(2, status);
+            pst.setString(3, description);
+            pst.setString(4,role);
+            pst.setString(5,contact);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+   
+    public void addHouseKeepingQuery(String emailId,String description,String contact){
+        
+        Connection connection = JDBCConnection.Connect();
+        String status = "Query Raised";
+        String role = "Student";
+        StudentInfo std = getStudentInfo(emailId);
+        int wardenId = std.getWardenId();
+        System.out.println(wardenId+" c");
+        String wardenEmail = getWardenInfo(wardenId);
+        
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into WardenQueryTable (raisedBy,status,description,role,contact,wardenEmail) values(?,?,?,?,?,?)");
+            pst.setString(1,emailId);
+            pst.setString(2, status);
+            pst.setString(3, description);
+            pst.setString(4,role);
+            pst.setString(5,contact);
+            pst.setString(6,wardenEmail);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public void addRoomChangeQuery(String emailId,String description,String roomType){
+        
+        Connection connection = JDBCConnection.Connect();
+        String status = "Query Raised";
+        String role = "Student";
+        
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into AccQueryTable (raisedBy,status,description,role,roomType) values(?,?,?,?,?)");
+            pst.setString(1,emailId);
+            pst.setString(2, status);
+            pst.setString(3, description);
+            pst.setString(4,role);
+            pst.setString(5,roomType);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    public String getWardenInfo(int wardenId){
+      Connection connection = JDBCConnection.Connect();
+      String wardenEmail = "";
+      
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT wardenId,emailId from WardenTable where wardenId = ?");
+            pst.setInt(1, wardenId);
+            
+            ResultSet resultSet = pst.executeQuery();
+            if (resultSet.next()) {
+                
+                wardenEmail = resultSet.getString(2);
+                
+                
+            }
+        return wardenEmail;
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+      
+      return null;
+      
+    }
+    
+    
+    
+    
 }
