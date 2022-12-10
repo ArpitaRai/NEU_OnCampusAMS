@@ -20,7 +20,7 @@ public class StudentInfo {
     private int roomNo;
     private String buildingName;
     private int wardenId;
-    
+    private double huskyDollars;
 
     public int getStudentId() {
         return studentId;
@@ -108,6 +108,14 @@ public class StudentInfo {
 
     public void setWardenId(int wardenId) {
         this.wardenId = wardenId;
+    }
+
+    public double getHuskyDollars() {
+        return huskyDollars;
+    }
+
+    public void setHuskyDollars(double huskyDollars) {
+        this.huskyDollars = huskyDollars;
     }
     
     
