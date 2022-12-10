@@ -79,30 +79,32 @@ public class Student extends javax.swing.JFrame {
         btnRefresh1 = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         panelQuery = new javax.swing.JPanel();
-        jComboBox12 = new javax.swing.JComboBox<>();
-        jLabel33 = new javax.swing.JLabel();
+        lblQuery = new javax.swing.JLabel();
+        jcbQueryType = new javax.swing.JComboBox<>();
+        lblQueryDesc = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel34 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        txtQueryDesc = new javax.swing.JTextArea();
+        btnSubmit = new javax.swing.JButton();
         panelRoomChange = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        lblRoomChgHead = new javax.swing.JLabel();
+        lblRoomType = new javax.swing.JLabel();
+        jcbRoomType = new javax.swing.JComboBox<>();
+        lblRoomChg = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox<>();
+        txtArRoomChg = new javax.swing.JTextArea();
+        btnSubmitRoomChg = new javax.swing.JButton();
         panelUpdate = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         lblEmailId = new javax.swing.JLabel();
         lblPrsnlEmail = new javax.swing.JLabel();
         lblPhone = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
+        lblNewPass = new javax.swing.JLabel();
+        lblNewPass1 = new javax.swing.JLabel();
         txtEmailId = new javax.swing.JTextField();
         txtPrsnlEmail = new javax.swing.JTextField();
         txtPhone = new javax.swing.JTextField();
         pwdPass = new javax.swing.JPasswordField();
+        pwdPass1 = new javax.swing.JPasswordField();
         btnUpdate = new javax.swing.JButton();
         panelVending = new javax.swing.JPanel();
         panelVending1 = new javax.swing.JPanel();
@@ -327,72 +329,82 @@ public class Student extends javax.swing.JFrame {
 
         panelQuery.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox12.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance related", "Mailing services related", " " }));
-        panelQuery.add(jComboBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, 30));
+        lblQuery.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblQuery.setText("What is your query about?");
+        panelQuery.add(lblQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 40));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel33.setText("What is your query about?");
-        panelQuery.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 40));
+        jcbQueryType.setBackground(new java.awt.Color(204, 204, 204));
+        jcbQueryType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbQueryType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance related", "Mailing services related", "Housekeeping related" }));
+        panelQuery.add(jcbQueryType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, 30));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        lblQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblQueryDesc.setText("Write your query:");
+        panelQuery.add(lblQueryDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
+
+        txtQueryDesc.setColumns(20);
+        txtQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtQueryDesc.setRows(5);
+        jScrollPane3.setViewportView(txtQueryDesc);
 
         panelQuery.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 550, 190));
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel34.setText("Write your query:");
-        panelQuery.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Submit");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelQuery.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 110, 60));
+        btnSubmit.setBackground(new java.awt.Color(0, 0, 0));
+        btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        panelQuery.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 110, 60));
 
         jTabbedPane1.addTab("Raise a query ", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelQuery); // NOI18N
 
         panelRoomChange.setMaximumSize(new java.awt.Dimension(590, 470));
         panelRoomChange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("This page is for requesting a room change:");
-        panelRoomChange.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 350, 40));
+        lblRoomChgHead.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblRoomChgHead.setText("This page is for requesting a room change:");
+        panelRoomChange.add(lblRoomChgHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 350, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        lblRoomType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblRoomType.setText("Select your desired room type");
+        panelRoomChange.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 240, 40));
+
+        jcbRoomType.setBackground(new java.awt.Color(204, 204, 204));
+        jcbRoomType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jcbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1BHK", "2BHK", "Studio", "Shared" }));
+        jcbRoomType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbRoomTypeActionPerformed(evt);
+            }
+        });
+        panelRoomChange.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 240, 30));
+
+        lblRoomChg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblRoomChg.setText("Write more about your room change request:");
+        panelRoomChange.add(lblRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
+
+        txtArRoomChg.setColumns(20);
+        txtArRoomChg.setRows(5);
+        jScrollPane2.setViewportView(txtArRoomChg);
 
         panelRoomChange.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 550, 190));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Submit");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelRoomChange.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 40));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Write more about your room change request:");
-        panelRoomChange.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Select your desired room type");
-        panelRoomChange.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 240, 40));
-
-        jComboBox11.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1BHK", "2BHK", "Studio", "Shared" }));
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmitRoomChg.setBackground(new java.awt.Color(0, 0, 0));
+        btnSubmitRoomChg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSubmitRoomChg.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubmitRoomChg.setText("Submit");
+        btnSubmitRoomChg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSubmitRoomChg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
+                btnSubmitRoomChgActionPerformed(evt);
             }
         });
-        panelRoomChange.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 240, 30));
+        panelRoomChange.add(btnSubmitRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 40));
 
         jTabbedPane1.addTab("Request a room change", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelRoomChange); // NOI18N
 
@@ -403,22 +415,27 @@ public class Student extends javax.swing.JFrame {
         lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblEmailId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmailId.setText("Email Id");
-        jPanel9.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 170, 40));
+        jPanel9.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 170, 40));
 
         lblPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPrsnlEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPrsnlEmail.setText("Personal Email Id");
-        jPanel9.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 170, 40));
+        jPanel9.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 170, 40));
 
         lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPhone.setText("Phone Number");
-        jPanel9.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 170, 40));
+        jPanel9.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 170, 40));
 
-        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblPassword.setText("Password");
-        jPanel9.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 170, 40));
+        lblNewPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass.setText("New Password");
+        jPanel9.add(lblNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 170, 40));
+
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass1.setText("Re-Enter New Password");
+        jPanel9.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 40));
 
         txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEmailId.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +443,7 @@ public class Student extends javax.swing.JFrame {
                 txtEmailIdActionPerformed(evt);
             }
         });
-        jPanel9.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 230, 40));
+        jPanel9.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 230, 40));
 
         txtPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPrsnlEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +451,7 @@ public class Student extends javax.swing.JFrame {
                 txtPrsnlEmailActionPerformed(evt);
             }
         });
-        jPanel9.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 230, 40));
+        jPanel9.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 230, 40));
 
         txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPhone.addActionListener(new java.awt.event.ActionListener() {
@@ -442,10 +459,13 @@ public class Student extends javax.swing.JFrame {
                 txtPhoneActionPerformed(evt);
             }
         });
-        jPanel9.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 230, 40));
+        jPanel9.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 230, 40));
 
         pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel9.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 230, 40));
+        jPanel9.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 230, 40));
+
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel9.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 230, 40));
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
@@ -454,9 +474,9 @@ public class Student extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 110, 40));
+        jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 110, 40));
 
-        panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 520, 390));
+        panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 570, 390));
 
         jTabbedPane1.addTab("Update details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), panelUpdate); // NOI18N
 
@@ -618,50 +638,6 @@ public class Student extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
-
-    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailIdActionPerformed
-
-    private void txtPrsnlEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrsnlEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrsnlEmailActionPerformed
-
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-
-        String emailId = txtEmailId.getText();
-        String personalEmailId = txtPrsnlEmail.getText();
-        String phone = txtPhone.getText();
-        String password = pwdPass.getText();
-
-        boolean validation = FormValidation();
-
-        if(validation){
-
-            StudentInfo student = new StudentInfo();
-
-            student.setEmailId(emailId);
-            student.setPersonalEmailId(personalEmailId);
-            student.setPhone(phone);
-            student.setPassword(password);
-
-            studentDir.updateStudentInfo(student);
-            JOptionPane.showMessageDialog(this, "Updated Student Info.");
-
-            populateForm(emailId);
-
-        }
-
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
         // TODO add your handling code here:
         StudentInfo std = StudentInfoDirectory.getStudentHuskyD("test.s@northeastern.edu");
@@ -784,6 +760,100 @@ public class Student extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuyActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+
+        String queryType = jcbQueryType.getSelectedItem().toString();
+        String description = txtQueryDesc.getText();
+        String emailId = "test.s@northeastern.edu";
+        String contact = "1234567890";
+        if(description.equals("") || description.equals(" ")){
+            JOptionPane.showMessageDialog(this, "Description is Empty!");
+        }
+        else{
+            if(queryType.equals("Finance related")){
+                studentDir.addFinanceQuery(emailId,description);
+                JOptionPane.showMessageDialog(this, "Query Submitted!");
+                txtQueryDesc.setText("");
+                jcbQueryType.setSelectedIndex(0);
+            }
+            else if(queryType.equals("Mailing services related")){
+                studentDir.addMailQuery(emailId,description,contact);
+                JOptionPane.showMessageDialog(this, "Query Submitted!");
+                txtQueryDesc.setText("");
+                jcbQueryType.setSelectedIndex(0);
+            }
+            else if(queryType.equals("Housekeeping related")){
+                studentDir.addHouseKeepingQuery(emailId,description,contact);
+                JOptionPane.showMessageDialog(this, "Query Submitted!");
+                txtQueryDesc.setText("");
+                jcbQueryType.setSelectedIndex(0);
+            }
+        }
+
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void jcbRoomTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRoomTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbRoomTypeActionPerformed
+
+    private void btnSubmitRoomChgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRoomChgActionPerformed
+        // TODO add your handling code here:
+
+        String roomType = jcbRoomType.getSelectedItem().toString();
+        String description = txtArRoomChg.getText();
+        if(description.equals("") || description.equals(" ")){
+            JOptionPane.showMessageDialog(this, "Description is Empty!");
+        }
+        else{
+            String emailId = "test.s@northeastern.edu";
+            studentDir.addRoomChangeQuery(emailId,description,roomType);
+            JOptionPane.showMessageDialog(this,"Room Change Request Submitted.");
+            txtArRoomChg.setText("");
+            jcbRoomType.setSelectedIndex(0);
+        }
+
+    }//GEN-LAST:event_btnSubmitRoomChgActionPerformed
+
+    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailIdActionPerformed
+
+    private void txtPrsnlEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrsnlEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrsnlEmailActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+
+        String emailId = txtEmailId.getText();
+        String personalEmailId = txtPrsnlEmail.getText();
+        String phone = txtPhone.getText();
+        String password = pwdPass.getText();
+
+        boolean validation = FormValidation();
+
+        if(validation){
+
+            StudentInfo student = new StudentInfo();
+
+            student.setEmailId(emailId);
+            student.setPersonalEmailId(personalEmailId);
+            student.setPhone(phone);
+            student.setPassword(password);
+
+            studentDir.updateStudentInfo(student);
+            JOptionPane.showMessageDialog(this, "Updated Student Info.");
+
+            populateForm(emailId);
+
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -826,19 +896,15 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnRefresh1;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnSubmitRoomChg;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -855,10 +921,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -872,11 +935,11 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JComboBox<String> jcbCaesar;
     private javax.swing.JComboBox<String> jcbCoke;
     private javax.swing.JComboBox<String> jcbPringless;
+    private javax.swing.JComboBox<String> jcbQueryType;
+    private javax.swing.JComboBox<String> jcbRoomType;
     private javax.swing.JComboBox<String> jcbSprite;
     private javax.swing.JLabel lblAddDollars;
     private javax.swing.JLabel lblCaesar;
@@ -889,10 +952,16 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel lblEmailId2;
     private javax.swing.JLabel lblHuskyTot;
     private javax.swing.JLabel lblHuskyTotVal;
-    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblNewPass;
+    private javax.swing.JLabel lblNewPass1;
     private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPringless;
     private javax.swing.JLabel lblPrsnlEmail;
+    private javax.swing.JLabel lblQuery;
+    private javax.swing.JLabel lblQueryDesc;
+    private javax.swing.JLabel lblRoomChg;
+    private javax.swing.JLabel lblRoomChgHead;
+    private javax.swing.JLabel lblRoomType;
     private javax.swing.JLabel lblSprite;
     private javax.swing.JLabel lblTotVal;
     private javax.swing.JLabel lblTotal;
@@ -906,10 +975,13 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JPanel panelVending;
     private javax.swing.JPanel panelVending1;
     private javax.swing.JPasswordField pwdPass;
+    private javax.swing.JPasswordField pwdPass1;
     private javax.swing.JTextField txtAddDollars;
+    private javax.swing.JTextArea txtArRoomChg;
     private javax.swing.JTextField txtEmailId;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPrsnlEmail;
+    private javax.swing.JTextArea txtQueryDesc;
     // End of variables declaration//GEN-END:variables
 
 private boolean FormValidation(){
@@ -929,9 +1001,14 @@ private boolean FormValidation(){
            JOptionPane.showMessageDialog(this, "Personal Email Id Incorrect");
            validation = false;
        }
-       if( pwdPass.getText().length() == 0)
+       if( pwdPass1.getText().length() == 0)
        {
-           JOptionPane.showMessageDialog(this, "Password Field is Empty");
+           JOptionPane.showMessageDialog(this, "Re-Enter New Password Field is Empty");
+           validation = false;
+       }
+       if( !pwdPass1.getText().equals(pwdPass.getText()))
+       {
+           JOptionPane.showMessageDialog(this, "Password Fields do not match!");
            validation = false;
        }
        
@@ -949,7 +1026,7 @@ private void populateForm(String emailId){
 
 
 public void SetEmailID(){
-        lblEmail.setText(emailID);
+        txtEmailId.setText(emailID);
     } 
 
 

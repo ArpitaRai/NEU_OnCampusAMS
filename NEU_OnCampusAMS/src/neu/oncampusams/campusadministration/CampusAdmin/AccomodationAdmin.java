@@ -635,7 +635,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         String note = txtArNote.getText();
         String status = jcbStatus.getSelectedItem().toString();
         try {
-            PreparedStatement  pst = connection.prepareStatement("update AccQueryTable set note = ?, status = ? where idAccQuery = ?");
+            PreparedStatement  pst = connection.prepareStatement("update AccQueryTable set note = ?, status = ? where queryId = ?");
             pst.setString(1, note);
             pst.setString(2,status);
             pst.setInt(3,queryId);

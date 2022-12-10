@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
             }else if("Warden".equals(role)){//warden 2
                 ResultSet resultset = statement.executeQuery("SELECT * FROM oncampusamsdb.wardentable where emailId ='" + username + "' and password = '" + password + "'");
                 if(resultset.next()){
-                    Warden1 w = new Warden1(resultset.getString("emailId"));
+                    Warden w = new Warden(resultset.getString("emailId"));
                     w.SetEmailID();
                     setVisible(false);
                     w.show();
