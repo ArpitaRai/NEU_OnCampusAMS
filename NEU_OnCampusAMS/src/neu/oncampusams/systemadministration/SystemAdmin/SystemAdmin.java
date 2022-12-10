@@ -12,12 +12,20 @@ import neu.oncampusams.campusadministration.CampusAdmin.*;
  */
 public class SystemAdmin extends javax.swing.JFrame {
 
+    String emailID;
+    
     /**
      * Creates new form Warden1
      */
     public SystemAdmin() {
         initComponents();
     }
+    
+    public SystemAdmin(String eid) {
+        initComponents();
+        emailID = eid; //passing the value of emailid
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +44,8 @@ public class SystemAdmin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -103,10 +112,15 @@ public class SystemAdmin extends javax.swing.JFrame {
         jLabel3.setText("On-Campus Accommodation");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 270, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Management System");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Management System");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 270, 30));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Management System");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 160));
 
@@ -267,10 +281,10 @@ public class SystemAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -283,5 +297,11 @@ public class SystemAdmin extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblEmail;
     // End of variables declaration//GEN-END:variables
+
+
+public void SetEmailID(){
+        lblEmail.setText(emailID);
+    } 
 }
