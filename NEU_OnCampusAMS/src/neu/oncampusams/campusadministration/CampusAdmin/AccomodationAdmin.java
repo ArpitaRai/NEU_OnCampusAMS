@@ -21,12 +21,18 @@ import neu.oncampusams.systemadministration.SystemAdmin.*;
  */
 public class AccomodationAdmin extends javax.swing.JFrame {
 
+    String emailID;
     /**
      * Creates new form test
      */
     public AccomodationAdmin() {
         initComponents();
         populateQueryTable();
+    }
+    
+        public AccomodationAdmin(String eid) {
+        initComponents();
+        emailID = eid; //passing the value of emailid
     }
 
     /**
@@ -85,10 +91,10 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accomodation Administrator Portal");
         setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1500, 700));
@@ -398,10 +404,10 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jLabel15.setText("Campus:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Email:");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email:");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -566,7 +572,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -594,6 +599,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JComboBox<String> jcbStatus;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JTable tblAccQuery;
     private javax.swing.JTable tblBuilding;
     private javax.swing.JTextArea txtArNote;
@@ -639,5 +645,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         }
     }
 
-
+public void SetEmailID(){
+        lblEmail.setText(emailID);
+    } 
 }

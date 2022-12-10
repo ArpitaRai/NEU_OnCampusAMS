@@ -12,12 +12,20 @@ import neu.oncampusams.systemadministration.SystemAdmin.*;
  */
 public class MailingServicesAdmin extends javax.swing.JFrame {
 
+    String emailID;
+
     /**
      * Creates new form test
      */
     public MailingServicesAdmin() {
         initComponents();
     }
+    
+    public MailingServicesAdmin(String eid) {
+        initComponents();
+        emailID = eid; //passing the value of emailid
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +74,7 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -305,10 +313,10 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jLabel15.setText("Campus:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Email:");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email:");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -465,7 +473,6 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -488,6 +495,7 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmailId;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
@@ -495,4 +503,8 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmailId;
     private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
+
+public void SetEmailID(){
+        lblEmail.setText(emailID);
+    } 
 }
