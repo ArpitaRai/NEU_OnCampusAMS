@@ -13,6 +13,10 @@ import neu.oncampusams.campusadministration.CampusAdmin.*;
  */
 public class Student extends javax.swing.JFrame {
 
+    String emailID;
+
+
+
     /**
      * Creates new form Warden1
      */
@@ -23,6 +27,10 @@ public class Student extends javax.swing.JFrame {
         StudentInfo std = StudentInfoDirectory.getStudentHuskyD("test.s@northeastern.edu");
         lblHuskyTotVal.setText(String.valueOf(std.getHuskyDollars()));
         
+    }
+    public Student(String eid) {
+        initComponents();
+        emailID = eid; //passing the value of emailid
     }
 
     /**
@@ -42,7 +50,7 @@ public class Student extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelBilling = new javax.swing.JPanel();
@@ -121,9 +129,8 @@ public class Student extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Portal");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(1060, 700));
@@ -173,10 +180,10 @@ public class Student extends javax.swing.JFrame {
         jLabel3.setText("On-Campus Accommodation");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 270, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Welcome, *Student*");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 190, 30));
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Welcome, *Student*");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 190, 30));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
@@ -601,8 +608,7 @@ public class Student extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Meal Plans", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/food.png")), panelMeal); // NOI18N
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 880, 740));
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 420, 740));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1300, 740));
 
         pack();
         setLocationRelativeTo(null);
@@ -852,12 +858,10 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -880,6 +884,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel lblDollar;
     private javax.swing.JLabel lblDollar1;
     private javax.swing.JLabel lblDollar2;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmailId;
     private javax.swing.JLabel lblEmailId2;
     private javax.swing.JLabel lblHuskyTot;
@@ -943,6 +948,9 @@ private void populateForm(String emailId){
 }
 
 
+public void SetEmailID(){
+        lblEmail.setText(emailID);
+    } 
 
 
 
