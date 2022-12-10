@@ -66,9 +66,57 @@ public class StudentInfoDirectory {
       
     }
     
+    public static double calculateTotalCost(int pringlessNo,int caesarNo, int cokeNo, int spriteNo ){
+        
+        double total = 0;
+        double pringless = 1.50;
+        double caesar = 4.50;
+        double coke = 1.0;
+        double sprite = 1.0;
+        
+        total = (pringless * pringlessNo) + (caesar * caesarNo) + (coke * cokeNo) + (sprite * spriteNo);
+        
+        return total;
+    }
     
+    public static StudentInfo getStudentHuskyD(String emailId){
+      Connection connection = JDBCConnection.Connect();
+      StudentInfo student = new StudentInfo();
+      
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT emailId,huskyDollars from StudentTable where emailId = ?");
+            pst.setString(1, emailId);
+            
+            ResultSet resultSet = pst.executeQuery();
+            if (resultSet.next()) {
+                
+                student.setEmailId(resultSet.getString(1));
+                student.setHuskyDollars(Double.parseDouble(resultSet.getString(2)));
+         
+            }
+        return student;
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+      
+      return null;
+      
+    }
     
+    public void updateHuskyDollars(double dlr,String emailId){
     
-    
+    Connection connection = JDBCConnection.Connect();
+        try {
+            PreparedStatement  pst = connection.prepareStatement("update StudentTable set huskyDollars = ? where emailId = ?");
+            pst.setDouble(1, dlr);
+            pst.setString(2,emailId);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
