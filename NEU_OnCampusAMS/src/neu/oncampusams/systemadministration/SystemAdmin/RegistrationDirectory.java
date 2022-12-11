@@ -18,8 +18,8 @@ import java.util.logging.Logger;
  */
 public class RegistrationDirectory {
 
-//    Registration registration = new Registration();
-    public void registerStudent(Registration registration) {
+    RegistrationInfo registration = new RegistrationInfo();
+    public void registerStudent(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -34,7 +34,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerHeadSystemAdmin(Registration registration) {
+    public void registerHeadSystemAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -48,7 +48,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerSystemAdmin(Registration registration) {
+    public void registerSystemAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -62,7 +62,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerCampusAdmin(Registration registration) {
+    public void registerCampusAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -76,7 +76,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerAccoAdmin(Registration registration) {
+    public void registerAccoAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -90,7 +90,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerWarden(Registration registration) {
+    public void registerWarden(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -104,7 +104,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerMailAdmin(Registration registration) {
+    public void registerMailAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -118,7 +118,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public Registration findDetails(Registration registration) {
+    public RegistrationInfo findDetails(RegistrationInfo registration) {
         String sql = null;
         Connection connection = JDBCConnection.Connect();
         System.out.println("Head system admin: " + registration.getRoles());
@@ -149,7 +149,7 @@ public class RegistrationDirectory {
             }
 
             ResultSet resultSet = statement.executeQuery(sql);
-            registration = new Registration();
+            registration = new RegistrationInfo();
             while (resultSet.next()) {
                 registration.setFirstName(resultSet.getString("fName"));
                 registration.setLastName(resultSet.getString("lName"));
@@ -164,7 +164,7 @@ public class RegistrationDirectory {
         return null;
     }
 
-    public void updateStudent(Registration registration) {
+    public void updateStudent(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -179,7 +179,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateHeadSystemAdmin(Registration registration) {
+    public void updateHeadSystemAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -192,7 +192,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateSystemAdmin(Registration registration) {
+    public void updateSystemAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -206,7 +206,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateCampusAdmin(Registration registration) {
+    public void updateCampusAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -220,7 +220,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateBuildingAdmin(Registration registration) {
+    public void updateBuildingAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -234,7 +234,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateWarden(Registration registration) {
+    public void updateWarden(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -248,7 +248,7 @@ public class RegistrationDirectory {
         }
     }
 
-    public void updateMailAdmin(Registration registration) {
+    public void updateMailAdmin(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
@@ -262,7 +262,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteStudent(Registration registration) {
+    void deleteStudent(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -274,7 +274,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteHeadSystemAdmin(Registration registration) {
+    void deleteHeadSystemAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -286,7 +286,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteSystemAdmin(Registration registration) {
+    void deleteSystemAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -298,7 +298,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteCampusAdmin(Registration registration) {
+    void deleteCampusAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -310,7 +310,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteBuildingAdmin(Registration registration) {
+    void deleteBuildingAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -322,7 +322,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteWarden(Registration registration) {
+    void deleteWarden(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
@@ -334,7 +334,7 @@ public class RegistrationDirectory {
         }
     }
 
-    void deleteMailAdmin(Registration registration) {
+    void deleteMailAdmin(RegistrationInfo registration) {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();

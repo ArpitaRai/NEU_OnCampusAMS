@@ -448,7 +448,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         if (validation) {
             if ("Student".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -464,7 +464,7 @@ public class ITAdmin extends javax.swing.JFrame {
             }
 
             if ("Head System Admin".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -479,7 +479,7 @@ public class ITAdmin extends javax.swing.JFrame {
                 password.setText("");
             }
             if ("System Admin".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -494,7 +494,7 @@ public class ITAdmin extends javax.swing.JFrame {
                 password.setText("");
             }
             if ("Campus Admin".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -510,7 +510,7 @@ public class ITAdmin extends javax.swing.JFrame {
             }
 
             if ("Accommodation Admin".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -526,7 +526,7 @@ public class ITAdmin extends javax.swing.JFrame {
             }
 
             if ("Warden".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -541,7 +541,7 @@ public class ITAdmin extends javax.swing.JFrame {
                 password.setText("");
             }
             if ("Mailing Services Admin".equals((String) roleCombo.getSelectedItem())) {
-                Registration registration = new Registration();
+                RegistrationInfo registration = new RegistrationInfo();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
                 registration.setEmailID(emailId);
@@ -562,11 +562,11 @@ public class ITAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email1 = email.getText();
         String rolel1 = (String) updateRole.getSelectedItem();
-        Registration registration = new Registration();
+        RegistrationInfo registration = new RegistrationInfo();
         registration.setEmailID(email1);
         registration.setRoles(rolel1);
 
-        Registration reg = registrationDirectory.findDetails(registration);
+        RegistrationInfo reg = registrationDirectory.findDetails(registration);
 
         updatefName.setText(reg.getFirstName());
         updateLName.setText(reg.getLastName());
@@ -627,7 +627,7 @@ public class ITAdmin extends javax.swing.JFrame {
         //  boolean validation = FormValidation();
 //        if (validation) {
         if ("Student".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -643,7 +643,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Head System Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -659,7 +659,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("System Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -675,7 +675,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("Campus Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -692,7 +692,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Building Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -709,7 +709,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Warden".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -725,7 +725,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("Mailing Services Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -759,7 +759,7 @@ public class ITAdmin extends javax.swing.JFrame {
         //  boolean validation = FormValidation();
 //        if (validation) {
         if ("Student".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -775,7 +775,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Head System Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -791,7 +791,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("System Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -807,7 +807,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("Campus Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -824,7 +824,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Building Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -841,7 +841,7 @@ public class ITAdmin extends javax.swing.JFrame {
         }
 
         if ("Warden".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);
@@ -857,7 +857,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         }
         if ("Mailing Services Admin".equals((String) updateRole.getSelectedItem())) {
-            Registration registration = new Registration();
+            RegistrationInfo registration = new RegistrationInfo();
             registration.setFirstName(updateFirstname);
             registration.setLastName(updateLastname);
             registration.setPassword(updatePassword1);

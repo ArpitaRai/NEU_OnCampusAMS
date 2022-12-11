@@ -4,28 +4,44 @@
  */
 package neu.oncampusams.campusadministration.CampusAdmin;
 
-import neu.oncampusams.systemadministration.SystemAdmin.*;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import neu.oncampusams.databaseConnection.JDBCConnection;
+import neu.oncampusams.systemadministration.SystemAdmin.RegistrationDirectory;
+import neu.oncampusams.utilities.EmailInfo;
+import neu.oncampusams.utilities.SendEmail;
 
 /**
  *
  * @author Yamini Manral
  */
-public class MailingServicesAdmin extends javax.swing.JFrame {
+public final class MailingServicesAdmin extends javax.swing.JFrame {
 
-    String emailID;
+    String emailID = "dmqwbdm.d@northeastern.edu";
+    MailingServicesAdminInfo mailingServicesAdminInfo = new MailingServicesAdminInfo();
+    MailingServicesAdminDirectory mailingServicesAdminInfoDirectory = new MailingServicesAdminDirectory();
 
     /**
      * Creates new form test
      */
     public MailingServicesAdmin() {
         initComponents();
+        updateAutoPupulate(emailID);
+        mailQueryTable();
+
     }
-    
+
     public MailingServicesAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,30 +57,32 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        packageType = new javax.swing.JComboBox<>();
+        sendBtn = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        gmailId = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        mailQueryTable = new javax.swing.JTable();
+        queryId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox13 = new javax.swing.JComboBox<>();
+        note = new javax.swing.JTextArea();
+        status = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblEmailId = new javax.swing.JLabel();
         lblPhone = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtEmailId = new javax.swing.JTextField();
-        txtPhone = new javax.swing.JTextField();
-        pwdPass = new javax.swing.JPasswordField();
-        btnUpdate = new javax.swing.JButton();
+        updatePhone = new javax.swing.JTextField();
+        updateMailAdmin = new javax.swing.JButton();
+        pwdPass1 = new javax.swing.JPasswordField();
+        lblNewPass1 = new javax.swing.JLabel();
+        updateEmail = new javax.swing.JTextField();
+        pwdPass = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -80,9 +98,7 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mailing Services Administrator Portal");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1500, 700));
         setMinimumSize(new java.awt.Dimension(1500, 700));
-        setPreferredSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -105,45 +121,45 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Student ID");
+        jLabel12.setText("Student Email ID");
         jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 220, 40));
 
-        jComboBox10.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Letter ", "Small (S)", "Medium (M)", "Large (L)", "Extra Large (XL)" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+        packageType.setBackground(new java.awt.Color(204, 204, 204));
+        packageType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        packageType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Letter ", "Small (S)", "Medium (M)", "Large (L)", "Extra Large (XL)" }));
+        packageType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+                packageTypeActionPerformed(evt);
             }
         });
-        jPanel8.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 240, 30));
+        jPanel8.add(packageType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 240, 30));
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Send Notification");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        sendBtn.setBackground(new java.awt.Color(255, 0, 0));
+        sendBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        sendBtn.setForeground(new java.awt.Color(255, 255, 255));
+        sendBtn.setText("Send Notification");
+        sendBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sendBtnActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, 40));
+        jPanel8.add(sendBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, 40));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Package type");
         jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 260, 40));
 
-        jTextField15.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setBorder(null);
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        gmailId.setBackground(new java.awt.Color(204, 204, 204));
+        gmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        gmailId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        gmailId.setBorder(null);
+        gmailId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                gmailIdActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 220, 40));
+        jPanel8.add(gmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 220, 40));
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
         jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 220, 10));
@@ -155,9 +171,9 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jPanel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        mailQueryTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mailQueryTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        mailQueryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -165,12 +181,17 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
                 "Query ID", "Raised By", "Contact", "Status", "Description", "Note"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        mailQueryTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mailQueryTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(mailQueryTable);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 1070, 110));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
+        queryId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel3.add(queryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -184,22 +205,22 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jLabel18.setText("Query ID");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 110, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        note.setColumns(20);
+        note.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        note.setRows(5);
+        jScrollPane1.setViewportView(note);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
 
-        jComboBox13.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Under review", "Processed" }));
-        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+        status.setBackground(new java.awt.Color(204, 204, 204));
+        status.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Under review", "Processed" }));
+        status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox13ActionPerformed(evt);
+                statusActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 250, 40));
+        jPanel3.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 250, 40));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -207,16 +228,16 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         jLabel19.setText("Note");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 110, 40));
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Update Query");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        update.setBackground(new java.awt.Color(255, 0, 0));
+        update.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setText("Update Query");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, 170, 60));
+        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 490, 170, 60));
 
         jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel3); // NOI18N
 
@@ -230,40 +251,53 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPhone.setText("Phone Number");
-        jPanel2.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 170, 40));
+        jPanel2.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 170, 40));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPassword.setText("Password");
-        jPanel2.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, 40));
+        jPanel2.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 170, 40));
 
-        txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtEmailId.addActionListener(new java.awt.event.ActionListener() {
+        updatePhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updatePhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailIdActionPerformed(evt);
+                updatePhoneActionPerformed(evt);
             }
         });
-        jPanel2.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 270, 40));
+        jPanel2.add(updatePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 290, 40));
 
-        txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+        updateMailAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateMailAdmin.setText("Update");
+        updateMailAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneActionPerformed(evt);
+                updateMailAdminActionPerformed(evt);
             }
         });
-        jPanel2.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, 40));
+        jPanel2.add(updateMailAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 120, 50));
+
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel2.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 290, 40));
+
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass1.setText("Re-Enter New Password");
+        jPanel2.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 210, 40));
+
+        updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updateEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEmailActionPerformed(evt);
+            }
+        });
+        jPanel2.add(updateEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 290, 40));
 
         pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel2.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 270, 40));
-
-        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+        pwdPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+                pwdPassActionPerformed(evt);
             }
         });
-        jPanel2.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 120, 50));
+        jPanel2.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 290, 40));
 
         jTabbedPane1.addTab("Update Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), jPanel2); // NOI18N
 
@@ -335,65 +369,146 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        int queryId1 = Integer.parseInt(queryId.getText());
+        String note1 = note.getText();
+        String status1 = (String) status.getSelectedItem();
+        Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql1 = "UPDATE oncampusamsdb.MailPkQueryTable SET NOTE = '" + note1 + "',status ='" + status1 + "'where queryId = " + queryId1 + "";
 
-    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+            System.out.println("sql update student: " + sql1);
+            statement.executeUpdate(sql1);
+            JOptionPane.showMessageDialog(this, "Query updated succcessfully");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DefaultTableModel model = (DefaultTableModel) mailQueryTable.getModel();
+        model.setRowCount(0);
+
+        mailQueryTable();
+        queryId.setText(" ");
+        note.setText(" ");
+        status.setSelectedIndex(0);
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void packageTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox13ActionPerformed
+    }//GEN-LAST:event_packageTypeActionPerformed
+
+    private void sendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendBtnActionPerformed
+        // TODO add your handling code here:
+        EmailInfo emailInfo = new EmailInfo();
+
+        emailInfo.setGmailId(gmailId.getText());
+        Connection connection = JDBCConnection.Connect();
+
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "SELECT * FROM oncampusamsdb.StudentTable WHERE emailId='" + gmailId.getText() + "'";
+            System.out.println("sql update student: " + sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+
+                String ptype = (String) packageType.getSelectedItem();
+                emailInfo.setSubjectLine("You have got a " + ptype + ". - @NEUMail");
+                emailInfo.setBody("We have recieved a Parcel addressed to you, to get more details check your Student Account Mailig Details. "
+                        + "Have a Good Day."
+                        + " -Northeastern Mailing Services");
+
+                emailInfo = SendEmail.mail(emailInfo);
+
+                JOptionPane.showMessageDialog(this, emailInfo.getBody());
+                
+                String sql1= "INSERT INTO `oncampusamsdb`.`MailPkTable`(`studentEmail`,`pkType`)VALUES('" + emailInfo.getGmailId()
+                    + "' , '" + ptype + "');";
+                  statement.executeUpdate(sql1);
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect EmailId");
+                gmailId.setText("");
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_sendBtnActionPerformed
+
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void gmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmailIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_gmailIdActionPerformed
 
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void updateMailAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMailAdminActionPerformed
         // TODO add your handling code here:
 
-//        String emailId = txtEmailId.getText();
-//        String personalEmailId = txtPrsnlEmail.getText();
-//        String phone = txtPhone.getText();
-//        String password = pwdPass.getText();
-//
-//        boolean validation = FormValidation();
-//
-//        if(validation){
-//
-//            StudentInfo student = new StudentInfo();
-//
-//            student.setEmailId(emailId);
-//            student.setPersonalEmailId(personalEmailId);
-//            student.setPhone(phone);
-//            student.setPassword(password);
-//
-//            studentDir.updateStudentInfo(student);
-//            JOptionPane.showMessageDialog(this, "Updated Student Info.");
-//
-//            populateForm(emailId);
-//
-//        }
-    }//GEN-LAST:event_btnUpdateActionPerformed
+        if (!(pwdPass.getText()).equals(pwdPass1.getText())) {
+            JOptionPane.showMessageDialog(this, "Passwords doesn't match, please try again!");
+            pwdPass.setText("");
+            pwdPass1.setText("");
+            return;
+        }
+        MailingServicesAdminInfo mailingServicesAdminInfo = new MailingServicesAdminInfo();
+        mailingServicesAdminInfo.setPhone(updatePhone.getText());
+        mailingServicesAdminInfo.setEmailID(emailID);
+        mailingServicesAdminInfo.setPassword(pwdPass1.getText());
+        mailingServicesAdminInfoDirectory.updateAdminDetails(mailingServicesAdminInfo);
+        updateAutoPupulate(emailID);
+        pwdPass.setText("");
+        pwdPass1.setText("");
+        updatePhone.setText("");
+        JOptionPane.showMessageDialog(this, "Details updated successfully!");
 
-    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
+
+    }//GEN-LAST:event_updateMailAdminActionPerformed
+
+    private void updatePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailIdActionPerformed
+    }//GEN-LAST:event_updatePhoneActionPerformed
+
+    private void updateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateEmailActionPerformed
+
+    private void pwdPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdPassActionPerformed
+
+    private void mailQueryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mailQueryTableMouseClicked
+        // TODO add your handling code here:
+
+        int index = mailQueryTable.getSelectedRow();
+
+        DefaultTableModel tblModel = (DefaultTableModel) mailQueryTable.getModel();
+
+        String queryId1 = tblModel.getValueAt(index, 0).toString();
+        String status1 = tblModel.getValueAt(index, 3).toString();
+        String note1 = tblModel.getValueAt(index, 5).toString();
+
+        queryId.setText(queryId1);
+        note.setText(note1);
+        if (status1.equals("Under review")) {
+            status.setSelectedIndex(0);
+        }
+        if (status1.equals("Processed")) {
+            status.setSelectedIndex(1);
+        }
+    }//GEN-LAST:event_mailQueryTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -462,12 +577,8 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JTextField gmailId;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox13;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -491,20 +602,65 @@ public class MailingServicesAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmailId;
+    private javax.swing.JLabel lblNewPass1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhone;
-    private javax.swing.JPasswordField pwdPass;
-    private javax.swing.JTextField txtEmailId;
-    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTable mailQueryTable;
+    private javax.swing.JTextArea note;
+    private javax.swing.JComboBox<String> packageType;
+    private javax.swing.JTextField pwdPass;
+    private javax.swing.JPasswordField pwdPass1;
+    private javax.swing.JTextField queryId;
+    private javax.swing.JButton sendBtn;
+    private javax.swing.JComboBox<String> status;
+    private javax.swing.JButton update;
+    private javax.swing.JTextField updateEmail;
+    private javax.swing.JButton updateMailAdmin;
+    private javax.swing.JTextField updatePhone;
     // End of variables declaration//GEN-END:variables
 
-public void SetEmailID(){
+    public void SetEmailID() {
         lblEmail.setText(emailID);
-    } 
+    }
+
+    public void updateAutoPupulate(String emailID) {
+        String email = emailID;
+        updateEmail.setText(email);
+
+        mailingServicesAdminInfo.setEmailID(email);
+        mailingServicesAdminInfo = mailingServicesAdminInfoDirectory.autoPopulateUpdate(email);
+        updatePhone.setText(mailingServicesAdminInfo.getPhone());
+        pwdPass.setText(mailingServicesAdminInfo.getPassword());
+    }
+
+    public void mailQueryTable() {
+        String email = emailID;
+        mailingServicesAdminInfo.setEmailID(email);
+
+        try ( Connection connection = JDBCConnection.Connect()) {
+            Statement statement = (Statement) connection.createStatement();
+
+            String sql = "SELECT * FROM oncampusamsdb.MailPkQueryTable";
+            System.out.println(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                String queryId1 = resultSet.getString(1);
+                String raisedBy = resultSet.getString(2);
+                String contact = resultSet.getString(3);
+                String status1 = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                String note1 = resultSet.getString(6);
+                String tbData[] = {queryId1, raisedBy, contact, status1, description, note1};
+                DefaultTableModel tblModel = (DefaultTableModel) mailQueryTable.getModel();
+                tblModel.addRow(tbData);
+
+            }
+            System.out.println("DB Connection Close!!!");
+        } catch (HeadlessException | SQLException exception) {
+            System.out.println(exception);
+            JOptionPane.showMessageDialog(this, exception);
+        }
+    }
 }
