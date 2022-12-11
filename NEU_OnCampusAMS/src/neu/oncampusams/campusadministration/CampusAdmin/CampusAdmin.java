@@ -4,7 +4,22 @@
  */
 package neu.oncampusams.campusadministration.CampusAdmin;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import neu.oncampusams.systemadministration.SystemAdmin.*;
+import neu.oncampusams.databaseConnection.JDBCConnection;
+import neu.oncampusams.studentrelation.StudentRelations.StudentInfo;
+import neu.oncampusams.studentrelation.StudentRelations.StudentInfoDirectory;
 
 /**
  *
@@ -13,6 +28,7 @@ import neu.oncampusams.systemadministration.SystemAdmin.*;
 public class CampusAdmin extends javax.swing.JFrame {
 
     String emailID; //declare the variable that will hold the email id
+
     /**
      * Creates new form test
      */
@@ -24,6 +40,8 @@ public class CampusAdmin extends javax.swing.JFrame {
         initComponents();
         emailID = eid; //passing the value of emailid
     }
+    CampusAdminInfoDirectory campusAdminInfoDirectory = new CampusAdminInfoDirectory();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,44 +55,80 @@ public class CampusAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        addDetails = new javax.swing.JButton();
+        lblPrsnlEmail1 = new javax.swing.JLabel();
+        lblPhone1 = new javax.swing.JLabel();
+        lblNewPass2 = new javax.swing.JLabel();
+        lblNewPass3 = new javax.swing.JLabel();
+        gymName = new javax.swing.JTextField();
+        gymAdmin = new javax.swing.JTextField();
+        Location = new javax.swing.JTextField();
+        Contact = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
+        lblPrsnlEmail3 = new javax.swing.JLabel();
+        lblPhone3 = new javax.swing.JLabel();
+        lblNewPass7 = new javax.swing.JLabel();
+        lblNewPass8 = new javax.swing.JLabel();
+        canteenName = new javax.swing.JTextField();
+        CanteenAdmin = new javax.swing.JTextField();
+        Location1 = new javax.swing.JTextField();
+        Contact1 = new javax.swing.JTextField();
+        addDetails1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        buildingName = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        adminID = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
+        lblEmailId2 = new javax.swing.JLabel();
+        lblPrsnlEmail2 = new javax.swing.JLabel();
+        lblPhone2 = new javax.swing.JLabel();
+        lblNewPass4 = new javax.swing.JLabel();
+        lblNewPass5 = new javax.swing.JLabel();
+        oneBhk = new javax.swing.JTextField();
+        twoBhk = new javax.swing.JTextField();
+        Name = new javax.swing.JTextField();
+        Shared = new javax.swing.JTextField();
+        stuRes = new javax.swing.JTextField();
+        lblNewPass6 = new javax.swing.JLabel();
+        bCampus = new javax.swing.JTextField();
+        addDetails2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        lblEmailId = new javax.swing.JLabel();
+        lblPrsnlEmail = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        lblNewPass = new javax.swing.JLabel();
+        lblNewPass1 = new javax.swing.JLabel();
+        txtEmailId = new javax.swing.JTextField();
+        txtPrsnlEmail = new javax.swing.JTextField();
+        passwordNew = new javax.swing.JTextField();
+        pwdPass1 = new javax.swing.JPasswordField();
+        btnUpdate = new javax.swing.JButton();
+        txtPhone1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Campus Administrator Portal");
@@ -106,7 +160,78 @@ public class CampusAdmin extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 1040, 110));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 1040, 170));
+
+        jButton5.setText("Refresh");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 540, 120, 50));
+
+        addDetails.setBackground(new java.awt.Color(255, 0, 0));
+        addDetails.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addDetails.setForeground(new java.awt.Color(255, 255, 255));
+        addDetails.setText("Add details");
+        addDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDetailsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(addDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 130, 40));
+
+        lblPrsnlEmail1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPrsnlEmail1.setText("Gym Name");
+        jPanel2.add(lblPrsnlEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 170, 30));
+
+        lblPhone1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone1.setText("Location");
+        jPanel2.add(lblPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 170, 30));
+
+        lblNewPass2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass2.setText("Contact");
+        jPanel2.add(lblNewPass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
+
+        lblNewPass3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass3.setText("Gym Admin");
+        jPanel2.add(lblNewPass3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 210, 30));
+
+        gymName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        gymName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gymNameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(gymName, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 30));
+
+        gymAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        gymAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gymAdminActionPerformed(evt);
+            }
+        });
+        jPanel2.add(gymAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 230, 30));
+
+        Location.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Location.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LocationActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Location, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 230, 30));
+
+        Contact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 230, 30));
 
         jTabbedPane1.addTab("Gym Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/dumbbell.png")), jPanel2); // NOI18N
 
@@ -125,7 +250,78 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1080, 110));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1080, 110));
+
+        jButton6.setText("Refresh");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 120, 50));
+
+        lblPrsnlEmail3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPrsnlEmail3.setText("Canteen Name");
+        jPanel3.add(lblPrsnlEmail3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 170, 30));
+
+        lblPhone3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone3.setText("Location");
+        jPanel3.add(lblPhone3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 170, 30));
+
+        lblNewPass7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass7.setText("Contact");
+        jPanel3.add(lblNewPass7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
+
+        lblNewPass8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass8.setText("Canteen Admin");
+        jPanel3.add(lblNewPass8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 210, 30));
+
+        canteenName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        canteenName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                canteenNameActionPerformed(evt);
+            }
+        });
+        jPanel3.add(canteenName, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 30));
+
+        CanteenAdmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CanteenAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CanteenAdminActionPerformed(evt);
+            }
+        });
+        jPanel3.add(CanteenAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 230, 30));
+
+        Location1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Location1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Location1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Location1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 230, 30));
+
+        Contact1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Contact1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Contact1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Contact1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 230, 30));
+
+        addDetails1.setBackground(new java.awt.Color(255, 0, 0));
+        addDetails1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addDetails1.setForeground(new java.awt.Color(255, 255, 255));
+        addDetails1.setText("Add details");
+        addDetails1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDetails1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(addDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 130, 40));
 
         jTabbedPane1.addTab("Canteen Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/food.png")), jPanel3); // NOI18N
 
@@ -142,131 +338,76 @@ public class CampusAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Hostel Admin ID", "Name", "Contact"
+                "AccoAdmin ID", "Name", "Contact", "Building Assigned"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 160));
+        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 190, 490, 160));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Details of Hostel Admins");
+        jLabel5.setText("Details of Accommodation Admins");
         jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 450, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Building name");
-        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 170, 40));
+        jLabel4.setText("Admin ID");
+        jPanel7.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 170, 40));
 
-        jComboBox9.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+        buildingName.setBackground(new java.awt.Color(204, 204, 204));
+        buildingName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        buildingName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
+        buildingName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
+                buildingNameActionPerformed(evt);
             }
         });
-        jPanel7.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 240, 30));
+        jPanel7.add(buildingName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 240, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Assign");
+        jButton1.setText("View Admins");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 90, 40));
+        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 120, 40));
 
-        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 930, 480));
-
-        jTabbedPane1.addTab("Hostel Admins", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin-with-cogwheels.png")), jPanel4); // NOI18N
-
-        jPanel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Student email", "Student Name", "Contact", "Preference"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable4);
-
-        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, 160));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Student Room Assignment");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 780, 40));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("Building name");
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, 40));
-
-        jComboBox10.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 240, 30));
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Refresh");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton3.setText("Assign");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 90, 30));
+        jPanel7.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 90, 40));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setText("Room Type");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 170, 40));
-
-        jComboBox11.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Studio", "1 BHK", "2 BHK" }));
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 240, 30));
-
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Assign");
+        jButton4.setText("refresh");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 90, 40));
+        jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Student details");
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 450, 40));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Building name");
+        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 170, 40));
 
-        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 930, 500));
+        adminID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminIDActionPerformed(evt);
+            }
+        });
+        jPanel7.add(adminID, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 160, 30));
 
-        jTabbedPane1.addTab("Student Assignement", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel5); // NOI18N
+        jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 930, 480));
+
+        jTabbedPane1.addTab("Accomodation Admin", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin-with-cogwheels.png")), jPanel4); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
         jPanel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -284,16 +425,196 @@ public class CampusAdmin extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable5);
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 1060, 110));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 1060, 110));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Search");
-        jTextField1.setToolTipText("");
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 230, 40));
+        searchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchField.setForeground(new java.awt.Color(153, 153, 153));
+        searchField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        searchField.setText("Search");
+        searchField.setToolTipText("");
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, 230, 40));
+
+        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEmailId2.setText("1BHK Available");
+        jPanel6.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 170, 30));
+
+        lblPrsnlEmail2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPrsnlEmail2.setText("2BHK Available");
+        jPanel6.add(lblPrsnlEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 30));
+
+        lblPhone2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone2.setText("Shared Available");
+        jPanel6.add(lblPhone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 170, 30));
+
+        lblNewPass4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass4.setText("Student residing");
+        jPanel6.add(lblNewPass4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 170, 30));
+
+        lblNewPass5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass5.setText("Building name");
+        jPanel6.add(lblNewPass5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 210, 30));
+
+        oneBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBhk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oneBhkActionPerformed(evt);
+            }
+        });
+        jPanel6.add(oneBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 230, 30));
+
+        twoBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        twoBhk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoBhkActionPerformed(evt);
+            }
+        });
+        jPanel6.add(twoBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 230, 30));
+
+        Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameActionPerformed(evt);
+            }
+        });
+        jPanel6.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 230, 30));
+
+        Shared.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Shared.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SharedActionPerformed(evt);
+            }
+        });
+        jPanel6.add(Shared, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 230, 30));
+
+        stuRes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stuRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuResActionPerformed(evt);
+            }
+        });
+        jPanel6.add(stuRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 230, 30));
+
+        lblNewPass6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass6.setText("Building campus");
+        jPanel6.add(lblNewPass6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 210, 30));
+
+        bCampus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCampusActionPerformed(evt);
+            }
+        });
+        jPanel6.add(bCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
+
+        addDetails2.setBackground(new java.awt.Color(255, 0, 0));
+        addDetails2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addDetails2.setForeground(new java.awt.Color(255, 255, 255));
+        addDetails2.setText("Add building");
+        addDetails2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDetails2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(addDetails2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 140, 50));
+
+        jButton7.setText("Refresh");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, 120, 50));
 
         jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), jPanel6); // NOI18N
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEmailId.setText("Email Id");
+        jPanel5.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 170, 40));
+
+        lblPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPrsnlEmail.setText("Personal Email Id");
+        jPanel5.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 170, 40));
+
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone.setText("Phone Number");
+        jPanel5.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 170, 40));
+
+        lblNewPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass.setText("New Password");
+        jPanel5.add(lblNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 170, 40));
+
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass1.setText("Re-Enter New Password");
+        jPanel5.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 210, 40));
+
+        txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmailId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailIdActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 230, 40));
+
+        txtPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPrsnlEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrsnlEmailActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 230, 40));
+
+        passwordNew.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passwordNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordNewActionPerformed(evt);
+            }
+        });
+        jPanel5.add(passwordNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 230, 40));
+
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel5.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 230, 40));
+
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 110, 40));
+
+        txtPhone1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPhone1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhone1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txtPhone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 230, 40));
+
+        jTabbedPane1.addTab("Update details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/Update.png")), jPanel5); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 1000));
 
@@ -326,15 +647,10 @@ public class CampusAdmin extends javax.swing.JFrame {
         jLabel8.setText("Campus:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Name:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
-
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("*email*");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 120, -1));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,45 +668,390 @@ public class CampusAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 90, 40));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Email:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        String id;
+        String name;
+        String email;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select accomodationadmintable.accoAdminId, CONCAT(accomodationadmintable.fName, ' ' , accomodationadmintable.lName) "
+                    + ", accomodationadmintable.campus from oncampusamsdb.campusadmintable, oncampusamsdb.accomodationadmintable"
+                    + " WHERE campusadmintable.campus = accomodationadmintable.campus;");
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                id = rs.getString(1);
+                name = rs.getString(2);
+                email = rs.getString(3);
+                String[] row = {id, name, email};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+    private void buildingNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox9ActionPerformed
+    }//GEN-LAST:event_buildingNameActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String gymid;
+        String name;
+        String location;
+        String contact;
+        String gym_admin;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select gym.gymid, gym.name, gym.location, gym.contact, gym.gym_admin from oncampusamsdb.campusadmintable, oncampusamsdb.gym "
+                    + "WHERE campusadmintable.campus = gym.location;");
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                gymid = rs.getString(1);
+                name = rs.getString(2);
+                location = rs.getString(3);
+                contact = rs.getString(4);
+                gym_admin = rs.getString(5);
+                String[] row = {gymid, name, location, contact, gym_admin};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        String id;
+        String name;
+        String location;
+        String contact;
+        String canteen_admin;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select canteen.id, canteen.name, canteen.location, canteen.contact, canteen.canteen_admin from oncampusamsdb.campusadmintable, oncampusamsdb.canteen WHERE campusadmintable.campus = canteen.location;");
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                id = rs.getString(1);
+                name = rs.getString(2);
+                location = rs.getString(3);
+                contact = rs.getString(4);
+                canteen_admin = rs.getString(5);
+                String[] row = {id, name, location, contact, canteen_admin};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void addDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsActionPerformed
+
+//        String gymid = gymId.getText();
+        String name = gymName.getText();
+        String location = Location.getText();
+        String contact = Contact.getText();
+        String gym_admin = gymAdmin.getText();
+
+        CampusAdminInfo gym = new CampusAdminInfo();
+//                gym.setGym_id(gymid);
+        gym.setGym_name(name);
+        gym.setGym_location(location);
+        gym.setGym_contact(contact);
+        gym.setGym_admin(gym_admin);
+
+        campusAdminInfoDirectory.addGym(gym); //calling using object of CAI Directory
+        JOptionPane.showMessageDialog(this, "Gym added successfully");
+//                gymId.setText("");
+        gymName.setText("");
+        Location.setText("");
+        Contact.setText("");
+        gymAdmin.setText("");
+
+    }//GEN-LAST:event_addDetailsActionPerformed
+
+    private void txtEmailIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
+    }//GEN-LAST:event_txtEmailIdActionPerformed
+
+    private void txtPrsnlEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrsnlEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrsnlEmailActionPerformed
+
+    private void passwordNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordNewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordNewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+
+        String emailId = txtEmailId.getText();
+        String personalEmailId = txtPrsnlEmail.getText();
+        String phone = txtPhone1.getText();
+        String password = pwdPass1.getText();
+//        String password1 = passwordNew.getText();
+
+        boolean validation = FormValidation();
+
+        if(validation){
+
+            StudentInfo student = new StudentInfo();
+
+            student.setEmailId(emailId);
+            student.setPersonalEmailId(personalEmailId);
+            student.setPhone(phone);
+            student.setPassword(password);
+
+            studentDir.updateStudentInfo(student);
+            JOptionPane.showMessageDialog(this, "Updated Student Info.");
+
+            populateForm(emailId);
+
+        }
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void gymNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gymNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gymNameActionPerformed
+
+    private void gymAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gymAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gymAdminActionPerformed
+
+    private void LocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LocationActionPerformed
+
+    private void ContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContactActionPerformed
+
+    private void oneBhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBhkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oneBhkActionPerformed
+
+    private void twoBhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoBhkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_twoBhkActionPerformed
+
+    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NameActionPerformed
+
+    private void SharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SharedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SharedActionPerformed
+
+    private void stuResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuResActionPerformed
+
+    private void bCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCampusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCampusActionPerformed
+
+    private void canteenNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canteenNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_canteenNameActionPerformed
+
+    private void CanteenAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CanteenAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CanteenAdminActionPerformed
+
+    private void Location1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Location1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Location1ActionPerformed
+
+    private void Contact1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contact1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Contact1ActionPerformed
+
+    private void addDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetails1ActionPerformed
+
+        String name = canteenName.getText();
+        String location = Location1.getText();
+        String contact = Contact1.getText();
+        String canteen_admin = CanteenAdmin.getText();
+
+        CampusAdminInfo canteen = new CampusAdminInfo();
+//                gym.setGym_id(gymid);
+        canteen.setCanteen_name(name);
+        canteen.setCanteen_location(location);
+        canteen.setCanteen_contact(contact);
+        canteen.setCanteen_admin(canteen_admin);
+
+        campusAdminInfoDirectory.addCanteen(canteen); //calling using object of CAI Directory
+        JOptionPane.showMessageDialog(this, "Canteen added successfully");
+//                gymId.setText("");
+        canteenName.setText("");
+        Location1.setText("");
+        Contact1.setText("");
+        CanteenAdmin.setText("");
+
+    }//GEN-LAST:event_addDetails1ActionPerformed
+
+    private void addDetails2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetails2ActionPerformed
+        //for new building addition
+        String name = Name.getText();
+        String campus = bCampus.getText();
+        String onebhk = oneBhk.getText();
+        String twobhk = twoBhk.getText();
+        String shared = Shared.getText();
+        String residing = stuRes.getText();
+
+        CampusAdminInfo building = new CampusAdminInfo();
+
+        building.setBuilding_name(name);
+        building.setCampus(campus);
+        building.setOnebhk(onebhk);
+        building.setTwobhk(twobhk);
+        building.setShared(shared);
+        building.setResiding(residing);
+
+        campusAdminInfoDirectory.addBuilding(building); //calling using object of CAI Directory
+        JOptionPane.showMessageDialog(this, "Building created successfully");
+//                gymId.setText("");
+        Name.setText("");
+        bCampus.setText("");
+        oneBhk.setText("");
+        twoBhk.setText("");
+        Shared.setText("");
+        stuRes.setText("");
+
+    }//GEN-LAST:event_addDetails2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
+        String building = adminID.getText();
+        String AccoId = (String) buildingName.getSelectedItem();
+
+        Connection connection = JDBCConnection.Connect();
+        try {
+            PreparedStatement pst = connection.prepareStatement("UPDATE `oncampusamsdb`.`accomodationadmintable`"
+                    + "SET buidlingName = '" + building + "' "
+                    + " where accoAdminId = '" + AccoId + "' ");
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Building successfully assigned!");
+        } catch (SQLException ex) {
+//            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex);
+        }
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        String bID;
+        String name;
+        String avail;
+        String warden;
+        String stuRes;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select buildingtable.buildingId, buildingtable.buildingName, buildingtable.1BhkAvail+buildingtable.2BhkAvail+buildingtable.sharedAvail,"
+                    + " buildingtable.wardenAssigned, buildingtable.studentResiding from oncampusamsdb.campusadmintable, oncampusamsdb.buildingtable"
+                    + " WHERE campusadmintable.campus = buildingtable.campus;");
+
+//            statement.execute( "UPDATE `oncampusamsdb`.`buildingtable` SET `totalAvail` = 1BhkAvail+2BhkAvail+sharedAvail where buildingId =  '" + bID + "'");
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                bID = rs.getString(1);
+                name = rs.getString(2);
+                avail = rs.getString(3);
+                warden = rs.getString(4);
+                stuRes = rs.getString(5);
+                String[] row = {bID, name, avail, warden, stuRes};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+        String query1 = searchField.getText();
+        filterSearch(query1);
+
+    }//GEN-LAST:event_searchFieldKeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            String query = "Select * from oncampusamsdb.buildingtable";
+            ResultSet rs = statement.executeQuery(query);
+            buildingName.removeAllItems();
+            while (rs.next()) {
+                String name = rs.getString("buildingName");
+//                String name = rs.getString("name");
+                buildingName.addItem(name);
+            }
+            connection.close();
+        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void adminIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminIDActionPerformed
+
+    private void txtPhone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhone1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhone1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,20 +1095,38 @@ public class CampusAdmin extends javax.swing.JFrame {
         });
     }
 
+    private void filterSearch(String query) {
+        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        TableRowSorter<DefaultTableModel> tableRowSorter = new TableRowSorter<>(model);
+        jTable5.setRowSorter(tableRowSorter);
+        tableRowSorter.setRowFilter(RowFilter.regexFilter(query));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CanteenAdmin;
+    private javax.swing.JTextField Contact;
+    private javax.swing.JTextField Contact1;
+    private javax.swing.JTextField Location;
+    private javax.swing.JTextField Location1;
+    private javax.swing.JTextField Name;
+    private javax.swing.JTextField Shared;
+    private javax.swing.JButton addDetails;
+    private javax.swing.JButton addDetails1;
+    private javax.swing.JButton addDetails2;
+    private javax.swing.JTextField adminID;
+    private javax.swing.JTextField bCampus;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> buildingName;
+    private javax.swing.JTextField canteenName;
+    private javax.swing.JTextField gymAdmin;
+    private javax.swing.JTextField gymName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -463,23 +1142,86 @@ public class CampusAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmailId;
+    private javax.swing.JLabel lblEmailId2;
+    private javax.swing.JLabel lblNewPass;
+    private javax.swing.JLabel lblNewPass1;
+    private javax.swing.JLabel lblNewPass2;
+    private javax.swing.JLabel lblNewPass3;
+    private javax.swing.JLabel lblNewPass4;
+    private javax.swing.JLabel lblNewPass5;
+    private javax.swing.JLabel lblNewPass6;
+    private javax.swing.JLabel lblNewPass7;
+    private javax.swing.JLabel lblNewPass8;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblPhone1;
+    private javax.swing.JLabel lblPhone2;
+    private javax.swing.JLabel lblPhone3;
+    private javax.swing.JLabel lblPrsnlEmail;
+    private javax.swing.JLabel lblPrsnlEmail1;
+    private javax.swing.JLabel lblPrsnlEmail2;
+    private javax.swing.JLabel lblPrsnlEmail3;
+    private javax.swing.JTextField oneBhk;
+    private javax.swing.JTextField passwordNew;
+    private javax.swing.JPasswordField pwdPass1;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JTextField stuRes;
+    private javax.swing.JTextField twoBhk;
+    private javax.swing.JTextField txtEmailId;
+    private javax.swing.JTextField txtPhone1;
+    private javax.swing.JTextField txtPrsnlEmail;
     // End of variables declaration//GEN-END:variables
 
-public void SetEmailID(){
+    public void SetEmailID() {
         lblEmail.setText(emailID);
-    } 
+    }
+    
+    private boolean FormValidation(){
+    boolean validation = true;
+    if(!txtPhone1.getText().matches("^[0-9]{10}$") || txtPhone1.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Phone Number Incorrect");
+           validation = false;
+       }
+       if(!txtEmailId.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$") || txtEmailId.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Email Id Incorrect");
+           validation = false;
+       }
+       if(!txtPrsnlEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$") || txtPrsnlEmail.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Personal Email Id Incorrect");
+           validation = false;
+       }
+       if( pwdPass1.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Re-Enter New Password Field is Empty");
+           validation = false;
+       }
+       if( !pwdPass1.getText().equals(pwdPass1.getText()))
+       {
+           JOptionPane.showMessageDialog(this, "Password Fields do not match!");
+           validation = false;
+       }
+       
+     return validation;  
+}
+    private void populateForm(String emailId){
+    CampusAdminInfo ca = studentDir.getStudentInfo(emailId);
+    txtEmailId.setText(student.getEmailId());
+    txtPrsnlEmail.setText(student.getPersonalEmailId());
+    txtPhone1.setText(student.getPhone());
+    pwdPass1.setText(student.getPassword());
+    
+}
 }

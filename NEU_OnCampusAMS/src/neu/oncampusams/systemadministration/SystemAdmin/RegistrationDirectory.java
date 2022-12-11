@@ -76,12 +76,12 @@ public class RegistrationDirectory {
         }
     }
 
-    public void registerBuildingAdmin(Registration registration) {
+    public void registerAccoAdmin(Registration registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`BuildingAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
+            String sql = "INSERT INTO `oncampusamsdb`.`accomodationadmintable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
                     + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
             statement.executeUpdate(sql);
 
@@ -138,7 +138,7 @@ public class RegistrationDirectory {
                 sql = "SELECT * FROM `oncampusamsdb`.`CampusAdminTable` where emailId ='" + registration.getEmailID() + "'";
             }
             if ("Building Admin".equals(registration.getRoles())) {
-                sql = "SELECT * FROM `oncampusamsdb`.`BuildingAdminTable` where emailId ='" + registration.getEmailID() + "'";
+                sql = "SELECT * FROM `oncampusamsdb`.`accomodationadmintable` where emailId ='" + registration.getEmailID() + "'";
             }
             if ("Warden".equals(registration.getRoles())) {
                 sql = "SELECT * FROM `oncampusamsdb`.`WardenTable` where emailId ='" + registration.getEmailID() + "'";

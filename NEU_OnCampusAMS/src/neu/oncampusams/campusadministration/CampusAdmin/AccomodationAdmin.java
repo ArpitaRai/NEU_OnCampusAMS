@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.databaseConnection.JDBCConnection;
 import neu.oncampusams.systemadministration.SystemAdmin.*;
@@ -22,17 +23,21 @@ import neu.oncampusams.systemadministration.SystemAdmin.*;
 public class AccomodationAdmin extends javax.swing.JFrame {
 
     String emailID;
+    AccomodationAdminInfoDirectory accAdminDir = new AccomodationAdminInfoDirectory();
     /**
      * Creates new form test
      */
     public AccomodationAdmin() {
         initComponents();
         populateQueryTable();
+        populateBuildingTable();
     }
     
         public AccomodationAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
+        populateQueryTable();
+        populateBuildingTable();
     }
 
     /**
@@ -63,7 +68,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblBuilding = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuildingSrch = new javax.swing.JTextField();
+        btnBuildingSrch = new javax.swing.JButton();
+        btnBuildingRefresh = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -97,9 +104,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accomodation Administrator Portal");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1500, 700));
         setMinimumSize(new java.awt.Dimension(1500, 700));
-        setPreferredSize(new java.awt.Dimension(1500, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -221,19 +226,37 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Building ID", "Building Name", "Availability", "Warden Assigned", "Students Residing"
+                "Building Name", "Warden Assigned", "1BHK Availability", "2BHK Availability", "Shared Availability", "Total Availability", "Students Residing"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(tblBuilding);
 
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 1160, 110));
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1210, 110));
+        jPanel6.add(txtBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 210, 40));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Search");
-        jTextField1.setToolTipText("");
-        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 230, 40));
+        btnBuildingSrch.setText("Search");
+        btnBuildingSrch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuildingSrchActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 110, 50));
+
+        btnBuildingRefresh.setText("Refresh");
+        btnBuildingRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuildingRefreshActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnBuildingRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 110, 50));
 
         jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), jPanel6); // NOI18N
 
@@ -299,9 +322,17 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Query ID", "Raised By", "Contact", "Status", "Description", "Note"
+                "Query ID", "Raised By", "Status", "Description", "Note", "Role", "Room Type", "Building Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblAccQuery.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblAccQueryMouseClicked(evt);
@@ -309,7 +340,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblAccQuery);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 1070, 110));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1170, 110));
 
         txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
@@ -438,7 +469,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int queryId = Integer.parseInt(txtQueryId.getText());
-        updateQueryTable(queryId);
+        String note = txtArNote.getText();
+        String status = jcbStatus.getSelectedItem().toString();
+        accAdminDir.updateQueryTable(note,status,queryId);
         
         DefaultTableModel model = (DefaultTableModel) tblAccQuery.getModel();
         model.setRowCount(0);
@@ -504,6 +537,30 @@ public class AccomodationAdmin extends javax.swing.JFrame {
              
     }//GEN-LAST:event_tblAccQueryMouseClicked
 
+    private void btnBuildingRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuildingRefreshActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tblModel = (DefaultTableModel)tblBuilding.getModel();
+        tblModel.setRowCount(0);
+        populateBuildingTable();
+        
+    }//GEN-LAST:event_btnBuildingRefreshActionPerformed
+
+    private void btnBuildingSrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuildingSrchActionPerformed
+        // TODO add your handling code here:
+        String buildingName = txtBuildingSrch.getText();
+        
+        if(AccomodationAdminInfoDirectory.checkBuildingName(buildingName)){
+            
+          JOptionPane.showMessageDialog(this, "Building Name does not exist.");
+          
+        }
+        else{
+            
+            populateBuildingTableBySearch(buildingName);
+            txtBuildingSrch.setText("");
+        }
+    }//GEN-LAST:event_btnBuildingSrchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -555,6 +612,8 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuildingRefresh;
+    private javax.swing.JButton btnBuildingSrch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -596,13 +655,13 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JComboBox<String> jcbStatus;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JTable tblAccQuery;
     private javax.swing.JTable tblBuilding;
     private javax.swing.JTextArea txtArNote;
+    private javax.swing.JTextField txtBuildingSrch;
     private javax.swing.JTextField txtQueryId;
     // End of variables declaration//GEN-END:variables
 
@@ -616,12 +675,15 @@ public class AccomodationAdmin extends javax.swing.JFrame {
             while(rs.next()){
                 String queryId = rs.getString(1);
                 String raisedBy = rs.getString(2);
-                String contact = rs.getString(3);
+                String buildingName = rs.getString(3);
                 String status = rs.getString(4);
                 String description = rs.getString(5);
                 String note = rs.getString(6);
+                String role = rs.getString(7);
+                String campus = rs.getString(8);
+                String roomType = rs.getString(9);
               
-                String tbData[] = {queryId,raisedBy,contact,status,description,note};
+                String tbData[] = {queryId,raisedBy,status,description,note,role,roomType,buildingName};
                 DefaultTableModel tblModel = (DefaultTableModel)tblAccQuery.getModel();
                 tblModel.addRow(tbData);
             }
@@ -629,21 +691,72 @@ public class AccomodationAdmin extends javax.swing.JFrame {
             Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
- public void updateQueryTable(int queryId){
+    
+    
+    public void populateBuildingTable(){
         Connection connection = JDBCConnection.Connect() ;
-        String note = txtArNote.getText();
-        String status = jcbStatus.getSelectedItem().toString();
         try {
-            PreparedStatement  pst = connection.prepareStatement("update AccQueryTable set note = ?, status = ? where queryId = ?");
-            pst.setString(1, note);
-            pst.setString(2,status);
-            pst.setInt(3,queryId);
-            pst.executeUpdate();
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "SELECT * FROM BuildingTable";
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while(rs.next()){
+                String buildingId = rs.getString(1);
+                String buildingName = rs.getString(2);
+                String wardenAssigned = rs.getString(3);
+                String bhk1Avail = String.valueOf(rs.getInt(4));
+                String bhk2Avail = String.valueOf(rs.getInt(5));
+                String sharedAvail = String.valueOf(rs.getInt(6));
+                String bhk1Def = String.valueOf(rs.getInt(7));
+                String bhk2Def = String.valueOf(rs.getInt(8));
+                String sharedDef = String.valueOf(rs.getInt(9));
+                String totalAvail = String.valueOf(rs.getInt(10));
+                String stdResiding = String.valueOf(rs.getInt(11));
+                
+              
+                String tbData[] = {buildingName,wardenAssigned,bhk1Avail,bhk2Avail,sharedAvail,totalAvail,stdResiding};
+                DefaultTableModel tblModel = (DefaultTableModel)tblBuilding.getModel();
+                tblModel.addRow(tbData);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void populateBuildingTableBySearch(String buildingN){
+        Connection connection = JDBCConnection.Connect() ;
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT * FROM BuildingTable where buildingName = ?");
+            
+            pst.setString(1, buildingN);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String buildingId = rs.getString(1);
+                String buildingName = rs.getString(2);
+                String wardenAssigned = rs.getString(3);
+                String bhk1Avail = String.valueOf(rs.getInt(4));
+                String bhk2Avail = String.valueOf(rs.getInt(5));
+                String sharedAvail = String.valueOf(rs.getInt(6));
+                String bhk1Def = String.valueOf(rs.getInt(7));
+                String bhk2Def = String.valueOf(rs.getInt(8));
+                String sharedDef = String.valueOf(rs.getInt(9));
+                String totalAvail = String.valueOf(rs.getInt(10));
+                String stdResiding = String.valueOf(rs.getInt(11));
+                
+              
+                String tbData[] = {buildingName,wardenAssigned,bhk1Avail,bhk2Avail,sharedAvail,totalAvail,stdResiding};
+                DefaultTableModel tblModel = (DefaultTableModel)tblBuilding.getModel();
+                tblModel.setRowCount(0);
+                tblModel.addRow(tbData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+ 
 
 public void SetEmailID(){
         lblEmail.setText(emailID);
