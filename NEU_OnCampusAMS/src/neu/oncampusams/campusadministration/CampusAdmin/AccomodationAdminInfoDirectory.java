@@ -367,8 +367,83 @@ public class AccomodationAdminInfoDirectory {
         return wardenEmail;
     }
     
+    public static boolean checkWardenAssigned(String wardenEmail) {
+        Connection connection = JDBCConnection.Connect();
+        boolean validation = true;
+         try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT wardenAssigned from BuildingTable where wardenAssigned = ?");
+            pst.setString(1, wardenEmail);
+            ResultSet resultSet = pst.executeQuery();
+            //System.out.println(resultSet);
+            if (resultSet.next()) {
+                validation = false;
+            }
+            return validation;
+         } catch (SQLException ex) {
+              Logger.getLogger(AccomodationAdminInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return validation;
+    } 
+    
+    public static boolean checkStudent(String studentEmail) {
+        Connection connection = JDBCConnection.Connect();
+        boolean validation = true;
+         try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT emailId from StudentTable where emailId = ?");
+            pst.setString(1, studentEmail);
+            ResultSet resultSet = pst.executeQuery();
+            //System.out.println(resultSet);
+            if (resultSet.next()) {
+                validation = false;
+            }
+            return validation;
+         } catch (SQLException ex) {
+              Logger.getLogger(AccomodationAdminInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return validation;
+    } 
     
     
+    public void updateAccAdminInfo(AccomodationAdminInfo admin){
     
+    Connection connection = JDBCConnection.Connect();
+        try {
+            PreparedStatement  pst = connection.prepareStatement("update AccommodationAdminTable set password = ?, phone = ? where emailId = ?");
+            pst.setString(1,admin.getPassword());
+            pst.setString(2,admin.getPhone());
+            pst.setString(3,admin.getEmailID());
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdminInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static AccomodationAdminInfo getAccAdminInfo(String emailId){
+      Connection connection = JDBCConnection.Connect();
+      AccomodationAdminInfo accAdmin = new AccomodationAdminInfo();
+      
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT emailId,password,phone from AccommodationAdminTable where emailId = ?");
+            pst.setString(1, emailId);
+            
+            ResultSet resultSet = pst.executeQuery();
+            if (resultSet.next()) {
+                
+                accAdmin.setEmailID(resultSet.getString(1));
+                accAdmin.setPassword(resultSet.getString(2));
+                accAdmin.setPhone(resultSet.getString(3));
+                
+            }
+        return accAdmin;
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdminInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+      
+      return null;
+      
+    }
     
 }
