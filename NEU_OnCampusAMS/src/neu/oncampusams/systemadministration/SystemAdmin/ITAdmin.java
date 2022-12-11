@@ -140,7 +140,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         roleCombo.setBackground(new java.awt.Color(242, 242, 242));
         roleCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Campus Admin", "Accommodation Admin", "Warden", "Mailing Services Admin", "Finance Admin" }));
         roleCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 roleComboActionPerformed(evt);
@@ -270,7 +270,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         updateRole.setBackground(new java.awt.Color(242, 242, 242));
         updateRole.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        updateRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head System Admin", "System Admin", "Finance Admin", "Campus Admin", "Building Admin", "Warden", "Mailing Services Admin", "Student" }));
+        updateRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Campus Admin", "Accommodation Admin", "Warden", "Mailing Services Admin", "Finance Admin" }));
         updateRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateRoleActionPerformed(evt);
@@ -509,7 +509,7 @@ public class ITAdmin extends javax.swing.JFrame {
                 password.setText("");
             }
 
-            if ("Building Admin".equals((String) roleCombo.getSelectedItem())) {
+            if ("Accommodation Admin".equals((String) roleCombo.getSelectedItem())) {
                 Registration registration = new Registration();
                 registration.setFirstName(firstName);
                 registration.setLastName(lastName);
@@ -518,7 +518,7 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
-                registrationDirectory.registerBuildingAdmin(registration);
+                registrationDirectory.registerAccoAdmin(registration);
                 JOptionPane.showMessageDialog(this, "Building Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
