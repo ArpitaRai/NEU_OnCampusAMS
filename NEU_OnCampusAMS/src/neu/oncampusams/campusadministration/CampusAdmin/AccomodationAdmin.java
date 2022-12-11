@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.databaseConnection.JDBCConnection;
@@ -93,6 +95,16 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jcbStatus = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
+        panelUpdate = new javax.swing.JPanel();
+        lblEmailId = new javax.swing.JLabel();
+        updateEmail = new javax.swing.JTextField();
+        lblPhone = new javax.swing.JLabel();
+        updatePhone = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        pwdPass = new javax.swing.JTextField();
+        lblNewPass1 = new javax.swing.JLabel();
+        pwdPass1 = new javax.swing.JPasswordField();
+        updateMailAdmin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -401,6 +413,66 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), panelQuery); // NOI18N
 
+        panelUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEmailId.setText("Email Id");
+        panelUpdate.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 170, 40));
+
+        updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updateEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEmailActionPerformed(evt);
+            }
+        });
+        panelUpdate.add(updateEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 290, 40));
+
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone.setText("Phone Number");
+        panelUpdate.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 170, 40));
+
+        updatePhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updatePhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePhoneActionPerformed(evt);
+            }
+        });
+        panelUpdate.add(updatePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 290, 40));
+
+        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPassword.setText("Password");
+        panelUpdate.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 170, 40));
+
+        pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pwdPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdPassActionPerformed(evt);
+            }
+        });
+        panelUpdate.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 290, 40));
+
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass1.setText("Re-Enter New Password");
+        panelUpdate.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 210, 40));
+
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        panelUpdate.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 290, 40));
+
+        updateMailAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateMailAdmin.setText("Update");
+        updateMailAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMailAdminActionPerformed(evt);
+            }
+        });
+        panelUpdate.add(updateMailAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 120, 50));
+
+        jTabbedPane1.addTab("Update Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), panelUpdate); // NOI18N
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 1000));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -474,12 +546,20 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
          String buildingName = jcbBuildingList.getSelectedItem().toString();
          String wardenEmail = jcbWardenList.getSelectedItem().toString();
+         boolean checkWarden = AccomodationAdminInfoDirectory.checkWardenAssigned(wardenEmail);
          
-         accAdminDir.assignBuildingInWarden(wardenEmail, buildingName);
+         if(checkWarden == true){
+             
+           accAdminDir.assignBuildingInWarden(wardenEmail, buildingName);
          accAdminDir.assignWardenInBuilding(wardenEmail, buildingName);
          accAdminDir.assignWardenInStudent(wardenEmail, buildingName);
          
-         JOptionPane.showMessageDialog(this, "Assigned "+ wardenEmail +" to " + buildingName);
+         JOptionPane.showMessageDialog(this, "Assigned "+ wardenEmail +" to " + buildingName);  
+         }
+         else if(checkWarden == false){
+             JOptionPane.showMessageDialog(this, "Warden Already Assigned to a building!");
+         }
+         
         
         
     }//GEN-LAST:event_btnAssignWardenActionPerformed
@@ -530,6 +610,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         String buildingName = jcbBuildingListRoom.getSelectedItem().toString();
         String roomType = jcbRoomType.getSelectedItem().toString();
         //System.out.println(stdEmail);
+        boolean checkStd = AccomodationAdminInfoDirectory.checkStudent(stdEmail);
         
         if(stdEmail.equals(" ") || stdEmail.equals("")){
             
@@ -537,7 +618,8 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         
         }
         else{
-            accAdminDir.changeAvailability(stdEmail,buildingName,roomType);
+            if(checkStd == false){
+                accAdminDir.changeAvailability(stdEmail,buildingName,roomType);
         accAdminDir.assignRoomDetails(stdEmail,buildingName,roomType);
         
         JOptionPane.showMessageDialog(this,"Student Assigned");
@@ -546,6 +628,11 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         DefaultTableModel model1 = (DefaultTableModel) tblBuilding.getModel();
         model1.setRowCount(0);
         populateBuildingTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Student Email does not exist.");
+            }
+            
             
         }
         
@@ -572,6 +659,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private void tblAccQueryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAccQueryMouseClicked
         // TODO add your handling code here:
         int index = tblAccQuery.getSelectedRow();
+        //System.out.println(index);
         
         DefaultTableModel tblModel = (DefaultTableModel)tblAccQuery.getModel();
         
@@ -619,6 +707,46 @@ public class AccomodationAdmin extends javax.swing.JFrame {
             txtBuildingSrch.setText("");
         }
     }//GEN-LAST:event_btnBuildingSrchActionPerformed
+
+    private void updateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateEmailActionPerformed
+
+    private void updatePhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePhoneActionPerformed
+
+    private void pwdPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdPassActionPerformed
+
+    private void updateMailAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMailAdminActionPerformed
+        // TODO add your handling code here:
+
+        String emailId = updateEmail.getText();
+        String phone = updatePhone.getText();
+        String password = pwdPass.getText();
+
+        boolean validation = FormValidation();
+
+        if(validation){
+
+            AccomodationAdminInfo accAdmin1 = new AccomodationAdminInfo ();
+
+            accAdmin1.setEmailID(emailId);
+            accAdmin1.setPhone(phone);
+            accAdmin1.setPassword(password);
+
+            accAdminDir.updateAccAdminInfo(accAdmin1);
+            JOptionPane.showMessageDialog(this, "Updated Student Info.");
+             updatePhone.setText("");
+             pwdPass.setText("");
+             pwdPass1.setText("");
+            //populateForm(emailId);
+
+        }
+
+    }//GEN-LAST:event_updateMailAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -707,6 +835,10 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblBuildingList;
     private javax.swing.JLabel lblBuildingNameRoom;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmailId;
+    private javax.swing.JLabel lblNewPass1;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblRoomAssignment;
     private javax.swing.JLabel lblRoomType;
     private javax.swing.JLabel lblStdEmail;
@@ -714,7 +846,10 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel panelBuilding;
     private javax.swing.JPanel panelQuery;
     private javax.swing.JPanel panelRoomAssignment;
+    private javax.swing.JPanel panelUpdate;
     private javax.swing.JPanel panelWardenAssignment;
+    private javax.swing.JTextField pwdPass;
+    private javax.swing.JPasswordField pwdPass1;
     private javax.swing.JTable tblAccQuery;
     private javax.swing.JTable tblAvailRooms;
     private javax.swing.JTable tblBuilding;
@@ -722,6 +857,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuildingSrch;
     private javax.swing.JTextField txtQueryId;
     private javax.swing.JTextField txtStdEmail;
+    private javax.swing.JTextField updateEmail;
+    private javax.swing.JButton updateMailAdmin;
+    private javax.swing.JTextField updatePhone;
     // End of variables declaration//GEN-END:variables
 
     public void populateQueryTable(){
@@ -863,4 +1001,68 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 public void SetEmailID(){
         lblEmail.setText(emailID);
     } 
+
+private boolean FormValidation(){
+    boolean validation = true;
+    if(!updatePhone.getText().matches("^[0-9]{10}$") || updatePhone.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Phone Number Incorrect");
+           validation = false;
+       }
+       
+       if( pwdPass1.getText().length() == 0)
+       {
+           JOptionPane.showMessageDialog(this, "Re-Enter New Password Field is Empty");
+           validation = false;
+       }
+       if( !pwdPass1.getText().equals(pwdPass.getText()))
+       {
+           JOptionPane.showMessageDialog(this, "Password Fields do not match!");
+           validation = false;
+       }
+       if(isValidPassword(pwdPass1.getText()) == false){
+          JOptionPane.showMessageDialog(this, "Password must contain 8 to 20 characters, atleast one digit, one uppercase, one lowercase and one special character.Password should not containe white spaces!");
+           validation = false; 
+       }
+       
+     return validation;  
+}
+
+private void populateForm(String emailId){
+    AccomodationAdminInfo accAdmin1 = AccomodationAdminInfoDirectory.getAccAdminInfo(emailId);
+    updateEmail.setText(accAdmin1.getEmailID());
+    updatePhone.setText(accAdmin1.getPhone());
+    
+    
+}
+
+public static boolean
+    isValidPassword(String password)
+    {
+  
+        // Regex to check valid password.
+        String regex = "^(?=.*[0-9])"
+                       + "(?=.*[a-z])(?=.*[A-Z])"
+                       + "(?=.*[@#$%^&+=])"
+                       + "(?=\\S+$).{8,20}$";
+  
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+  
+        // If the password is empty
+        // return false
+        if (password == null) {
+            return false;
+        }
+  
+        // Pattern class contains matcher() method
+        // to find matching between given password
+        // and regular expression.
+        Matcher m = p.matcher(password);
+  
+        // Return if the password
+        // matched the ReGex
+        return m.matches();
+    }
+
 }
