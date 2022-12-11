@@ -8,7 +8,7 @@ package neu.oncampusams.systemadministration.SystemAdmin;
  *
  * @author arpitarai
  */
-public class Registration {
+public class RegistrationInfo {
     Integer idRegistration;
     String emailID;
     String firstName;

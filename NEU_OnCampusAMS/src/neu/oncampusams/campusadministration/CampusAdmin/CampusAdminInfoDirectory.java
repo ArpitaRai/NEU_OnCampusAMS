@@ -5,17 +5,20 @@
 package neu.oncampusams.campusadministration.CampusAdmin;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import neu.oncampusams.databaseConnection.JDBCConnection;
+import neu.oncampusams.systemadministration.SystemAdmin.RegistrationDirectory;
 
 /**
  *
  * @author Yamini Manral
  */
 public class CampusAdminInfoDirectory {
+    CampusAdminInfo campusAdminInfo= new CampusAdminInfo();
     
     public void addGym(CampusAdminInfo gym) {
 
@@ -61,7 +64,39 @@ public class CampusAdminInfoDirectory {
         }
     }
     
-    public void updateAccoAdmin(){
-        
+   
+
+    public CampusAdminInfo autoPopulateUpdate(String email) {
+        String emailID = email;
+        Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "SELECT password, phone from oncampusamsdb.CampusAdminTable where emailId = '" + emailID + "'";
+            System.out.println("sql update student: " + sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+            campusAdminInfo = new CampusAdminInfo();
+            while (resultSet.next()) {
+                campusAdminInfo.setPhone(resultSet.getString("phone"));
+                campusAdminInfo.setPassword(resultSet.getString("password"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return campusAdminInfo;
+    }
+
+    public void updateCampusAdminDetails(CampusAdminInfo campusAdminInfo) {
+            Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "UPDATE `oncampusamsdb`.`CampusAdminTable` SET phone = '" + campusAdminInfo.getPhone() + "' ,password = '" + campusAdminInfo.getPassword()
+                    + "' where emailId ='" + campusAdminInfo.getEmailID() + "'";
+            System.out.println("sql update student: " + sql);
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

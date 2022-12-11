@@ -4,11 +4,13 @@
  */
 package neu.oncampusams.campusadministration.CampusAdmin;
 
+import neu.oncampusams.systemadministration.SystemAdmin.RegistrationInfo;
+
 /**
  *
  * @author Yamini Manral
  */
-public class CampusAdminInfo {
+public class CampusAdminInfo extends RegistrationInfo {
 
     String gym_id;
     String gym_name;
@@ -28,6 +30,15 @@ public class CampusAdminInfo {
     String twobhk;
     String shared;
     String residing;
+    String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getGym_id() {
         return gym_id;

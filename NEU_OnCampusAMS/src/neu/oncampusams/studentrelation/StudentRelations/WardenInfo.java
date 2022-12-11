@@ -4,13 +4,13 @@
  */
 package neu.oncampusams.studentrelation.StudentRelations;
 
-import neu.oncampusams.systemadministration.SystemAdmin.Registration;
+import neu.oncampusams.systemadministration.SystemAdmin.RegistrationInfo;
 
 /**
  *
  * @author arpitarai
  */
-public class WardenInfo extends Registration{
+public class WardenInfo extends RegistrationInfo{
   Integer queryId;
   String status;
   String description;

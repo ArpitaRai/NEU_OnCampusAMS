@@ -8,11 +8,9 @@ import neu.oncampusams.systemadministration.SystemAdmin.RegistrationInfo;
 
 /**
  *
- * @author srushtyr
+ * @author arpitarai
  */
-public class AccomodationAdminInfo extends RegistrationInfo {
-    
-    private String phone;
+public class MailingServicesAdminInfo extends RegistrationInfo {
 
     public String getPhone() {
         return phone;
@@ -21,7 +19,7 @@ public class AccomodationAdminInfo extends RegistrationInfo {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
-    
-    
+
+    public String phone;
+
 }
