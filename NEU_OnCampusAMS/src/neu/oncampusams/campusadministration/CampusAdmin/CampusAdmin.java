@@ -25,7 +25,7 @@ import neu.oncampusams.systemadministration.SystemAdmin.Login;
  */
 public class CampusAdmin extends javax.swing.JFrame {
 
-    String emailID= "ds.d@northeastern.edu"; //declare the variable that will hold the email id
+    String emailID; //declare the variable that will hold the email id
 
     /**
      * Creates new form test
@@ -33,11 +33,13 @@ public class CampusAdmin extends javax.swing.JFrame {
     public CampusAdmin() {
         initComponents();
         updateAutoPupulate(emailID);
+        emailID= "ds.d@northeastern.edu";
     }
 
     public CampusAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
+        updateEmail.setText(emailID);
     }
     CampusAdminInfoDirectory campusAdminInfoDirectory = new CampusAdminInfoDirectory();
     CampusAdminInfo campusAdminInfo = new CampusAdminInfo();
@@ -466,6 +468,7 @@ public class CampusAdmin extends javax.swing.JFrame {
         lblNewPass1.setText("Re-Enter New Password");
         jPanel11.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 190, 40));
 
+        updateEmail.setEditable(false);
         updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         updateEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -654,9 +657,9 @@ public class CampusAdmin extends javax.swing.JFrame {
             Connection connection = JDBCConnection.Connect();
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select accomodationadmintable.accoAdminId, CONCAT(accomodationadmintable.fName, ' ' , accomodationadmintable.lName) "
-                    + ", accomodationadmintable.campus from oncampusamsdb.campusadmintable, oncampusamsdb.accomodationadmintable"
-                    + " WHERE campusadmintable.campus = accomodationadmintable.campus;");
+            ResultSet rs = statement.executeQuery("select accommodationadmintable.buildAdminId, CONCAT(accommodationadmintable.fName, ' ' , accommodationadmintable.lName) "
+                    + ", accommodationadmintable.campus from oncampusamsdb.campusadmintable, oncampusamsdb.accommodationadmintable"
+                    + " WHERE campusadmintable.campus = accommodationadmintable.campus;");
 
             //push column values to the table fields
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();

@@ -26,7 +26,7 @@ import neu.oncampusams.utilities.Validations;
  */
 public final class MailingServicesAdmin extends javax.swing.JFrame {
 
-    String emailID = "dmqwbdm.d@northeastern.edu";
+    String emailID;
     MailingServicesAdminInfo mailingServicesAdminInfo = new MailingServicesAdminInfo();
     MailingServicesAdminDirectory mailingServicesAdminInfoDirectory = new MailingServicesAdminDirectory();
 
@@ -37,12 +37,14 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
         initComponents();
         updateAutoPupulate(emailID);
         mailQueryTable();
+        emailID = "dmqwbdm.d@northeastern.edu";
 
     }
 
     public MailingServicesAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
+        updateEmail.setText(emailID);
     }
 
     /**
@@ -303,6 +305,7 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
         lblNewPass1.setText("Re-Enter New Password");
         jPanel4.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 210, 40));
 
+        updateEmail.setEditable(false);
         updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         updateEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
