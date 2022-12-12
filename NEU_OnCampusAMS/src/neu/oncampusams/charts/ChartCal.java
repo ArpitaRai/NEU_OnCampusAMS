@@ -25,6 +25,7 @@ public class ChartCal extends javax.swing.JFrame {
     
     public ChartCal() {
         initComponents();
+        getContentPane().setBackground(new Color(255, 255, 255));
         
     }
 
@@ -38,18 +39,18 @@ public class ChartCal extends javax.swing.JFrame {
     private void initComponents() {
 
         pieChart1 = new neu.oncampusams.charts.PieChart();
-        lblFoodType = new javax.swing.JLabel();
+        lblMealType = new javax.swing.JLabel();
         jcbMealType = new javax.swing.JComboBox<>();
         btnShow = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        lblFoodType.setText("Food Type:");
+        lblMealType.setText("Meal Type:");
 
         btnShow.setText("Show");
         btnShow.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +69,7 @@ public class ChartCal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addComponent(lblFoodType, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMealType, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jcbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
@@ -80,7 +81,7 @@ public class ChartCal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFoodType)
+                    .addComponent(lblMealType)
                     .addComponent(jcbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShow))
                 .addGap(18, 18, 18)
@@ -196,7 +197,7 @@ public class ChartCal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnShow;
     private javax.swing.JComboBox<String> jcbMealType;
-    private javax.swing.JLabel lblFoodType;
+    private javax.swing.JLabel lblMealType;
     private neu.oncampusams.charts.PieChart pieChart1;
     // End of variables declaration//GEN-END:variables
 }
