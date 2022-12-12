@@ -57,6 +57,7 @@ public class SystemAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         viewAdmins = new javax.swing.JButton();
@@ -85,7 +86,6 @@ public class SystemAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("System Administrator Portal");
-        setMaximumSize(new java.awt.Dimension(1060, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -134,13 +134,19 @@ public class SystemAdmin extends javax.swing.JFrame {
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblEmail.setText("Management System");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 270, 30));
+        lblEmail.setText("email");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 270, 30));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Management System");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel15.setText("Welcome!");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 270, 30));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Management System");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 160));
 
@@ -187,7 +193,7 @@ public class SystemAdmin extends javax.swing.JFrame {
         });
         jPanel2.add(searchField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 140, 40));
 
-        jTabbedPane1.addTab("View Admins", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("View Admins", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin.png")), jPanel2); // NOI18N
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -229,90 +235,90 @@ public class SystemAdmin extends javax.swing.JFrame {
         });
         jPanel3.add(viewStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 80, 40));
 
-        jTabbedPane1.addTab("View Students", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel3); // NOI18N
+        jTabbedPane1.addTab("View Students", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student.png")), jPanel3); // NOI18N
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblEmailId2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmailId2.setText("1BHK Available");
-        jPanel4.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 170, 30));
+        jPanel4.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 170, 30));
 
-        lblPrsnlEmail2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblPrsnlEmail2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPrsnlEmail2.setText("2BHK Available");
-        jPanel4.add(lblPrsnlEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 30));
+        jPanel4.add(lblPrsnlEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 170, 30));
 
-        lblPhone2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblPhone2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPhone2.setText("Shared Available");
-        jPanel4.add(lblPhone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 170, 30));
+        jPanel4.add(lblPhone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 170, 30));
 
-        lblNewPass4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNewPass4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass4.setText("Student residing");
-        jPanel4.add(lblNewPass4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 170, 30));
+        jPanel4.add(lblNewPass4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 170, 30));
 
-        lblNewPass5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNewPass5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass5.setText("Building name");
-        jPanel4.add(lblNewPass5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 210, 30));
+        jPanel4.add(lblNewPass5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 210, 30));
 
-        oneBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBhk.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         oneBhk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oneBhkActionPerformed(evt);
             }
         });
-        jPanel4.add(oneBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 230, 30));
+        jPanel4.add(oneBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 230, 30));
 
-        twoBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        twoBhk.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         twoBhk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 twoBhkActionPerformed(evt);
             }
         });
-        jPanel4.add(twoBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 230, 30));
+        jPanel4.add(twoBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 230, 30));
 
-        Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         Name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NameActionPerformed(evt);
             }
         });
-        jPanel4.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 230, 30));
+        jPanel4.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 230, 30));
 
-        Shared.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Shared.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         Shared.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SharedActionPerformed(evt);
             }
         });
-        jPanel4.add(Shared, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 230, 30));
+        jPanel4.add(Shared, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 230, 30));
 
-        stuRes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stuRes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         stuRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stuResActionPerformed(evt);
             }
         });
-        jPanel4.add(stuRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 230, 30));
+        jPanel4.add(stuRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 230, 30));
 
-        lblNewPass6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNewPass6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass6.setText("Building campus");
-        jPanel4.add(lblNewPass6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 210, 30));
+        jPanel4.add(lblNewPass6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 210, 30));
 
-        bCampus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bCampus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         bCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bCampusActionPerformed(evt);
             }
         });
-        jPanel4.add(bCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
+        jPanel4.add(bCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 230, 30));
 
         addDetails2.setBackground(new java.awt.Color(255, 0, 0));
-        addDetails2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addDetails2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         addDetails2.setForeground(new java.awt.Color(255, 255, 255));
         addDetails2.setText("Add building");
         addDetails2.addActionListener(new java.awt.event.ActionListener() {
@@ -320,9 +326,9 @@ public class SystemAdmin extends javax.swing.JFrame {
                 addDetails2ActionPerformed(evt);
             }
         });
-        jPanel4.add(addDetails2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 140, 50));
+        jPanel4.add(addDetails2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 140, 50));
 
-        jTabbedPane1.addTab("Add Buildings", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), jPanel4); // NOI18N
+        jTabbedPane1.addTab("Add Buildings", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/office-building.png")), jPanel4); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1060, 540));
 
@@ -521,6 +527,7 @@ public class SystemAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
