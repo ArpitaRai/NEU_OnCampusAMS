@@ -89,6 +89,7 @@ public class Student extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelHusky = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         lblHuskyTot = new javax.swing.JLabel();
         lblDollar2 = new javax.swing.JLabel();
         lblHuskyTotVal = new javax.swing.JLabel();
@@ -100,14 +101,9 @@ public class Student extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblHusky = new javax.swing.JTable();
-        panelQuery = new javax.swing.JPanel();
-        lblQuery = new javax.swing.JLabel();
-        jcbQueryType = new javax.swing.JComboBox<>();
-        lblQueryDesc = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtQueryDesc = new javax.swing.JTextArea();
-        btnSubmit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         panelRoomChange = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         lblRoomChgHead = new javax.swing.JLabel();
         lblRoomType = new javax.swing.JLabel();
         jcbRoomType = new javax.swing.JComboBox<>();
@@ -115,6 +111,7 @@ public class Student extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtArRoomChg = new javax.swing.JTextArea();
         btnSubmitRoomChg = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         panelUpdate = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         lblEmailId = new javax.swing.JLabel();
@@ -128,6 +125,7 @@ public class Student extends javax.swing.JFrame {
         pwdPass = new javax.swing.JPasswordField();
         pwdPass1 = new javax.swing.JPasswordField();
         btnUpdate = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         panelVending = new javax.swing.JPanel();
         panelVending1 = new javax.swing.JPanel();
         lblPringless = new javax.swing.JLabel();
@@ -142,11 +140,14 @@ public class Student extends javax.swing.JFrame {
         lblTotVal = new javax.swing.JLabel();
         btnBuy = new javax.swing.JButton();
         lblDollar = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         panelMail = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         lblEmailId2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblMail = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         panelMeal = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         mpcal = new javax.swing.JLabel();
@@ -160,11 +161,22 @@ public class Student extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         vegancal = new javax.swing.JLabel();
         calculateMP1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        panelQuery = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblQuery = new javax.swing.JLabel();
+        jcbQueryType = new javax.swing.JComboBox<>();
+        lblQueryDesc = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtQueryDesc = new javax.swing.JTextArea();
+        btnSubmit = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Portal");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1060, 700));
+        setMaximumSize(new java.awt.Dimension(1400, 700));
+        setMinimumSize(new java.awt.Dimension(1400, 700));
         setPreferredSize(new java.awt.Dimension(1400, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1400, 700));
@@ -214,43 +226,50 @@ public class Student extends javax.swing.JFrame {
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmail.setText("Welcome, *Student*");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 250, 30));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 250, 30));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Management System");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel32.setText("Welcome!");
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 270, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 160));
 
         panelHusky.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHuskyTot.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblHuskyTot.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblHuskyTot.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblHuskyTot.setText("Your remaining husky dollars:");
-        panelHusky.add(lblHuskyTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 320, 50));
+        jPanel3.add(lblHuskyTot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 320, 50));
 
-        lblDollar2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDollar2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblDollar2.setText("$");
-        panelHusky.add(lblDollar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 20, 50));
+        jPanel3.add(lblDollar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 20, 50));
 
-        lblHuskyTotVal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblHuskyTotVal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblHuskyTotVal.setForeground(new java.awt.Color(204, 0, 51));
-        panelHusky.add(lblHuskyTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 170, 50));
+        jPanel3.add(lblHuskyTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 190, 40));
 
-        lblAddDollars.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAddDollars.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblAddDollars.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblAddDollars.setText("Add Husky Dollars:");
-        panelHusky.add(lblAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 320, 50));
+        jPanel3.add(lblAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 320, 50));
 
-        lblDollar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDollar1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblDollar1.setText("$");
-        panelHusky.add(lblDollar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 20, 50));
-        panelHusky.add(txtAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 230, 40));
+        jPanel3.add(lblDollar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 20, 50));
+
+        txtAddDollars.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel3.add(txtAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 230, 30));
 
         btnRefresh1.setBackground(new java.awt.Color(0, 0, 0));
-        btnRefresh1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRefresh1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnRefresh1.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh1.setText("Refresh");
         btnRefresh1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -259,24 +278,24 @@ public class Student extends javax.swing.JFrame {
                 btnRefresh1ActionPerformed(evt);
             }
         });
-        panelHusky.add(btnRefresh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 80, 40));
+        jPanel3.add(btnRefresh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 80, 40));
 
         btnAdd.setBackground(new java.awt.Color(0, 0, 0));
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Add");
+        btnAdd.setText("A Husky Dollars");
         btnAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
-        panelHusky.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 80, 40));
+        jPanel3.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 140, 40));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel33.setText("Husky transactions:");
-        panelHusky.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 210, 30));
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 210, 30));
 
         tblHusky.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,72 +315,49 @@ public class Student extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(tblHusky);
 
-        panelHusky.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 320, 150));
+        jPanel3.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 320, 150));
+
+        panelHusky.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 710, 420));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/oksana-berko-Daonsb-GSUM-unsplash (1).jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        panelHusky.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Husky Card", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/card.png")), panelHusky); // NOI18N
 
-        panelQuery.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblQuery.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQuery.setText("What is your query about?");
-        panelQuery.add(lblQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 40));
-
-        jcbQueryType.setBackground(new java.awt.Color(204, 204, 204));
-        jcbQueryType.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jcbQueryType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance related", "Mailing services related", "Housekeeping related" }));
-        panelQuery.add(jcbQueryType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, 30));
-
-        lblQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQueryDesc.setText("Write your query:");
-        panelQuery.add(lblQueryDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
-
-        txtQueryDesc.setColumns(20);
-        txtQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtQueryDesc.setRows(5);
-        jScrollPane3.setViewportView(txtQueryDesc);
-
-        panelQuery.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 550, 190));
-
-        btnSubmit.setBackground(new java.awt.Color(0, 0, 0));
-        btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
-        btnSubmit.setText("Submit");
-        btnSubmit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-        panelQuery.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 110, 60));
-
-        jTabbedPane1.addTab("Raise a query ", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/ask-for-help.png")), panelQuery); // NOI18N
-
+        panelRoomChange.setBackground(new java.awt.Color(255, 204, 204));
         panelRoomChange.setMaximumSize(new java.awt.Dimension(590, 470));
         panelRoomChange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRoomChgHead.setText("If you are a new student, uou can apply for a new room, or request for a change if you are already assigned one:");
-        panelRoomChange.add(lblRoomChgHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 770, 40));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblRoomChgHead.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblRoomChgHead.setText("*If you are a new student, you can apply for a new room, or request for a change if you are already assigned one");
+        jPanel5.add(lblRoomChgHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 830, 40));
+
+        lblRoomType.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblRoomType.setText("Select your desired room type");
-        panelRoomChange.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 240, 40));
+        jPanel5.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 240, 40));
 
         jcbRoomType.setBackground(new java.awt.Color(204, 204, 204));
+        jcbRoomType.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jcbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1BHK", "2BHK", "Studio", "Shared" }));
         jcbRoomType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbRoomTypeActionPerformed(evt);
             }
         });
-        panelRoomChange.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 240, 30));
+        jPanel5.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 240, 30));
 
+        lblRoomChg.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblRoomChg.setText("Write more about your room change request:");
-        panelRoomChange.add(lblRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
+        jPanel5.add(lblRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 330, 40));
 
         txtArRoomChg.setColumns(20);
         txtArRoomChg.setRows(5);
         jScrollPane2.setViewportView(txtArRoomChg);
 
-        panelRoomChange.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 550, 190));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 320, 110));
 
         btnSubmitRoomChg.setBackground(new java.awt.Color(0, 0, 0));
         btnSubmitRoomChg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -373,106 +369,118 @@ public class Student extends javax.swing.JFrame {
                 btnSubmitRoomChgActionPerformed(evt);
             }
         });
-        panelRoomChange.add(btnSubmitRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 40));
+        jPanel5.add(btnSubmitRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 80, 40));
+
+        panelRoomChange.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 840, 360));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/room_bg.jpg"))); // NOI18N
+        jLabel5.setText("jLabel4");
+        panelRoomChange.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Apply for a room", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/living-room.png")), panelRoomChange); // NOI18N
 
         panelUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblEmailId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmailId.setText("Email Id");
-        jPanel9.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 170, 40));
+        jPanel9.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, 40));
 
-        lblPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblPrsnlEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPrsnlEmail.setText("Personal Email Id");
-        jPanel9.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 170, 40));
+        jPanel9.add(lblPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 170, 40));
 
-        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPhone.setText("Phone Number");
-        jPanel9.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 170, 40));
+        jPanel9.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 170, 40));
 
-        lblNewPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNewPass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass.setText("New Password");
-        jPanel9.add(lblNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 170, 40));
+        jPanel9.add(lblNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 170, 40));
 
-        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass1.setText("Re-Enter New Password");
-        jPanel9.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 40));
+        jPanel9.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 40));
 
         txtEmailId.setEditable(false);
-        txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtEmailId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailIdActionPerformed(evt);
             }
         });
-        jPanel9.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 230, 40));
+        jPanel9.add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 230, 40));
 
-        txtPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPrsnlEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPrsnlEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrsnlEmailActionPerformed(evt);
             }
         });
-        jPanel9.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 230, 40));
+        jPanel9.add(txtPrsnlEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 230, 40));
 
-        txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneActionPerformed(evt);
             }
         });
-        jPanel9.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 230, 40));
+        jPanel9.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 230, 40));
 
-        pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel9.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 230, 40));
+        pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel9.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 230, 40));
 
-        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel9.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 230, 40));
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel9.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 230, 40));
 
-        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 110, 40));
+        jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 110, 40));
 
-        panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 570, 390));
+        panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 570, 340));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/profile_bg.jpg"))); // NOI18N
+        jLabel6.setText("jLabel4");
+        panelUpdate.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
 
         panelVending.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelVending1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelVending1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPringless.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPringless.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPringless.setText("Pringless - $1.50");
-        panelVending1.add(lblPringless, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 230, 40));
+        panelVending1.add(lblPringless, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 230, 40));
 
         lblCaesar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCaesar.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCaesar.setText("Caesar Salad - $4.50");
-        panelVending1.add(lblCaesar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 230, 40));
+        panelVending1.add(lblCaesar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 230, 40));
 
         lblCoke.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCoke.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCoke.setText("Coke - $1.00");
-        panelVending1.add(lblCoke, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 230, 40));
+        panelVending1.add(lblCoke, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 230, 40));
 
         lblSprite.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblSprite.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblSprite.setText("Sprite - $1.00");
-        panelVending1.add(lblSprite, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 230, 40));
+        panelVending1.add(lblSprite, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 230, 40));
 
         jcbPringless.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcbPringless.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
@@ -481,7 +489,7 @@ public class Student extends javax.swing.JFrame {
                 jcbPringlessActionPerformed(evt);
             }
         });
-        panelVending1.add(jcbPringless, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 100, 40));
+        panelVending1.add(jcbPringless, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 100, 40));
 
         jcbCaesar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcbCaesar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
@@ -490,7 +498,7 @@ public class Student extends javax.swing.JFrame {
                 jcbCaesarActionPerformed(evt);
             }
         });
-        panelVending1.add(jcbCaesar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 100, 40));
+        panelVending1.add(jcbCaesar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 100, 40));
 
         jcbCoke.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcbCoke.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
@@ -499,7 +507,7 @@ public class Student extends javax.swing.JFrame {
                 jcbCokeActionPerformed(evt);
             }
         });
-        panelVending1.add(jcbCoke, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 100, 40));
+        panelVending1.add(jcbCoke, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 100, 40));
 
         jcbSprite.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcbSprite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3" }));
@@ -508,16 +516,16 @@ public class Student extends javax.swing.JFrame {
                 jcbSpriteActionPerformed(evt);
             }
         });
-        panelVending1.add(jcbSprite, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 100, 40));
+        panelVending1.add(jcbSprite, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 100, 40));
 
         lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTotal.setText("Total Cost");
-        panelVending1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 140, 30));
+        panelVending1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 140, 30));
 
         lblTotVal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTotVal.setForeground(new java.awt.Color(204, 0, 51));
-        panelVending1.add(lblTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 220, 30));
+        panelVending1.add(lblTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 220, 30));
 
         btnBuy.setBackground(new java.awt.Color(0, 0, 0));
         btnBuy.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -529,25 +537,32 @@ public class Student extends javax.swing.JFrame {
                 btnBuyActionPerformed(evt);
             }
         });
-        panelVending1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 110, 60));
+        panelVending1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 110, 60));
 
         lblDollar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDollar.setText("$");
-        panelVending1.add(lblDollar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 20, 50));
+        panelVending1.add(lblDollar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 20, 50));
 
-        panelVending.add(panelVending1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        panelVending.add(panelVending1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, 380));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/kenny-eliason-7Wmp7CENiSA-unsplash.jpg"))); // NOI18N
+        jLabel7.setText("jLabel4");
+        panelVending.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Vending Machine", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/vending.png")), panelVending); // NOI18N
 
+        panelMail.setBackground(new java.awt.Color(0, 153, 153));
         panelMail.setToolTipText("");
         panelMail.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEmailId2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblEmailId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEmailId2.setText("Check your mail here");
-        panelMail.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 450, 40));
+        jPanel6.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 450, 40));
 
-        tblMail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblMail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tblMail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -569,10 +584,10 @@ public class Student extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblMail);
 
-        panelMail.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, 110));
+        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 110));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Refresh");
         jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -581,7 +596,13 @@ public class Student extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        panelMail.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 90, 50));
+        jPanel6.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 90, 50));
+
+        panelMail.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 530, 310));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/christian-wiediger-WkfDrhxDMC8-unsplash (2).jpg"))); // NOI18N
+        jLabel9.setText("jLabel4");
+        panelMail.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Mail", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/email (1).png")), panelMail); // NOI18N
 
@@ -656,9 +677,58 @@ public class Student extends javax.swing.JFrame {
         });
         jPanel2.add(calculateMP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 210, 40));
 
-        panelMeal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 610, 360));
+        panelMeal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 610, 360));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen_bg.jpg"))); // NOI18N
+        jLabel12.setText("jLabel4");
+        panelMeal.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
 
         jTabbedPane1.addTab("Meal Plans", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen .png")), panelMeal); // NOI18N
+
+        panelQuery.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblQuery.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblQuery.setText("What is your query about?");
+        jPanel4.add(lblQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 240, 40));
+
+        jcbQueryType.setBackground(new java.awt.Color(204, 204, 204));
+        jcbQueryType.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jcbQueryType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance related", "Mailing services related", "Housekeeping related" }));
+        jPanel4.add(jcbQueryType, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 240, 30));
+
+        lblQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblQueryDesc.setText("Write your query:");
+        jPanel4.add(lblQueryDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 330, 40));
+
+        txtQueryDesc.setColumns(20);
+        txtQueryDesc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtQueryDesc.setRows(5);
+        jScrollPane3.setViewportView(txtQueryDesc);
+
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 340, 100));
+
+        btnSubmit.setBackground(new java.awt.Color(0, 0, 0));
+        btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 110, 50));
+
+        panelQuery.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 440, 400));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query_bg.jpg"))); // NOI18N
+        jLabel13.setText("jLabel4");
+        panelQuery.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
+
+        jTabbedPane1.addTab("Raise a query ", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/ask-for-help.png")), panelQuery); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1300, 740));
 
@@ -994,6 +1064,8 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -1002,9 +1074,18 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
