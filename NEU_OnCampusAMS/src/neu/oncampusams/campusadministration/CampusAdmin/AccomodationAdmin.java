@@ -522,6 +522,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 
         bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"))); // NOI18N
         panelUpdate.add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
+        bg5.getAccessibleContext().setAccessibleName("");
 
         jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
 

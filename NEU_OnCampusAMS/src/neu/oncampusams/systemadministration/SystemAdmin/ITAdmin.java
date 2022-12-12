@@ -4,7 +4,11 @@
  */
 package neu.oncampusams.systemadministration.SystemAdmin;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
+import java.lang.String;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -16,6 +20,7 @@ public class ITAdmin extends javax.swing.JFrame {
      * Creates new form test
      */
     RegistrationDirectory registrationDirectory = new RegistrationDirectory();
+    RegistrationInfo registration = new RegistrationInfo();
 
     public ITAdmin() {
         initComponents();
@@ -35,18 +40,18 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         fName = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
-        jLabel31 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         campusCombo = new javax.swing.JComboBox<>();
         roleCombo = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         createButton = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
-        jSeparator12 = new javax.swing.JSeparator();
         jLabel37 = new javax.swing.JLabel();
         lName = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
+        jLabel39 = new javax.swing.JLabel();
+        gmail = new javax.swing.JTextField();
+        jSeparator17 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         search = new javax.swing.JButton();
@@ -94,9 +99,9 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel30.setText("First Name");
+        jLabel30.setText("Personal Email ID");
         jPanel5.add(jLabel30);
-        jLabel30.setBounds(120, 140, 100, 33);
+        jLabel30.setBounds(60, 90, 160, 33);
 
         fName.setBackground(new java.awt.Color(242, 242, 242));
         fName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -109,34 +114,17 @@ public class ITAdmin extends javax.swing.JFrame {
         jPanel5.add(fName);
         fName.setBounds(270, 140, 240, 30);
 
-        password.setBackground(new java.awt.Color(242, 242, 242));
-        password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password.setBorder(null);
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
-            }
-        });
-        jPanel5.add(password);
-        password.setBounds(270, 240, 240, 30);
-
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel31.setText("Password");
-        jPanel5.add(jLabel31);
-        jLabel31.setBounds(150, 240, 70, 33);
-
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel17.setText("Campus");
         jPanel5.add(jLabel17);
-        jLabel17.setBounds(150, 300, 70, 33);
+        jLabel17.setBounds(150, 270, 70, 33);
 
         campusCombo.setBackground(new java.awt.Color(242, 242, 242));
         campusCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
         jPanel5.add(campusCombo);
-        campusCombo.setBounds(270, 300, 190, 30);
+        campusCombo.setBounds(270, 270, 190, 30);
 
         roleCombo.setBackground(new java.awt.Color(242, 242, 242));
         roleCombo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -169,11 +157,7 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator11);
-        jSeparator11.setBounds(270, 170, 240, 20);
-
-        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel5.add(jSeparator12);
-        jSeparator12.setBounds(270, 270, 240, 10);
+        jSeparator11.setBounds(270, 120, 240, 20);
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -195,6 +179,27 @@ public class ITAdmin extends javax.swing.JFrame {
         jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.add(jSeparator16);
         jSeparator16.setBounds(270, 220, 240, 20);
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel39.setText("First Name");
+        jPanel5.add(jLabel39);
+        jLabel39.setBounds(120, 140, 100, 33);
+
+        gmail.setBackground(new java.awt.Color(242, 242, 242));
+        gmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gmail.setBorder(null);
+        gmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gmailActionPerformed(evt);
+            }
+        });
+        jPanel5.add(gmail);
+        gmail.setBounds(270, 90, 240, 30);
+
+        jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel5.add(jSeparator17);
+        jSeparator17.setBounds(270, 170, 240, 20);
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 680, 540));
 
@@ -224,9 +229,9 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel33.setText("fName");
+        jLabel33.setText("First Name");
         jPanel6.add(jLabel33);
-        jLabel33.setBounds(100, 140, 70, 33);
+        jLabel33.setBounds(70, 140, 100, 33);
 
         updatefName.setBackground(new java.awt.Color(242, 242, 242));
         updatefName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -337,9 +342,9 @@ public class ITAdmin extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel38.setText("lName");
+        jLabel38.setText("Last Name");
         jPanel6.add(jLabel38);
-        jLabel38.setBounds(100, 190, 70, 33);
+        jLabel38.setBounds(70, 190, 100, 33);
 
         updateLName.setBackground(new java.awt.Color(242, 242, 242));
         updateLName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -426,10 +431,6 @@ public class ITAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fNameActionPerformed
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
-
     private void roleComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_roleComboActionPerformed
@@ -437,13 +438,23 @@ public class ITAdmin extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
         //Registration registration = new Registration();
+
         String firstName = fName.getText();
         String lastName = lName.getText();
         String emailId;
-        emailId = (lName.getText() + '.' + firstName.charAt(0) + "@northeastern.edu").toLowerCase();
-        String password1 = (String) password.getText();
         String role1 = (String) roleCombo.getSelectedItem();
+        emailId = (lName.getText() + '.' + firstName.charAt(0) + (generatePassword(6).toString()).charAt(3) + "@northeastern.edu").toLowerCase();
+        registration.setEmailID(emailId);
+        char[] password2 = generatePassword(8);
+        String password1 = String.valueOf(password2);
+
         String campus = (String) campusCombo.getSelectedItem();
+        String gmail1 = gmail.getText();
+        boolean emailValidation = isEmailValid(gmail1);
+        if (emailValidation == false) {
+            JOptionPane.showMessageDialog(this, "Invalid email ");
+            return;
+        }
         boolean validation = FormValidation();
 
         if (validation) {
@@ -456,11 +467,12 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
                 registrationDirectory.registerStudent(registration);
                 JOptionPane.showMessageDialog(this, "Student Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
+                gmail.setText("");
             }
 
             if ("Head System Admin".equals((String) roleCombo.getSelectedItem())) {
@@ -476,7 +488,6 @@ public class ITAdmin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Head System Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
             if ("System Admin".equals((String) roleCombo.getSelectedItem())) {
                 RegistrationInfo registration = new RegistrationInfo();
@@ -487,11 +498,12 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
                 registrationDirectory.registerSystemAdmin(registration);
                 JOptionPane.showMessageDialog(this, "System Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
             if ("Campus Admin".equals((String) roleCombo.getSelectedItem())) {
                 RegistrationInfo registration = new RegistrationInfo();
@@ -502,11 +514,12 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
                 registrationDirectory.registerCampusAdmin(registration);
                 JOptionPane.showMessageDialog(this, "Campus Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
 
             if ("Accommodation Admin".equals((String) roleCombo.getSelectedItem())) {
@@ -518,11 +531,12 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
                 registrationDirectory.registerAccoAdmin(registration);
-                JOptionPane.showMessageDialog(this, "Building Admin Registered secccessfully");
+                JOptionPane.showMessageDialog(this, "Accomodation Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
 
             if ("Warden".equals((String) roleCombo.getSelectedItem())) {
@@ -534,11 +548,12 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
                 registrationDirectory.registerWarden(registration);
                 JOptionPane.showMessageDialog(this, "Warden Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
             if ("Mailing Services Admin".equals((String) roleCombo.getSelectedItem())) {
                 RegistrationInfo registration = new RegistrationInfo();
@@ -549,12 +564,31 @@ public class ITAdmin extends javax.swing.JFrame {
                 registration.setRoles(role1);
                 registration.setCampus(campus);
                 registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
                 registrationDirectory.registerMailAdmin(registration);
                 JOptionPane.showMessageDialog(this, "Mailing Admin Registered secccessfully");
                 fName.setText("");
                 lName.setText("");
-                password.setText("");
             }
+
+            if ("Finance Admin".equals((String) roleCombo.getSelectedItem())) {
+                RegistrationInfo registration = new RegistrationInfo();
+                registration.setFirstName(firstName);
+                registration.setLastName(lastName);
+                registration.setEmailID(emailId);
+                registration.setPassword(password1);
+                registration.setRoles(role1);
+                registration.setCampus(campus);
+                registration.setEmailID(emailId);
+                registration.setGmail(gmail1);
+
+                registrationDirectory.registerFinanceAdmin(registration);
+                JOptionPane.showMessageDialog(this, "Finance Admin Registered secccessfully");
+                fName.setText("");
+                lName.setText("");
+            }
+
         }
     }//GEN-LAST:event_createButtonActionPerformed
 
@@ -568,6 +602,14 @@ public class ITAdmin extends javax.swing.JFrame {
 
         RegistrationInfo reg = registrationDirectory.findDetails(registration);
 
+        if (reg == null) {
+            JOptionPane.showMessageDialog(this, "User doesn't exists ! Please try with correct credentials.");
+            email.setText(" ");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            return;
+        }
         updatefName.setText(reg.getFirstName());
         updateLName.setText(reg.getLastName());
         updatePassword.setText(reg.getPassword());
@@ -619,7 +661,7 @@ public class ITAdmin extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         String email1 = email.getText();
-       // String rolel1 = (String) updateRole.getSelectedItem();
+        // String rolel1 = (String) updateRole.getSelectedItem();
         String updateFirstname = updatefName.getText();
         String updateLastname = updateLName.getText();
         String updatePassword1 = updatePassword.getText();
@@ -740,7 +782,22 @@ public class ITAdmin extends javax.swing.JFrame {
             email.setText("");
 
         }
+        if ("Finance Admin".equals((String) updateRole.getSelectedItem())) {
+            RegistrationInfo registration = new RegistrationInfo();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
 
+            registrationDirectory.updateFinanceAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Finance Admin Updated secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
 
     }//GEN-LAST:event_updateButtonActionPerformed
 
@@ -872,7 +929,22 @@ public class ITAdmin extends javax.swing.JFrame {
             email.setText("");
 
         }
+        if ("Finance Admin".equals((String) updateRole.getSelectedItem())) {
+            RegistrationInfo registration = new RegistrationInfo();
+            registration.setFirstName(updateFirstname);
+            registration.setLastName(updateLastname);
+            registration.setPassword(updatePassword1);
+            registration.setCampus(campus1);
+            registration.setEmailID(email1);
 
+            registrationDirectory.deleteFinanceAdmin(registration);
+            JOptionPane.showMessageDialog(this, "Finance Admin Delted secccessfully");
+            updatefName.setText("");
+            updateLName.setText("");
+            updatePassword.setText("");
+            email.setText("");
+
+        }
 
     }//GEN-LAST:event_deleteActionPerformed
 
@@ -883,6 +955,10 @@ public class ITAdmin extends javax.swing.JFrame {
     private void updateLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateLNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_updateLNameActionPerformed
+
+    private void gmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gmailActionPerformed
     private boolean FormValidation() {
 
         if (fName.getText().length() == 0) {
@@ -893,23 +969,59 @@ public class ITAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Last Name Empty");
             return false;
         }
-//    if(!txtPhone.getText().matches("^[0-9]{10}$") || txtPhone.getText().length() == 0)
-//       {
-//           JOptionPane.showMessageDialog(this, "Phone Number Incorrect");
-//           return validation;
-//       }
-//       if(!txtEmailId.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$") || txtEmailId.getText().length() == 0)
-//       {
-//           JOptionPane.showMessageDialog(this, "Email Id Incorrect");
-//           return validation;
-//       }
 
-        if (password.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Password Field is Empty");
+        return true;
+    }
+
+    public static boolean isEmailValid(String email) {
+        String regex = "^(.+)@(.+)$";
+        return email.matches(regex);
+    }
+
+    private static char[] generatePassword(int length) {
+        String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+        String specialCharacters = "!@#$";
+        String numbers = "1234567890";
+        String combinedChars = capitalCaseLetters + lowerCaseLetters + specialCharacters + numbers;
+        Random random = new Random();
+        char[] password = new char[length];
+
+        password[0] = lowerCaseLetters.charAt(random.nextInt(lowerCaseLetters.length()));
+        password[1] = capitalCaseLetters.charAt(random.nextInt(capitalCaseLetters.length()));
+        password[2] = specialCharacters.charAt(random.nextInt(specialCharacters.length()));
+        password[3] = numbers.charAt(random.nextInt(numbers.length()));
+
+        for (int i = 4; i < length; i++) {
+            password[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
+        }
+        return password;
+    }
+
+    public static boolean isValidPassword(String password) {
+
+        // Regex to check valid password.
+        String regex = "^(?=.*[0-9])"
+                + "(?=.[a-z])(?=.[A-Z])"
+                + "(?=.*[@#$%^&+=])";
+
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+
+        // If the password is empty
+        // return false
+        if (password == null) {
             return false;
         }
 
-        return true;
+        // Pattern class contains matcher() method
+        // to find matching between given password
+        // and regular expression.
+        Matcher m = p.matcher(password);
+
+        // Return if the password
+        // matched the ReGex
+        return m.matches();
     }
 
     /**
@@ -960,6 +1072,7 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JButton delete;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fName;
+    private javax.swing.JTextField gmail;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -969,7 +1082,6 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -977,6 +1089,7 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -985,14 +1098,13 @@ public class ITAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField lName;
-    private javax.swing.JTextField password;
     private javax.swing.JComboBox<String> roleCombo;
     private javax.swing.JButton search;
     private javax.swing.JButton updateButton;

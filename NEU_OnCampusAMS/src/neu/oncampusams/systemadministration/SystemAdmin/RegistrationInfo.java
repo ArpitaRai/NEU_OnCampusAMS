@@ -16,6 +16,15 @@ public class RegistrationInfo {
     String password;
     String campus;
     String roles;
+    String gmail;
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
+    }
 
 
     public Integer getIdRegistration() {

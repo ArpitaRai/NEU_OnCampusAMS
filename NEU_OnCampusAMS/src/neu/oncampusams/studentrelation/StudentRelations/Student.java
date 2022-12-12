@@ -138,6 +138,7 @@ public class Student extends javax.swing.JFrame {
         tblMail = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         panelMeal = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         mpcal = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -154,8 +155,9 @@ public class Student extends javax.swing.JFrame {
         setTitle("Student Portal");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(new java.awt.Dimension(1060, 700));
+        setPreferredSize(new java.awt.Dimension(1400, 700));
         setResizable(false);
-        setSize(new java.awt.Dimension(1060, 700));
+        setSize(new java.awt.Dimension(1400, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
@@ -286,7 +288,7 @@ public class Student extends javax.swing.JFrame {
 
         panelHusky.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 320, 150));
 
-        jTabbedPane1.addTab("Husky Card", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/credit-card.png")), panelHusky); // NOI18N
+        jTabbedPane1.addTab("Husky Card", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/card.png")), panelHusky); // NOI18N
 
         panelQuery.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -322,7 +324,7 @@ public class Student extends javax.swing.JFrame {
         });
         panelQuery.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 110, 60));
 
-        jTabbedPane1.addTab("Raise a query ", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelQuery); // NOI18N
+        jTabbedPane1.addTab("Raise a query ", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/ask-for-help.png")), panelQuery); // NOI18N
 
         panelRoomChange.setMaximumSize(new java.awt.Dimension(590, 470));
         panelRoomChange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -363,7 +365,7 @@ public class Student extends javax.swing.JFrame {
         });
         panelRoomChange.add(btnSubmitRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 40));
 
-        jTabbedPane1.addTab("Apply for a room", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelRoomChange); // NOI18N
+        jTabbedPane1.addTab("Apply for a room", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/living-room.png")), panelRoomChange); // NOI18N
 
         panelUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -464,7 +466,7 @@ public class Student extends javax.swing.JFrame {
         });
         panelUpdate.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, -1, -1));
 
-        jTabbedPane1.addTab("Update details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), panelUpdate); // NOI18N
+        jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
 
         panelVending.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -529,11 +531,11 @@ public class Student extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTotal.setText("Total Cost");
-        panelVending1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 140, 30));
+        panelVending1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 140, 30));
 
         lblTotVal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTotVal.setForeground(new java.awt.Color(204, 0, 51));
-        panelVending1.add(lblTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 280, 30));
+        panelVending1.add(lblTotVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 220, 30));
 
         btnBuy.setBackground(new java.awt.Color(0, 0, 0));
         btnBuy.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -545,19 +547,20 @@ public class Student extends javax.swing.JFrame {
                 btnBuyActionPerformed(evt);
             }
         });
-        panelVending1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 110, 60));
+        panelVending1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 110, 60));
 
         lblDollar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDollar.setText("$");
-        panelVending1.add(lblDollar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 20, 50));
+        panelVending1.add(lblDollar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 20, 50));
 
         panelVending.add(panelVending1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jTabbedPane1.addTab("Vending Machine", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/vending-machine.png")), panelVending); // NOI18N
+        jTabbedPane1.addTab("Vending Machine", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/vending.png")), panelVending); // NOI18N
 
+        panelMail.setToolTipText("");
         panelMail.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblEmailId2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEmailId2.setText("Check your mail here");
         panelMail.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 450, 40));
@@ -598,36 +601,38 @@ public class Student extends javax.swing.JFrame {
         });
         panelMail.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 90, 50));
 
-        jTabbedPane1.addTab("Mail", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/email.png")), panelMail); // NOI18N
+        jTabbedPane1.addTab("Mail", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/email (1).png")), panelMail); // NOI18N
 
         panelMeal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        mpcal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mpcal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         mpcal.setForeground(new java.awt.Color(204, 0, 51));
         mpcal.setText("total");
-        panelMeal.add(mpcal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 320, 30));
+        jPanel2.add(mpcal, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 320, 30));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("$");
-        panelMeal.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 20, 30));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 20, 30));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel17.setText("Meal Plan:");
-        panelMeal.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 190, 30));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 190, 30));
 
-        mpDisplay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        mpDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        panelMeal.add(mpDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 480, 30));
+        mpDisplay.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        mpDisplay.setText("meal plan");
+        jPanel2.add(mpDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 260, 30));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setText("changes are final, please choose carefully");
-        panelMeal.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 710, 30));
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel30.setText("*changes are final, please choose carefully");
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 340, 30));
 
-        jcbMealPlan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbMealPlan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jcbMealPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non-veg : 7 meals/week - $70", "Non-veg : 15 meals/week - $130", "Non-veg : UNLIMITED MEALS/week - $200", "Veg : 7 meals/week - $65", "Veg : 15 meals/week - $120", "Veg : UNLIMITED MEALS/week - $180", "Vegan : 7 meals/week - $80", "Vegan : 15 meals/week - $140", "Vegan : UNLIMITED MEALS/week - $210", "I don't want to opt ina meal plan" }));
-        panelMeal.add(jcbMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 390, 30));
+        jPanel2.add(jcbMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 270, 30));
 
         calculateMP.setBackground(new java.awt.Color(0, 0, 0));
         calculateMP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -639,21 +644,22 @@ public class Student extends javax.swing.JFrame {
                 calculateMPActionPerformed(evt);
             }
         });
-        panelMeal.add(calculateMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 110, 50));
+        jPanel2.add(calculateMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 110, 40));
 
-        mpcal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mpcal1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         mpcal1.setForeground(new java.awt.Color(204, 0, 51));
-        mpcal1.setText("Your selected meal plan is: ");
-        panelMeal.add(mpcal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 330, 30));
+        mpcal1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        mpcal1.setText("Selected meal plan:");
+        jPanel2.add(mpcal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 190, 30));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel31.setText("Total for a semester:");
-        panelMeal.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 210, 30));
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, 30));
 
-        vegancal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vegancal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         vegancal.setText("To check calories for each meal type, please click below:");
-        panelMeal.add(vegancal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 640, 30));
+        jPanel2.add(vegancal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 470, 30));
 
         calculateMP1.setBackground(new java.awt.Color(0, 0, 0));
         calculateMP1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -665,9 +671,11 @@ public class Student extends javax.swing.JFrame {
                 calculateMP1ActionPerformed(evt);
             }
         });
-        panelMeal.add(calculateMP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 210, 40));
+        jPanel2.add(calculateMP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 210, 40));
 
-        jTabbedPane1.addTab("Meal Plans", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/food.png")), panelMeal); // NOI18N
+        panelMeal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 610, 360));
+
+        jTabbedPane1.addTab("Meal Plans", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen .png")), panelMeal); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1300, 740));
 
@@ -1022,6 +1030,7 @@ dispose();
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
