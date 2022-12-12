@@ -5,10 +5,21 @@
 package neu.oncampusams.studentrelation.StudentRelations;
 
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
 import neu.oncampusams.charts.ChartCal;
+
+import neu.oncampusams.databaseConnection.JDBCConnection;
+
 import neu.oncampusams.systemadministration.SystemAdmin.Login;
 
 /**
@@ -30,7 +41,14 @@ public class Student extends javax.swing.JFrame {
         initComponents();
         StudentInfo std = StudentInfoDirectory.getStudentHuskyD("test.s@northeastern.edu");
         lblHuskyTotVal.setText(String.valueOf(std.getHuskyDollars()));
-        
+       boolean val =  studentDir.getMealBool("test.s@northeastern.edu");
+       if(val == false){
+           populateMealPlan("test.s@northeastern.edu");
+           
+           
+       }
+        populateHuskyTable("test.s@northeastern.edu");
+        populateMailTable("test.s@northeastern.edu");
     }
     public Student(String eid) {
         initComponents();
@@ -68,7 +86,7 @@ public class Student extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblHusky = new javax.swing.JTable();
         panelQuery = new javax.swing.JPanel();
         lblQuery = new javax.swing.JLabel();
         jcbQueryType = new javax.swing.JComboBox<>();
@@ -117,7 +135,7 @@ public class Student extends javax.swing.JFrame {
         panelMail = new javax.swing.JPanel();
         lblEmailId2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblMail = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         panelMeal = new javax.swing.JPanel();
         mpcal = new javax.swing.JLabel();
@@ -249,15 +267,23 @@ public class Student extends javax.swing.JFrame {
         jLabel33.setText("Husky transactions:");
         panelHusky.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 210, 30));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblHusky.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "transaction", "amount"
+                "Transaction Id", "Amount"
             }
-        ));
-        jScrollPane9.setViewportView(jTable4);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(tblHusky);
 
         panelHusky.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 320, 150));
 
@@ -538,8 +564,8 @@ public class Student extends javax.swing.JFrame {
         lblEmailId2.setText("Check your mail here");
         panelMail.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 450, 40));
 
-        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblMail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblMail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -547,10 +573,18 @@ public class Student extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Student ID", "Package Type"
+                "Student Email", "Package Type"
             }
-        ));
-        jScrollPane4.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblMail);
 
         panelMail.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, 110));
 
@@ -573,26 +607,25 @@ public class Student extends javax.swing.JFrame {
         mpcal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         mpcal.setForeground(new java.awt.Color(204, 0, 51));
         mpcal.setText("total");
-        panelMeal.add(mpcal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 330, 30));
+        panelMeal.add(mpcal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 320, 30));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("$");
-        panelMeal.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 10, 30));
+        panelMeal.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 20, 30));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel17.setText("meal plan:");
+        jLabel17.setText("Meal Plan:");
         panelMeal.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 190, 30));
 
         mpDisplay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         mpDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        mpDisplay.setText("Total for a semester:");
-        panelMeal.add(mpDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 180, 30));
+        panelMeal.add(mpDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 480, 30));
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel30.setText("changes are final, please choose carefully");
-        panelMeal.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 550, 30));
+        panelMeal.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 710, 30));
 
         jcbMealPlan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jcbMealPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non-veg : 7 meals/week - $70", "Non-veg : 15 meals/week - $130", "Non-veg : UNLIMITED MEALS/week - $200", "Veg : 7 meals/week - $65", "Veg : 15 meals/week - $120", "Veg : UNLIMITED MEALS/week - $180", "Vegan : 7 meals/week - $80", "Vegan : 15 meals/week - $140", "Vegan : UNLIMITED MEALS/week - $210", "I don't want to opt ina meal plan" }));
@@ -608,7 +641,7 @@ public class Student extends javax.swing.JFrame {
                 calculateMPActionPerformed(evt);
             }
         });
-        panelMeal.add(calculateMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 110, 50));
+        panelMeal.add(calculateMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 110, 50));
 
         mpcal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         mpcal1.setForeground(new java.awt.Color(204, 0, 51));
@@ -681,6 +714,9 @@ public class Student extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Added Husky Dollars to your card!!!");
             JOptionPane.showMessageDialog(this, "Please press Refresh to display the updated balance");
             txtAddDollars.setText("");
+            
+            studentDir.addHuskyTransactions(emailId,addDollars);
+            populateHuskyTable(emailId);
 
         }
         else if(addDollars > 50.0)
@@ -873,6 +909,7 @@ public class Student extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String mp = jcbMealPlan.getSelectedItem().toString();
+        String emailId="test.s@northeastern.edu";
         
         Double mealplan = 0.00;
         if(mp.equals("Veg : 7 meals/week - $65")){
@@ -900,12 +937,14 @@ public class Student extends javax.swing.JFrame {
         mpcal.setText(mealplan.toString());
  
         mpDisplay.setText(jcbMealPlan.getSelectedItem().toString());
+        studentDir.addMealPlan(emailId, mp, mealplan);
+        calculateMP.setEnabled(false);
         
     }//GEN-LAST:event_calculateMPActionPerformed
 
     private void calculateMP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateMP1ActionPerformed
         // TODO add your handling code here:
-        dispose();
+
             new ChartCal().setVisible(true);
         
     }//GEN-LAST:event_calculateMP1ActionPerformed
@@ -991,8 +1030,6 @@ dispose();
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JComboBox<String> jcbCaesar;
     private javax.swing.JComboBox<String> jcbCoke;
     private javax.swing.JComboBox<String> jcbMealPlan;
@@ -1039,6 +1076,8 @@ dispose();
     private javax.swing.JPanel panelVending1;
     private javax.swing.JPasswordField pwdPass;
     private javax.swing.JPasswordField pwdPass1;
+    private javax.swing.JTable tblHusky;
+    private javax.swing.JTable tblMail;
     private javax.swing.JTextField txtAddDollars;
     private javax.swing.JTextArea txtArRoomChg;
     private javax.swing.JTextField txtEmailId;
@@ -1093,7 +1132,94 @@ public void SetEmailID(){
         lblEmail.setText(emailID);
     } 
 
+public void populateHuskyTable(String stdEmail){
+        Connection connection = JDBCConnection.Connect() ;
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT * FROM HuskyTransactions where studentEmail = ?");
+            
+            pst.setString(1, stdEmail);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String transactionId = rs.getString("transactionId");
+                String amount = rs.getString("rechargeAmount");
+                
+              
+                String tbData[] = {transactionId,amount};
+                DefaultTableModel tblModel = (DefaultTableModel)tblHusky.getModel();
+                tblModel.addRow(tbData);    
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   private void populateMealPlan(String emailId){
+    String mp = studentDir.getMealPlanInfo(emailId);
+    Double mealplan = 0.00;
+        if(mp.equals("Veg : 7 meals/week - $65")){
+             mealplan = 65.00 * 16;
+             jcbMealPlan.setSelectedIndex(3);
+        }else if(mp.equals("Veg : UNLIMITED MEALS/week - $180")){
+            mealplan = 180.00 * 16;
+            jcbMealPlan.setSelectedIndex(5);
+        }else if(mp.equals("Veg : 15 meals/week - $120")){
+            mealplan = 120.00 * 16;
+            jcbMealPlan.setSelectedIndex(4);
+        }else if(mp.equals("Non-veg : 7 meals/week - $70")){
+            mealplan = 70.00 * 16;
+            jcbMealPlan.setSelectedIndex(0);
+        }else if(mp.equals("Non-veg : 15 meals/week - $130")){
+            mealplan = 130.00 * 16;
+            jcbMealPlan.setSelectedIndex(1);
+        }else if(mp.equals("Non-veg : UNLIMITED MEALS/week - $200")){
+            mealplan = 200.00 * 16;
+            jcbMealPlan.setSelectedIndex(2);
+        }else if(mp.equals("Vegan : 7 meals/week - $80")){
+            mealplan = 80.00 * 16;
+            jcbMealPlan.setSelectedIndex(6);
+        }else if(mp.equals("Vegan : 15 meals/week - $140")){
+            mealplan = 140.00 * 16;
+            jcbMealPlan.setSelectedIndex(7);
+        }else if(mp.equals("Vegan : UNLIMITED MEALS/week - $210")){
+            mealplan = 210.00 * 16;
+        }else if(mp.equals("I don't want to opt in a meal plan")){
+            mealplan = 0.00;
+            jcbMealPlan.setSelectedIndex(8);
+        }
+        
+        
+        mpcal.setText(mealplan.toString());
+ 
+        mpDisplay.setText(jcbMealPlan.getSelectedItem().toString());
+        calculateMP.setEnabled(false);
+}
 
-
-
+   public void populateMailTable(String stdEmail){
+        Connection connection = JDBCConnection.Connect() ;
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT studentEmail,pkType FROM MailPkTable where studentEmail = ?");
+            
+            pst.setString(1, stdEmail);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                String stdEmail1 = rs.getString("studentEmail");
+                String pkType = rs.getString("pkType");
+                
+              
+                String tbData[] = {stdEmail1,pkType};
+                DefaultTableModel tblModel = (DefaultTableModel)tblMail.getModel();
+                tblModel.setRowCount(0);
+                tblModel.addRow(tbData);    
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
+   
+   
+   
 }

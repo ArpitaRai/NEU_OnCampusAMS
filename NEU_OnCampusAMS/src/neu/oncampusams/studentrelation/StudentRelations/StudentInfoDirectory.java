@@ -232,7 +232,83 @@ public class StudentInfoDirectory {
       
     }
     
+    public void addHuskyTransactions(String emailId,double amount){
+        
+        Connection connection = JDBCConnection.Connect();
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into HuskyTransactions (studentEmail,rechargeAmount) values(?,?)");
+            pst.setString(1,emailId);
+            pst.setDouble(2, amount);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
     
+    public void addMealPlan(String emailId,String mealPlan,double mealPrice){
+        
+        Connection connection = JDBCConnection.Connect();
+        boolean mealBool = true;
+        
+        try {
+            PreparedStatement  pst = connection.prepareStatement("insert into MealPlanTable (studentEmail,mealPlan,mealPrice,mealBool) values(?,?,?,?)");
+            pst.setString(1,emailId);
+            pst.setString(2,mealPlan);
+            pst.setDouble(3, mealPrice);
+            pst.setBoolean(4, mealBool);
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public String getMealPlanInfo(String emailId){
+      Connection connection = JDBCConnection.Connect();
+      String mealPlan = "";
+      
+        try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT mealPlan from MealPlanTable where studentEmail = ?");
+            pst.setString(1, emailId);
+            
+            ResultSet resultSet = pst.executeQuery();
+            if (resultSet.next()) {
+                
+                mealPlan = resultSet.getString("mealPlan");
+                
+                
+            }
+        return mealPlan;
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+      
+      return null;
+      
+    }
+    
+    public static boolean getMealBool(String stdEmail) {
+        Connection connection = JDBCConnection.Connect();
+        boolean validation = true;
+         try {
+            PreparedStatement  pst = connection.prepareStatement("SELECT mealBool from MealPlanTable where studentEmail = ?");
+            pst.setString(1, stdEmail);
+            ResultSet resultSet = pst.executeQuery();
+            //System.out.println(resultSet);
+            if (resultSet.next()) {
+                validation = false;
+            }
+            return validation;
+         } catch (SQLException ex) {
+              Logger.getLogger(StudentInfoDirectory.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return validation;
+    } 
     
     
 }
