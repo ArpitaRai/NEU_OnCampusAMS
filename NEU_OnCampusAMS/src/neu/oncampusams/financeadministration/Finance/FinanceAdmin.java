@@ -9,9 +9,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.MessageFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
 import neu.oncampusams.databaseConnection.JDBCConnection;
@@ -22,9 +24,11 @@ import neu.oncampusams.systemadministration.SystemAdmin.Login;
  * @author Yamini Manral
  */
 public class FinanceAdmin extends javax.swing.JFrame {
+
     FinAdminInfoDirectory faidir = new FinAdminInfoDirectory();
 
     String emailID;
+
     /**
      * Creates new form Warden1
      */
@@ -37,7 +41,6 @@ public class FinanceAdmin extends javax.swing.JFrame {
         initComponents();
         emailID = eid; //passing the value of emailid
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +84,6 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance Administrator Portal");
-        setMaximumSize(new java.awt.Dimension(1060, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -155,6 +157,11 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Export as Excel");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 170, 50));
 
         campus.setBackground(new java.awt.Color(242, 242, 242));
@@ -269,9 +276,9 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         int a = JOptionPane.showConfirmDialog(null, "Do you really wanna logout?", "Select", JOptionPane.YES_NO_OPTION);
-        if(a==0){
+        if (a == 0) {
             dispose();
             new Login().setVisible(true);
         }
@@ -287,15 +294,15 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+
         int queryId = Integer.parseInt(txtQueryId.getText());
         String note = txtNote.getText();
         String status = jcbStatus.getSelectedItem().toString();
-        faidir.updateQueryTable(note,status,queryId);
-        
+        faidir.updateQueryTable(note, status, queryId);
+
         DefaultTableModel model = (DefaultTableModel) tblFinQuery.getModel();
         model.setRowCount(0);
-        
+
         populateQueryTable();
         txtQueryId.setText(" ");
         txtNote.setText(" ");
@@ -306,13 +313,13 @@ public class FinanceAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Campus = (String) campus.getSelectedItem();
         String Expenses;
-        DefaultTableModel model = (DefaultTableModel)finBuilding.getModel();
+        DefaultTableModel model = (DefaultTableModel) finBuilding.getModel();
         model.setRowCount(0);
         try {
             Connection connection = JDBCConnection.Connect();
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT Expenses, campus FROM oncampusamsdb.incomeview where campus = '"+ Campus + "';" );
+            ResultSet rs = statement.executeQuery("SELECT Expenses, campus FROM oncampusamsdb.incomeview where campus = '" + Campus + "';");
 
             //push column values to the table fields
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
@@ -327,8 +334,25 @@ public class FinanceAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
 
-        
+
     }//GEN-LAST:event_viewIncomeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        
+        String datefrom = "Campus";
+        String dateto = "Total Income";
+
+        MessageFormat header = new MessageFormat("Report of  Campus " + datefrom + " Total Income " + dateto);
+        MessageFormat footer = new MessageFormat("page{0,number,integer}");
+        try {
+            finBuilding.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,27 +423,26 @@ public class FinanceAdmin extends javax.swing.JFrame {
     private javax.swing.JButton viewIncome;
     // End of variables declaration//GEN-END:variables
 
-    
- public void SetEmailID(){
+    public void SetEmailID() {
         lblEmail.setText(emailID);
-    } 
- public void populateQueryTable(){
-        Connection connection = JDBCConnection.Connect() ;
+    }
+
+    public void populateQueryTable() {
+        Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
             String sql = "SELECT * FROM oncampusamsdb.financequerytable";
             ResultSet rs = statement.executeQuery(sql);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 String queryId = rs.getString(1);
                 String raisedBy = rs.getString(2);
                 String status = rs.getString(3);
                 String description = rs.getString(4);
                 String note = rs.getString(5);
-                
-              
+
                 String tbData[] = {queryId, raisedBy, status, description, note};
-                DefaultTableModel tblModel = (DefaultTableModel)tblFinQuery.getModel();
+                DefaultTableModel tblModel = (DefaultTableModel) tblFinQuery.getModel();
                 tblModel.addRow(tbData);
             }
         } catch (SQLException ex) {
@@ -427,4 +450,3 @@ public class FinanceAdmin extends javax.swing.JFrame {
         }
     }
 }
-
