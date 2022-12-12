@@ -408,7 +408,7 @@ public class Warden extends javax.swing.JFrame {
             wardenInfo.setBuilding(building1);
             wardenInfo.setCampus(campus1);
             wardenInfo.setDescription(queryBox);
-            wardenInfo.setEmailID("wardenxyz@northeasetrn.com");
+            wardenInfo.setEmailID(emailID);
             wardenInfo.setRoles("Warden");
             wardenInfo.setQueryStatus("Query Raised");
             wardenDirectory.registerWardenQuery(wardenInfo);
