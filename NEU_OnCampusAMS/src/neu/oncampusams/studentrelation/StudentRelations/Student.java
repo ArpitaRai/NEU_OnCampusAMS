@@ -4,8 +4,11 @@
  */
 package neu.oncampusams.studentrelation.StudentRelations;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
+import neu.oncampusams.systemadministration.SystemAdmin.Login;
 
 /**
  *
@@ -53,22 +56,6 @@ public class Student extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        panelBilling = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel38 = new javax.swing.JLabel();
         panelHusky = new javax.swing.JPanel();
         lblHuskyTot = new javax.swing.JLabel();
         lblDollar2 = new javax.swing.JLabel();
@@ -78,6 +65,9 @@ public class Student extends javax.swing.JFrame {
         txtAddDollars = new javax.swing.JTextField();
         btnRefresh1 = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         panelQuery = new javax.swing.JPanel();
         lblQuery = new javax.swing.JLabel();
         jcbQueryType = new javax.swing.JComboBox<>();
@@ -106,6 +96,9 @@ public class Student extends javax.swing.JFrame {
         pwdPass = new javax.swing.JPasswordField();
         pwdPass1 = new javax.swing.JPasswordField();
         btnUpdate = new javax.swing.JButton();
+        lblphoto = new javax.swing.JLabel();
+        lblclose = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panelVending = new javax.swing.JPanel();
         panelVending1 = new javax.swing.JPanel();
         lblPringless = new javax.swing.JLabel();
@@ -126,11 +119,17 @@ public class Student extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         panelMeal = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
+        mpcal = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        mpDisplay = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jcbMealPlan = new javax.swing.JComboBox<>();
+        calculateMP = new javax.swing.JButton();
+        mpcal1 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        vegancal = new javax.swing.JLabel();
+        calculateMP1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Portal");
@@ -194,88 +193,6 @@ public class Student extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 160));
 
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        panelBilling.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel19.setText("Monthly rent (static):");
-        panelBilling.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 210, 30));
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel20.setText("*Display monthly rent*");
-        panelBilling.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 160, 30));
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel21.setText("$");
-        panelBilling.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 10, 30));
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel22.setText("Husky transactions:");
-        panelBilling.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 210, 30));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "transaction", "amount"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        panelBilling.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 320, 150));
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel23.setText("Total (static):");
-        panelBilling.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 140, 30));
-
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel24.setText("*Display total of meal plans*");
-        panelBilling.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 280, 30));
-
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setText("$");
-        panelBilling.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 10, 30));
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel26.setText("Grand Total:");
-        panelBilling.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 150, 30));
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel27.setText("*Meal plan + rent*");
-        panelBilling.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 160, 30));
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel28.setText("$");
-        panelBilling.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 10, 30));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Month", "Meal Plan"
-            }
-        ));
-        jScrollPane5.setViewportView(jTable3);
-
-        panelBilling.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 320, 150));
-
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel38.setText("Meal plan per month:");
-        panelBilling.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 210, 30));
-
-        jTabbedPane1.addTab("Billing", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/dollar-symbol.png")), panelBilling); // NOI18N
-
         panelHusky.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblHuskyTot.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -299,7 +216,7 @@ public class Student extends javax.swing.JFrame {
         lblDollar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDollar1.setText("$");
         panelHusky.add(lblDollar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 20, 50));
-        panelHusky.add(txtAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 230, -1));
+        panelHusky.add(txtAddDollars, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 230, 40));
 
         btnRefresh1.setBackground(new java.awt.Color(0, 0, 0));
         btnRefresh1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -324,6 +241,23 @@ public class Student extends javax.swing.JFrame {
             }
         });
         panelHusky.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 80, 40));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel33.setText("Husky transactions:");
+        panelHusky.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 210, 30));
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "transaction", "amount"
+            }
+        ));
+        jScrollPane9.setViewportView(jTable4);
+
+        panelHusky.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 320, 150));
 
         jTabbedPane1.addTab("Husky Card", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/credit-card.png")), panelHusky); // NOI18N
 
@@ -366,16 +300,13 @@ public class Student extends javax.swing.JFrame {
         panelRoomChange.setMaximumSize(new java.awt.Dimension(590, 470));
         panelRoomChange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRoomChgHead.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblRoomChgHead.setText("This page is for requesting a room change:");
-        panelRoomChange.add(lblRoomChgHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 350, 40));
+        lblRoomChgHead.setText("If you are a new student, uou can apply for a new room, or request for a change if you are already assigned one:");
+        panelRoomChange.add(lblRoomChgHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 770, 40));
 
-        lblRoomType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRoomType.setText("Select your desired room type");
         panelRoomChange.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 240, 40));
 
         jcbRoomType.setBackground(new java.awt.Color(204, 204, 204));
-        jcbRoomType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jcbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1BHK", "2BHK", "Studio", "Shared" }));
         jcbRoomType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,7 +315,6 @@ public class Student extends javax.swing.JFrame {
         });
         panelRoomChange.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 240, 30));
 
-        lblRoomChg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRoomChg.setText("Write more about your room change request:");
         panelRoomChange.add(lblRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 530, 40));
 
@@ -406,7 +336,7 @@ public class Student extends javax.swing.JFrame {
         });
         panelRoomChange.add(btnSubmitRoomChg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 80, 40));
 
-        jTabbedPane1.addTab("Request a room change", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelRoomChange); // NOI18N
+        jTabbedPane1.addTab("Apply for a room", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), panelRoomChange); // NOI18N
 
         panelUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -477,6 +407,35 @@ public class Student extends javax.swing.JFrame {
         jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 110, 40));
 
         panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 570, 390));
+
+        lblphoto.setText("label 2");
+        lblphoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelUpdate.add(lblphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 160, 90, 100));
+
+        lblclose.setText("label 1");
+        lblclose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblclose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblcloseMouseClicked(evt);
+            }
+        });
+        panelUpdate.add(lblclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 90, 100));
+        ImageIcon img = new ImageIcon("C:\\Users\\Yamini Manral\\Downloads\\img2.jpg");
+        Image myimg = img.getImage();
+        Image newimage = myimg.getScaledInstance(
+            90,90,
+            Image.SCALE_SMOOTH);
+
+        ImageIcon ic = new ImageIcon(newimage);
+        lblclose.setIcon(ic);
+
+        jButton1.setText("one button");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelUpdate.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, -1, -1));
 
         jTabbedPane1.addTab("Update details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), panelUpdate); // NOI18N
 
@@ -597,34 +556,82 @@ public class Student extends javax.swing.JFrame {
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Refresh");
         jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         panelMail.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 90, 50));
 
         jTabbedPane1.addTab("Mail", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/email.png")), panelMail); // NOI18N
 
         panelMeal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel9.setText("*Display total*");
-        panelMeal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 160, 30));
-
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Veg", "Non-veg", "Vegan" }));
-        panelMeal.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 100, 30));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel15.setText("Choose meal type:");
-        panelMeal.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 210, 30));
+        mpcal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mpcal.setForeground(new java.awt.Color(204, 0, 51));
+        mpcal.setText("total");
+        panelMeal.add(mpcal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 330, 30));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("$");
-        panelMeal.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 10, 30));
+        panelMeal.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 10, 30));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel17.setText("Total for a week:");
-        panelMeal.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 210, 30));
+        jLabel17.setText("meal plan:");
+        panelMeal.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 190, 30));
+
+        mpDisplay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mpDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        mpDisplay.setText("Total for a semester:");
+        panelMeal.add(mpDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 180, 30));
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel30.setText("changes are final, please choose carefully");
+        panelMeal.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 550, 30));
+
+        jcbMealPlan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbMealPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non-veg : 7 meals/week - $70", "Non-veg : 15 meals/week - $130", "Non-veg : UNLIMITED MEALS/week - $200", "Veg : 7 meals/week - $65", "Veg : 15 meals/week - $120", "Veg : UNLIMITED MEALS/week - $180", "Vegan : 7 meals/week - $80", "Vegan : 15 meals/week - $140", "Vegan : UNLIMITED MEALS/week - $210", "I don't want to opt ina meal plan" }));
+        panelMeal.add(jcbMealPlan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 390, 30));
+
+        calculateMP.setBackground(new java.awt.Color(0, 0, 0));
+        calculateMP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        calculateMP.setForeground(new java.awt.Color(255, 255, 255));
+        calculateMP.setText("Calculate");
+        calculateMP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        calculateMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateMPActionPerformed(evt);
+            }
+        });
+        panelMeal.add(calculateMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 110, 50));
+
+        mpcal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        mpcal1.setForeground(new java.awt.Color(204, 0, 51));
+        mpcal1.setText("Your selected meal plan is: ");
+        panelMeal.add(mpcal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 330, 30));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel31.setText("Total for a semester:");
+        panelMeal.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 210, 30));
+
+        vegancal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vegancal.setText("To check calories for each meal type, please click below:");
+        panelMeal.add(vegancal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 640, 30));
+
+        calculateMP1.setBackground(new java.awt.Color(0, 0, 0));
+        calculateMP1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        calculateMP1.setForeground(new java.awt.Color(255, 255, 255));
+        calculateMP1.setText("Check your calories");
+        calculateMP1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        calculateMP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateMP1ActionPerformed(evt);
+            }
+        });
+        panelMeal.add(calculateMP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 210, 40));
 
         jTabbedPane1.addTab("Meal Plans", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/food.png")), panelMeal); // NOI18N
 
@@ -636,6 +643,11 @@ public class Student extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wanna logout?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            dispose();
+            new Login().setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
@@ -854,6 +866,59 @@ public class Student extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void calculateMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateMPActionPerformed
+        // TODO add your handling code here:
+        
+        String mp = jcbMealPlan.getSelectedItem().toString();
+        
+        Double mealplan = 0.00;
+        if(mp.equals("Veg : 7 meals/week - $65")){
+             mealplan = 65.00 * 16;
+        }else if(mp.equals("Veg : UNLIMITED MEALS/week - $180")){
+            mealplan = 180.00 * 16;
+        }else if(mp.equals("Veg : 15 meals/week - $120")){
+            mealplan = 120.00 * 16;
+        }else if(mp.equals("Non-veg : 7 meals/week - $70")){
+            mealplan = 70.00 * 16;
+        }else if(mp.equals("Non-veg : 15 meals/week - $130")){
+            mealplan = 130.00 * 16;
+        }else if(mp.equals("Non-veg : UNLIMITED MEALS/week - $200")){
+            mealplan = 200.00 * 16;
+        }else if(mp.equals("Vegan : 7 meals/week - $80")){
+            mealplan = 80.00 * 16;
+        }else if(mp.equals("Vegan : 15 meals/week - $140")){
+            mealplan = 140.00 * 16;
+        }else if(mp.equals("Vegan : UNLIMITED MEALS/week - $210")){
+            mealplan = 210.00 * 16;
+        }else if(mp.equals("I don't want to opt in a meal plan")){
+            mealplan = 0.00;
+        }
+        
+        mpcal.setText(mealplan.toString());
+ 
+        mpDisplay.setText(jcbMealPlan.getSelectedItem().toString());
+        
+    }//GEN-LAST:event_calculateMPActionPerformed
+
+    private void calculateMP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateMP1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+//            new ChartCal().setVisible(true);
+        
+    }//GEN-LAST:event_calculateMP1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lblcloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcloseMouseClicked
+dispose();
+            }//GEN-LAST:event_lblcloseMouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -899,44 +964,35 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnSubmitRoomChg;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton calculateMP;
+    private javax.swing.JButton calculateMP1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JComboBox<String> jcbCaesar;
     private javax.swing.JComboBox<String> jcbCoke;
+    private javax.swing.JComboBox<String> jcbMealPlan;
     private javax.swing.JComboBox<String> jcbPringless;
     private javax.swing.JComboBox<String> jcbQueryType;
     private javax.swing.JComboBox<String> jcbRoomType;
@@ -965,7 +1021,11 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel lblSprite;
     private javax.swing.JLabel lblTotVal;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JPanel panelBilling;
+    private javax.swing.JLabel lblclose;
+    private javax.swing.JLabel lblphoto;
+    private javax.swing.JLabel mpDisplay;
+    private javax.swing.JLabel mpcal;
+    private javax.swing.JLabel mpcal1;
     private javax.swing.JPanel panelHusky;
     private javax.swing.JPanel panelMail;
     private javax.swing.JPanel panelMeal;
@@ -982,6 +1042,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPrsnlEmail;
     private javax.swing.JTextArea txtQueryDesc;
+    private javax.swing.JLabel vegancal;
     // End of variables declaration//GEN-END:variables
 
 private boolean FormValidation(){

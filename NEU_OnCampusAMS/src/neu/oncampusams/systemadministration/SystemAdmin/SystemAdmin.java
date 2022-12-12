@@ -4,7 +4,18 @@
  */
 package neu.oncampusams.systemadministration.SystemAdmin;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
+import neu.oncampusams.databaseConnection.JDBCConnection;
+
+
 
 /**
  *
@@ -13,19 +24,19 @@ import neu.oncampusams.campusadministration.CampusAdmin.*;
 public class SystemAdmin extends javax.swing.JFrame {
 
     String emailID;
-    
+
     /**
      * Creates new form Warden1
      */
     public SystemAdmin() {
         initComponents();
     }
-    
+
     public SystemAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
     }
-
+    CampusAdminInfoDirectory caiDir = new CampusAdminInfoDirectory();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,28 +52,36 @@ public class SystemAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox<>();
+        viewAdmins = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        searchField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        viewStudents = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        lblEmailId2 = new javax.swing.JLabel();
+        lblPrsnlEmail2 = new javax.swing.JLabel();
+        lblPhone2 = new javax.swing.JLabel();
+        lblNewPass4 = new javax.swing.JLabel();
+        lblNewPass5 = new javax.swing.JLabel();
+        oneBhk = new javax.swing.JTextField();
+        twoBhk = new javax.swing.JTextField();
+        Name = new javax.swing.JTextField();
+        Shared = new javax.swing.JTextField();
+        stuRes = new javax.swing.JTextField();
+        lblNewPass6 = new javax.swing.JLabel();
+        bCampus = new javax.swing.JTextField();
+        addDetails2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("System Administrator Portal");
@@ -91,16 +110,16 @@ public class SystemAdmin extends javax.swing.JFrame {
         jLabel11.setText("Email:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Logout");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        logout.setBackground(new java.awt.Color(255, 0, 0));
+        logout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 90, 40));
+        jPanel1.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 90, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +133,7 @@ public class SystemAdmin extends javax.swing.JFrame {
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmail.setText("Management System");
         jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 270, 30));
 
@@ -128,89 +148,181 @@ public class SystemAdmin extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Select your campus");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 240, 40));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("This page let's you raise query on the behalf of a student to higher management.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 540, 40));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 420, 190));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Submit");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 80, 40));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Type in your complaint:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 530, 40));
-
-        jComboBox10.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+        viewAdmins.setBackground(new java.awt.Color(0, 0, 0));
+        viewAdmins.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        viewAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        viewAdmins.setText("View");
+        viewAdmins.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewAdmins.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+                viewAdminsActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 240, 30));
+        jPanel2.add(viewAdmins, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 80, 40));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Type in your complaint:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 530, 40));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Select your building");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 240, 40));
+            },
+            new String [] {
+                "name", "email", "campus", "role"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable2);
 
-        jComboBox11.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 660, 160));
+
+        searchField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchField1.setText("Search");
+        searchField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
+                searchField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 240, 30));
+        searchField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchField1KeyReleased(evt);
+            }
+        });
+        jPanel2.add(searchField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 140, 40));
 
-        jTabbedPane1.addTab("Raise Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("View Admins", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel2); // NOI18N
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("Search");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchField.setText("Search");
+        searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchFieldActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 100, 140, 40));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Student ID:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 100, 30));
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 100, 140, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Name", "Room number", "Building "
+                "Name", "email", "campus"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 320));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 320));
 
-        jTabbedPane1.addTab("Student Information", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel3); // NOI18N
+        viewStudents.setBackground(new java.awt.Color(0, 0, 0));
+        viewStudents.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        viewStudents.setForeground(new java.awt.Color(255, 255, 255));
+        viewStudents.setText("View");
+        viewStudents.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewStudentsActionPerformed(evt);
+            }
+        });
+        jPanel3.add(viewStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 80, 40));
+
+        jTabbedPane1.addTab("View Students", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel3); // NOI18N
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblEmailId2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblEmailId2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblEmailId2.setText("1BHK Available");
+        jPanel4.add(lblEmailId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 170, 30));
+
+        lblPrsnlEmail2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPrsnlEmail2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPrsnlEmail2.setText("2BHK Available");
+        jPanel4.add(lblPrsnlEmail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 30));
+
+        lblPhone2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPhone2.setText("Shared Available");
+        jPanel4.add(lblPhone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 170, 30));
+
+        lblNewPass4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass4.setText("Student residing");
+        jPanel4.add(lblNewPass4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 170, 30));
+
+        lblNewPass5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass5.setText("Building name");
+        jPanel4.add(lblNewPass5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 210, 30));
+
+        oneBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        oneBhk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oneBhkActionPerformed(evt);
+            }
+        });
+        jPanel4.add(oneBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 230, 30));
+
+        twoBhk.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        twoBhk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoBhkActionPerformed(evt);
+            }
+        });
+        jPanel4.add(twoBhk, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 230, 30));
+
+        Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 230, 30));
+
+        Shared.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Shared.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SharedActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Shared, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 230, 30));
+
+        stuRes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stuRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stuResActionPerformed(evt);
+            }
+        });
+        jPanel4.add(stuRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 230, 30));
+
+        lblNewPass6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNewPass6.setText("Building campus");
+        jPanel4.add(lblNewPass6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 210, 30));
+
+        bCampus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCampusActionPerformed(evt);
+            }
+        });
+        jPanel4.add(bCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
+
+        addDetails2.setBackground(new java.awt.Color(255, 0, 0));
+        addDetails2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addDetails2.setForeground(new java.awt.Color(255, 255, 255));
+        addDetails2.setText("Add building");
+        addDetails2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDetails2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(addDetails2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 140, 50));
+
+        jTabbedPane1.addTab("Add Buildings", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), jPanel4); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1060, 540));
 
@@ -218,21 +330,150 @@ public class SystemAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wanna logout?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            dispose();
+            new Login().setVisible(true);
+        }
+    }//GEN-LAST:event_logoutActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
 
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
+        String query1 = searchField.getText();
+        filterSearch1(query1);
+
+    }//GEN-LAST:event_searchFieldKeyReleased
+
+    private void searchField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
+    }//GEN-LAST:event_searchField1ActionPerformed
+
+    private void searchField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchField1KeyReleased
+        // TODO add your handling code here:
+        String query2 = searchField1.getText();
+        filterSearch2(query2);
+
+    }//GEN-LAST:event_searchField1KeyReleased
+
+    private void viewStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStudentsActionPerformed
+        // TODO add your handling code here:
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String name;
+        String email;
+        String campus;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("select CONCAT(fName, ' ', lName), emailId, campus from oncampusamsdb.studenttable");
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                name = rs.getString(1);
+                email = rs.getString(2);
+                campus = rs.getString(3);
+                String[] row = {name, email, campus};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_viewStudentsActionPerformed
+
+    private void viewAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdminsActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        String name;
+        String email;
+        String campus;
+        String role;
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("SELECT * FROM oncampusamsdb.new_view;");
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                name = rs.getString(1);
+                email = rs.getString(2);
+                campus = rs.getString(3);
+                role = rs.getString(4);
+                String[] row = {name, email, campus, role};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_viewAdminsActionPerformed
+
+    private void oneBhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneBhkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oneBhkActionPerformed
+
+    private void twoBhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoBhkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_twoBhkActionPerformed
+
+    private void NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NameActionPerformed
+
+    private void SharedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SharedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SharedActionPerformed
+
+    private void stuResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stuResActionPerformed
+
+    private void bCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCampusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCampusActionPerformed
+
+    private void addDetails2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetails2ActionPerformed
+        //for new building addition
+        String name = Name.getText();
+        String campus = bCampus.getText();
+        String onebhk = oneBhk.getText();
+        String twobhk = twoBhk.getText();
+        String shared = Shared.getText();
+        String residing = stuRes.getText();
+
+        CampusAdminInfo building = new CampusAdminInfo();
+
+        building.setBuilding_name(name);
+        building.setCampus(campus);
+        building.setOnebhk(onebhk);
+        building.setTwobhk(twobhk);
+        building.setShared(shared);
+        building.setResiding(residing);
+
+        caiDir.addBuilding(building); //calling using object of CAI Directory
+        JOptionPane.showMessageDialog(this, "Building created successfully");
+        //                gymId.setText("");
+        Name.setText("");
+        bCampus.setText("");
+        oneBhk.setText("");
+        twoBhk.setText("");
+        Shared.setText("");
+        stuRes.setText("");
+    }//GEN-LAST:event_addDetails2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,38 +511,60 @@ public class SystemAdmin extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
+    private javax.swing.JTextField Name;
+    private javax.swing.JTextField Shared;
+    private javax.swing.JButton addDetails2;
+    private javax.swing.JTextField bCampus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmailId2;
+    private javax.swing.JLabel lblNewPass4;
+    private javax.swing.JLabel lblNewPass5;
+    private javax.swing.JLabel lblNewPass6;
+    private javax.swing.JLabel lblPhone2;
+    private javax.swing.JLabel lblPrsnlEmail2;
+    private javax.swing.JButton logout;
+    private javax.swing.JTextField oneBhk;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JTextField searchField1;
+    private javax.swing.JTextField stuRes;
+    private javax.swing.JTextField twoBhk;
+    private javax.swing.JButton viewAdmins;
+    private javax.swing.JButton viewStudents;
     // End of variables declaration//GEN-END:variables
 
-
-public void SetEmailID(){
+    public void SetEmailID() {
         lblEmail.setText(emailID);
-    } 
+    }
+
+    private void filterSearch1(String query) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> tableRowSorter = new TableRowSorter<>(model);
+        jTable1.setRowSorter(tableRowSorter);
+        tableRowSorter.setRowFilter(RowFilter.regexFilter(query));
+    }
+
+    private void filterSearch2(String query) {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        TableRowSorter<DefaultTableModel> tableRowSorter = new TableRowSorter<>(model);
+        jTable2.setRowSorter(tableRowSorter);
+        tableRowSorter.setRowFilter(RowFilter.regexFilter(query));
+    }
 }

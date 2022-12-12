@@ -4,13 +4,25 @@
  */
 package neu.oncampusams.financeadministration.Finance;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
+import neu.oncampusams.databaseConnection.JDBCConnection;
+import neu.oncampusams.systemadministration.SystemAdmin.Login;
 
 /**
  *
  * @author Yamini Manral
  */
 public class FinanceAdmin extends javax.swing.JFrame {
+    FinAdminInfoDirectory faidir = new FinAdminInfoDirectory();
 
     String emailID;
     /**
@@ -18,12 +30,14 @@ public class FinanceAdmin extends javax.swing.JFrame {
      */
     public FinanceAdmin() {
         initComponents();
+        populateQueryTable();
     }
 
     public FinanceAdmin(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,19 +63,19 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        campus = new javax.swing.JComboBox<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        finBuilding = new javax.swing.JTable();
+        viewIncome = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
+        tblFinQuery = new javax.swing.JTable();
+        txtQueryId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox13 = new javax.swing.JComboBox<>();
+        txtNote = new javax.swing.JTextArea();
+        jcbStatus = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
@@ -126,13 +140,11 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 160));
 
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Select the campus for which you want to see expenses");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 410, 40));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 460, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("View details of income by student rent and meal plans:");
@@ -145,60 +157,61 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 170, 50));
 
-        jComboBox10.setBackground(new java.awt.Color(242, 242, 242));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
-        jComboBox10.setBorder(null);
-        jComboBox10.addActionListener(new java.awt.event.ActionListener() {
+        campus.setBackground(new java.awt.Color(242, 242, 242));
+        campus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
+        campus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox10ActionPerformed(evt);
+                campusActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 240, 40));
+        jPanel2.add(campus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 240, 40));
 
-        jTable3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        finBuilding.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        finBuilding.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Campus", "Total Income"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(finBuilding);
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, -1, 340));
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("View");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 100, 50));
+        viewIncome.setBackground(new java.awt.Color(0, 0, 0));
+        viewIncome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewIncome.setForeground(new java.awt.Color(255, 255, 255));
+        viewIncome.setText("View");
+        viewIncome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewIncome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewIncomeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(viewIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 100, 50));
 
         jTabbedPane1.addTab("Income", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/income.png")), jPanel2); // NOI18N
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblFinQuery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblFinQuery.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tblFinQuery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Query ID", "Raised By", "Contact", "Status", "Description", "Note"
+                "Query ID", "Raised By", "Status", "Description", "Note"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblFinQuery);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 960, 110));
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 120, 40));
+        txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel4.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 120, 40));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -212,22 +225,22 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jLabel18.setText("Query ID");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 110, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        txtNote.setColumns(20);
+        txtNote.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNote.setRows(5);
+        jScrollPane3.setViewportView(txtNote);
 
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 560, 90));
 
-        jComboBox13.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Under review", "Processed" }));
-        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+        jcbStatus.setBackground(new java.awt.Color(204, 204, 204));
+        jcbStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Under review", "Processed" }));
+        jcbStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox13ActionPerformed(evt);
+                jcbStatusActionPerformed(evt);
             }
         });
-        jPanel4.add(jComboBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 250, 40));
+        jPanel4.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 250, 40));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -256,19 +269,66 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wanna logout?", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            dispose();
+            new Login().setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox10ActionPerformed
+    private void campusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox10ActionPerformed
+    }//GEN-LAST:event_campusActionPerformed
 
-    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+    private void jcbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox13ActionPerformed
+    }//GEN-LAST:event_jcbStatusActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        int queryId = Integer.parseInt(txtQueryId.getText());
+        String note = txtNote.getText();
+        String status = jcbStatus.getSelectedItem().toString();
+        faidir.updateQueryTable(note,status,queryId);
+        
+        DefaultTableModel model = (DefaultTableModel) tblFinQuery.getModel();
+        model.setRowCount(0);
+        
+        populateQueryTable();
+        txtQueryId.setText(" ");
+        txtNote.setText(" ");
+        jcbStatus.setSelectedIndex(0);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void viewIncomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIncomeActionPerformed
+        // TODO add your handling code here:
+        String Campus = (String) campus.getSelectedItem();
+        String Expenses;
+        DefaultTableModel model = (DefaultTableModel)finBuilding.getModel();
+        model.setRowCount(0);
+        try {
+            Connection connection = JDBCConnection.Connect();
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery("SELECT Expenses, campus FROM oncampusamsdb.incomeview where campus = '"+ Campus + "';" );
+
+            //push column values to the table fields
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            while (rs.next()) {
+                Campus = rs.getString(1);
+                Expenses = rs.getString(2);
+                String[] row = {Campus, Expenses};
+                model.addRow(row);
+            }
+            connection.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        
+    }//GEN-LAST:event_viewIncomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,12 +367,11 @@ public class FinanceAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> campus;
+    private javax.swing.JTable finBuilding;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox13;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -332,14 +391,40 @@ public class FinanceAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> jcbStatus;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JTable tblFinQuery;
+    private javax.swing.JTextArea txtNote;
+    private javax.swing.JTextField txtQueryId;
+    private javax.swing.JButton viewIncome;
     // End of variables declaration//GEN-END:variables
 
-public void SetEmailID(){
+    
+ public void SetEmailID(){
         lblEmail.setText(emailID);
     } 
+ public void populateQueryTable(){
+        Connection connection = JDBCConnection.Connect() ;
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "SELECT * FROM oncampusamsdb.financequerytable";
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while(rs.next()){
+                String queryId = rs.getString(1);
+                String raisedBy = rs.getString(2);
+                String status = rs.getString(3);
+                String description = rs.getString(4);
+                String note = rs.getString(5);
+                
+              
+                String tbData[] = {queryId, raisedBy, status, description, note};
+                DefaultTableModel tblModel = (DefaultTableModel)tblFinQuery.getModel();
+                tblModel.addRow(tbData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccomodationAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
+
