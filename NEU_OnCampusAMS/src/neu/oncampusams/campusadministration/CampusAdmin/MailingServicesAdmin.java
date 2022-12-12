@@ -116,7 +116,7 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
         jPanel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel8.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel8.setBackground(new java.awt.Color(255, 204, 153));
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -172,7 +172,7 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
 
         jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 840, 390));
 
-        bg8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/liam-truong-YjWW9-VJlw4-unsplash.jpg"))); // NOI18N
+        bg8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/mail_bg.jpg"))); // NOI18N
         jPanel5.add(bg8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 660));
 
         jTabbedPane1.addTab("Send Notification", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/email (1).png")), jPanel5); // NOI18N

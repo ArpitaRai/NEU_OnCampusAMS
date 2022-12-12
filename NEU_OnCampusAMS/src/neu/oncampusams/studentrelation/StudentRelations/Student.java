@@ -605,6 +605,7 @@ public class Student extends javax.swing.JFrame {
 
         panelMeal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mpcal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
