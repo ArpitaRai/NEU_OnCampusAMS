@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -33,7 +33,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-              <Component id="lblFoodType" min="-2" pref="105" max="-2" attributes="0"/>
+              <Component id="lblMealType" min="-2" pref="105" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="jcbMealType" min="-2" pref="89" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -47,7 +47,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblFoodType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMealType" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbMealType" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnShow" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -65,9 +65,9 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblFoodType">
+    <Component class="javax.swing.JLabel" name="lblMealType">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Food Type:"/>
+        <Property name="text" type="java.lang.String" value="Meal Type:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jcbMealType">
