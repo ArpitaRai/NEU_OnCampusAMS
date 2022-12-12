@@ -18,6 +18,7 @@ import neu.oncampusams.systemadministration.SystemAdmin.Login;
 import neu.oncampusams.systemadministration.SystemAdmin.RegistrationDirectory;
 import neu.oncampusams.utilities.EmailInfo;
 import neu.oncampusams.utilities.SendEmail;
+import neu.oncampusams.utilities.Validations;
 
 /**
  *
@@ -402,16 +403,15 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
                 emailInfo = SendEmail.mail(emailInfo);
 
                 JOptionPane.showMessageDialog(this, emailInfo.getBody());
-                
-                String sql1= "INSERT INTO `oncampusamsdb`.`MailPkTable`(`studentEmail`,`pkType`)VALUES('" + emailInfo.getGmailId()
-                    + "' , '" + ptype + "');";
-                  statement.executeUpdate(sql1);
+
+                String sql1 = "INSERT INTO `oncampusamsdb`.`MailPkTable`(`studentEmail`,`pkType`)VALUES('" + emailInfo.getGmailId()
+                        + "' , '" + ptype + "');";
+                statement.executeUpdate(sql1);
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect EmailId");
                 gmailId.setText("");
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -426,7 +426,7 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null, "Do you really wanna logout?", "Select", JOptionPane.YES_NO_OPTION);
-        if(a==0){
+        if (a == 0) {
             dispose();
             new Login().setVisible(true);
         }
@@ -446,7 +446,15 @@ public final class MailingServicesAdmin extends javax.swing.JFrame {
             return;
         }
         MailingServicesAdminInfo mailingServicesAdminInfo = new MailingServicesAdminInfo();
-        mailingServicesAdminInfo.setPhone(updatePhone.getText());
+        String phoneNumber = updatePhone.getText();
+        boolean valid;
+        valid = Validations.isContactValid(phoneNumber);
+        if (valid == false) {
+            JOptionPane.showMessageDialog(this, "Incorrect Phone number!");
+            updatePhone.setText("");
+            return;
+        }
+        mailingServicesAdminInfo.setPhone(phoneNumber);
         mailingServicesAdminInfo.setEmailID(emailID);
         mailingServicesAdminInfo.setPassword(pwdPass1.getText());
         mailingServicesAdminInfoDirectory.updateAdminDetails(mailingServicesAdminInfo);
