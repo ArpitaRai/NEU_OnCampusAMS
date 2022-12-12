@@ -186,7 +186,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Incorrect credentials! Check your username or password.");
             }
             }else if("Accommodation Admin".equals(role)){//acco admin 4
-                ResultSet resultset = statement.executeQuery("SELECT * FROM oncampusamsdb.accomodationadmintable where emailId ='" + username + "' and password = '" + password + "'");
+                ResultSet resultset = statement.executeQuery("SELECT * FROM oncampusamsdb.accommodationadmintable where emailId ='" + username + "' and password = '" + password + "'");
                 if(resultset.next()){
                     AccomodationAdmin aa = new AccomodationAdmin(resultset.getString("emailId"));
                     aa.SetEmailID();

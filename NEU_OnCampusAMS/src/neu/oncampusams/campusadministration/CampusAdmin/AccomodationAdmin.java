@@ -44,6 +44,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         populateBuildingTable();
         populateBuildingList();
         populateWardenList();
+        updateEmail.setText(emailID);
     }
 
     /**
@@ -466,6 +467,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         lblEmailId.setText("Email Id");
         jPanel2.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, 40));
 
+        updateEmail.setEditable(false);
         updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         updateEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
