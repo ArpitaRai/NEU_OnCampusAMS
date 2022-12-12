@@ -340,20 +340,6 @@ public class FinanceAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        
-        String datefrom = "Campus";
-        String dateto = "Total Income";
-
-        MessageFormat header = new MessageFormat("Report of  Campus " + datefrom + " Total Income " + dateto);
-        MessageFormat footer = new MessageFormat("page{0,number,integer}");
-        try {
-            finBuilding.print(JTable.PrintMode.FIT_WIDTH, header, footer);
-
-        } catch (Exception e) {
-            e.getMessage();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */

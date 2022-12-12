@@ -11,9 +11,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1400, 700]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1400, 700]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -66,7 +63,7 @@
               <JTabbedPaneConstraints tabName="Canteen Details">
                 <Property name="tabTitle" type="java.lang.String" value="Canteen Details"/>
                 <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/canteen (1).png"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/canteen .png"/>
                 </Property>
               </JTabbedPaneConstraints>
             </Constraint>
@@ -317,7 +314,7 @@
             <Component class="javax.swing.JLabel" name="bg1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/tamanna-rumee-DoUgSMezLp0-unsplash.jpg"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/canteen_bg.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -461,7 +458,7 @@
             <Component class="javax.swing.JLabel" name="bg2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/admin_bg.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -814,7 +811,7 @@
             <Component class="javax.swing.JLabel" name="bg3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/owen-lystrup-boLgiM0qwkg-unsplash.jpg"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/building_bg.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -993,7 +990,7 @@
             <Component class="javax.swing.JLabel" name="bg4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/profile_bg.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1266,7 +1263,7 @@
             <Component class="javax.swing.JLabel" name="bg5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/neu/oncampusams/images/danielle-cerullo-CQfNt66ttZM-unsplash.jpg"/>
+                  <Image iconType="3" name="/neu/oncampusams/images/gym_bg.jpg"/>
                 </Property>
               </Properties>
               <Constraints>
