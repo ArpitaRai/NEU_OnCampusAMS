@@ -142,8 +142,8 @@ public class RegistrationDirectory {
             if ("Campus Admin".equals(registration.getRoles())) {
                 sql = "SELECT * FROM `oncampusamsdb`.`CampusAdminTable` where emailId ='" + registration.getEmailID() + "'";
             }
-            if ("Building Admin".equals(registration.getRoles())) {
-                sql = "SELECT * FROM `oncampusamsdb`.`accomodationadmintable` where emailId ='" + registration.getEmailID() + "'";
+            if ("Accommodation Admin".equals(registration.getRoles())) {
+                sql = "SELECT * FROM `oncampusamsdb`.`accommodationadmintable` where emailId ='" + registration.getEmailID() + "'";
             }
             if ("Warden".equals(registration.getRoles())) {
                 sql = "SELECT * FROM `oncampusamsdb`.`WardenTable` where emailId ='" + registration.getEmailID() + "'";
@@ -239,7 +239,7 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "UPDATE `oncampusamsdb`.`BuildingTable` SET fName = '" + registration.getFirstName() + "' ,lName = '" + registration.getLastName()
+            String sql = "UPDATE `oncampusamsdb`.`AccommodationAdminTable` SET fName = '" + registration.getFirstName() + "' ,lName = '" + registration.getLastName()
                     + "' ,campus = '" + registration.getCampus() + "' ,password = '" + registration.getPassword() + "' where emailId ='" + registration.getEmailID() + "'";
             statement.executeUpdate(sql);
 
@@ -328,7 +328,7 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "DELETE FROM `oncampusamsdb`.`BuildingTable` where emailId ='" + registration.getEmailID() + "'";
+            String sql = "DELETE FROM `oncampusamsdb`.`AccommodationAdminTable` where emailId ='" + registration.getEmailID() + "'";
             statement.executeUpdate(sql);
 
         } catch (SQLException ex) {

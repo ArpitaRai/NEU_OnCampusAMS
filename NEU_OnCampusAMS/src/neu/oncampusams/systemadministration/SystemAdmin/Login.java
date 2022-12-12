@@ -130,7 +130,7 @@ public class Login extends javax.swing.JFrame {
         roleCB.setBackground(new java.awt.Color(211, 97, 53));
         roleCB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         roleCB.setForeground(new java.awt.Color(255, 255, 255));
-        roleCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Finance Admin", "Campus Admin", "Accommodation Admin", "Warden", "Mailing Services Admin" }));
+        roleCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "System Admin", "Finance Admin", "Campus Admin", "Accommodation Admin", "Warden", "Mailing Services Admin" }));
         jPanel3.add(roleCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 240, 40));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 710, 700));
