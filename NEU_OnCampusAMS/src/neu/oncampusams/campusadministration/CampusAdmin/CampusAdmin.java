@@ -134,7 +134,6 @@ public class CampusAdmin extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1400, 700));
         setMinimumSize(new java.awt.Dimension(1400, 700));
-        setPreferredSize(new java.awt.Dimension(1400, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -235,10 +234,10 @@ public class CampusAdmin extends javax.swing.JFrame {
 
         jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 770, 520));
 
-        bg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/tamanna-rumee-DoUgSMezLp0-unsplash.jpg"))); // NOI18N
+        bg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen_bg.jpg"))); // NOI18N
         jPanel3.add(bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
-        jTabbedPane1.addTab("Canteen Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen (1).png")), jPanel3); // NOI18N
+        jTabbedPane1.addTab("Canteen Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/canteen .png")), jPanel3); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +275,7 @@ public class CampusAdmin extends javax.swing.JFrame {
 
         jPanel4.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 580, 450));
 
-        bg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg"))); // NOI18N
+        bg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin_bg.jpg"))); // NOI18N
         jPanel4.add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
         jTabbedPane1.addTab("Accomodation Admin", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin.png")), jPanel4); // NOI18N
@@ -417,7 +416,7 @@ public class CampusAdmin extends javax.swing.JFrame {
 
         jPanel6.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 730, 580));
 
-        bg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/owen-lystrup-boLgiM0qwkg-unsplash.jpg"))); // NOI18N
+        bg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building_bg.jpg"))); // NOI18N
         jPanel6.add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
         jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/office-building.png")), jPanel6); // NOI18N
@@ -485,7 +484,7 @@ public class CampusAdmin extends javax.swing.JFrame {
 
         jPanel8.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 490, 360));
 
-        bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"))); // NOI18N
+        bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/profile_bg.jpg"))); // NOI18N
         jPanel8.add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
         jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), jPanel8); // NOI18N
@@ -583,7 +582,7 @@ public class CampusAdmin extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 590, 560));
 
-        bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/danielle-cerullo-CQfNt66ttZM-unsplash.jpg"))); // NOI18N
+        bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/gym_bg.jpg"))); // NOI18N
         jPanel2.add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
 
         jTabbedPane1.addTab("Gym Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/dumbbell (1).png")), jPanel2); // NOI18N
