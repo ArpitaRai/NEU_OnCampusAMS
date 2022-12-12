@@ -11,6 +11,9 @@ import java.sql.Statement;
 import neu.oncampusams.databaseConnection.JDBCConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import neu.oncampusams.utilities.EmailInfo;
+import neu.oncampusams.utilities.SendEmail;
 
 /**
  *
@@ -19,15 +22,17 @@ import java.util.logging.Logger;
 public class RegistrationDirectory {
 
     RegistrationInfo registration = new RegistrationInfo();
+
     public void registerStudent(RegistrationInfo registration) {
 
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`StudentTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`StudentTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             System.out.println(sql + "Query here");
             statement.executeUpdate(sql);
+            SendRegistration(registration);
 
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
@@ -39,10 +44,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`HeadSysAdmin` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`HeadSysAdmin` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,10 +58,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`SysAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`SysAdminTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,10 +72,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`CampusAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`CampusAdminTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -81,10 +86,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`accomodationadmintable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`AccommodationAdminTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -95,10 +100,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`WardenTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`WardenTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,10 +114,10 @@ public class RegistrationDirectory {
         Connection connection = JDBCConnection.Connect();
         try {
             Statement statement = (Statement) connection.createStatement();
-            String sql = "INSERT INTO `oncampusamsdb`.`MailAdminTable` " + "(fName, lName, password, campus, emailId)" + "VALUES ('" + registration.getFirstName()
-                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "');";
+            String sql = "INSERT INTO `oncampusamsdb`.`MailAdminTable` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
             statement.executeUpdate(sql);
-
+            SendRegistration(registration);
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -148,15 +153,24 @@ public class RegistrationDirectory {
 
             }
 
+            if ("Finance Admin".equals(registration.getRoles())) {
+                sql = "SELECT * FROM `oncampusamsdb`.`FinanceAdmin` where emailId ='" + registration.getEmailID() + "'";
+
+            }
+
             ResultSet resultSet = statement.executeQuery(sql);
             registration = new RegistrationInfo();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 registration.setFirstName(resultSet.getString("fName"));
                 registration.setLastName(resultSet.getString("lName"));
                 registration.setPassword(resultSet.getString("password"));
                 registration.setCampus(resultSet.getString("campus"));
 
             }
+            else{
+            return null;}
+    
+            
             return registration;
         } catch (SQLException ex) {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
@@ -345,4 +359,57 @@ public class RegistrationDirectory {
             Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    void registerFinanceAdmin(RegistrationInfo registration) {
+        Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "INSERT INTO `oncampusamsdb`.`FinanceAdmin` " + "(fName, lName, password, campus, emailId, personalEmailId)" + "VALUES ('" + registration.getFirstName()
+                    + "' , '" + registration.getLastName() + "' , '" + registration.getPassword() + "', '" + registration.getCampus() + "',  '" + registration.getEmailID() + "',  '" + registration.getGmail() + "');";
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void SendRegistration(RegistrationInfo reg) {
+        EmailInfo emailInfo = new EmailInfo();
+
+        emailInfo.setGmailId(reg.getGmail());
+
+        emailInfo.setSubjectLine("Registration Successful - Northeastern University ");
+        emailInfo.setBody("Hi, You have been successfully registered as a " + reg.getRoles() + " at Northeastern University.   Email ID: "
+                + reg.getEmailID() + "   Your password : " + reg.getPassword() + "  . Please use the credential to login the NEU Official Website. "
+                + "We Welcome you and wish you the best for your memorable journey here with us."
+                + " - NEU IT Department");
+
+        emailInfo = SendEmail.mail(emailInfo);
+    }
+
+    void deleteFinanceAdmin(RegistrationInfo registration) {
+        Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "DELETE FROM `oncampusamsdb`.`FinanceAdmin` where emailId ='" + registration.getEmailID() + "'";
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void updateFinanceAdmin(RegistrationInfo registration) {
+        Connection connection = JDBCConnection.Connect();
+        try {
+            Statement statement = (Statement) connection.createStatement();
+            String sql = "UPDATE `oncampusamsdb`.`FinanceAdmin` SET fName = '" + registration.getFirstName() + "' ,lName = '" + registration.getLastName()
+                    + "' ,campus = '" + registration.getCampus() + "' ,password = '" + registration.getPassword() + "' where emailId ='" + registration.getEmailID() + "'";
+            statement.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrationDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
