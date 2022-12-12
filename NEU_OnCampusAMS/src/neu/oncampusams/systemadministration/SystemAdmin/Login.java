@@ -56,7 +56,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Page");
         setLocationByPlatform(true);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
         setMinimumSize(new java.awt.Dimension(1000, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,18 +86,18 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 700));
 
-        jPanel3.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(211, 97, 53));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/password.png"))); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 32, 48));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/user.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/businessman.png"))); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 32, 48));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 220, 10));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 220, 10));
 
-        passwordTF.setBackground(new java.awt.Color(204, 0, 0));
+        passwordTF.setBackground(new java.awt.Color(211, 97, 53));
         passwordTF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         passwordTF.setForeground(new java.awt.Color(255, 255, 255));
         passwordTF.setBorder(null);
@@ -113,21 +112,22 @@ public class Login extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png"))); // NOI18N
         jButton1.setText("LOGIN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 90, 40));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 140, 50));
 
-        usernameTF.setBackground(new java.awt.Color(204, 0, 0));
+        usernameTF.setBackground(new java.awt.Color(211, 97, 53));
         usernameTF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         usernameTF.setForeground(new java.awt.Color(255, 255, 255));
         usernameTF.setBorder(null);
         jPanel3.add(usernameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 220, 40));
 
-        roleCB.setBackground(new java.awt.Color(204, 0, 0));
+        roleCB.setBackground(new java.awt.Color(211, 97, 53));
         roleCB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         roleCB.setForeground(new java.awt.Color(255, 255, 255));
         roleCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Head System Admin", "System Admin", "Finance Admin", "Campus Admin", "Accommodation Admin", "Warden", "Mailing Services Admin" }));
