@@ -404,9 +404,9 @@ public class SystemAdmin extends javax.swing.JFrame {
             Connection connection = JDBCConnection.Connect();
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM oncampusamsdb.new_view;");
+            ResultSet rs = statement.executeQuery("SELECT * FROM oncampusamsdb.viewAdmin;");
 
-            //push column values to the table fields
+            //push column values to the table fieldss
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
                 name = rs.getString(1);
