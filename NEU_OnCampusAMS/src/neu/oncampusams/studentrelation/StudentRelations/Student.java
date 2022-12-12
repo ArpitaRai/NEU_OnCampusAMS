@@ -17,7 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import neu.oncampusams.campusadministration.CampusAdmin.*;
 import neu.oncampusams.charts.ChartCal;
+
 import neu.oncampusams.databaseConnection.JDBCConnection;
+
 import neu.oncampusams.systemadministration.SystemAdmin.Login;
 
 /**
@@ -940,7 +942,7 @@ public class Student extends javax.swing.JFrame {
 
     private void calculateMP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateMP1ActionPerformed
         // TODO add your handling code here:
-        
+
             new ChartCal().setVisible(true);
         
     }//GEN-LAST:event_calculateMP1ActionPerformed
@@ -1125,7 +1127,7 @@ private void populateForm(String emailId){
 
 
 public void SetEmailID(){
-        txtEmailId.setText(emailID);
+        lblEmail.setText(emailID);
     } 
 
 public void populateHuskyTable(String stdEmail){
