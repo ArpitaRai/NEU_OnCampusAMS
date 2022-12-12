@@ -49,10 +49,23 @@ public class Student extends javax.swing.JFrame {
        }
         populateHuskyTable("test.s@northeastern.edu");
         populateMailTable("test.s@northeastern.edu");
+        txtEmailId.setText("test.s@northeastern.edu");
+        
     }
     public Student(String eid) {
         initComponents();
         emailID = eid; //passing the value of emailid
+        StudentInfo std = StudentInfoDirectory.getStudentHuskyD(emailID);
+        lblHuskyTotVal.setText(String.valueOf(std.getHuskyDollars()));
+       boolean val =  studentDir.getMealBool(emailID);
+       if(val == false){
+           populateMealPlan(emailID);
+           
+           
+       }
+        populateHuskyTable(emailID);
+        populateMailTable(emailID);
+        txtEmailId.setText(emailID);
     }
 
     /**
@@ -115,9 +128,6 @@ public class Student extends javax.swing.JFrame {
         pwdPass = new javax.swing.JPasswordField();
         pwdPass1 = new javax.swing.JPasswordField();
         btnUpdate = new javax.swing.JButton();
-        lblphoto = new javax.swing.JLabel();
-        lblclose = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         panelVending = new javax.swing.JPanel();
         panelVending1 = new javax.swing.JPanel();
         lblPringless = new javax.swing.JLabel();
@@ -205,7 +215,7 @@ public class Student extends javax.swing.JFrame {
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Welcome, *Student*");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 190, 30));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 250, 30));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
@@ -396,6 +406,7 @@ public class Student extends javax.swing.JFrame {
         lblNewPass1.setText("Re-Enter New Password");
         jPanel9.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 40));
 
+        txtEmailId.setEditable(false);
         txtEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEmailId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,35 +447,6 @@ public class Student extends javax.swing.JFrame {
         jPanel9.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 110, 40));
 
         panelUpdate.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 570, 390));
-
-        lblphoto.setText("label 2");
-        lblphoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panelUpdate.add(lblphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 160, 90, 100));
-
-        lblclose.setText("label 1");
-        lblclose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lblclose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblcloseMouseClicked(evt);
-            }
-        });
-        panelUpdate.add(lblclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, 90, 100));
-        ImageIcon img = new ImageIcon("C:\\Users\\Yamini Manral\\Downloads\\img2.jpg");
-        Image myimg = img.getImage();
-        Image newimage = myimg.getScaledInstance(
-            90,90,
-            Image.SCALE_SMOOTH);
-
-        ImageIcon ic = new ImageIcon(newimage);
-        lblclose.setIcon(ic);
-
-        jButton1.setText("one button");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        panelUpdate.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, -1, -1));
 
         jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
 
@@ -695,7 +677,7 @@ public class Student extends javax.swing.JFrame {
 
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
         // TODO add your handling code here:
-        StudentInfo std = StudentInfoDirectory.getStudentHuskyD("test.s@northeastern.edu");
+        StudentInfo std = StudentInfoDirectory.getStudentHuskyD(emailID);
         lblHuskyTotVal.setText(String.valueOf(std.getHuskyDollars()));
         txtAddDollars.setText("");
     }//GEN-LAST:event_btnRefresh1ActionPerformed
@@ -714,7 +696,7 @@ public class Student extends javax.swing.JFrame {
             double addDollars = Double.parseDouble(txtAddDollars.getText());
         double remDollars = Double.parseDouble(lblHuskyTotVal.getText());
         double newTotal = addDollars + remDollars;
-        String emailId = "test.s@northeastern.edu";
+        String emailId = emailID;
 
         if (addDollars >= 1.0 && addDollars <= 50.0){
             studentDir.updateHuskyDollars(newTotal, emailId);
@@ -799,14 +781,14 @@ public class Student extends javax.swing.JFrame {
 
         double total = StudentInfoDirectory.calculateTotalCost(pringlessNo,caesarNo,cokeNo,spriteNo);
 
-        StudentInfo std = StudentInfoDirectory.getStudentHuskyD("test.s@northeastern.edu");
+        StudentInfo std = StudentInfoDirectory.getStudentHuskyD(emailID);
         double remDollars = std.getHuskyDollars();
         double change = remDollars - total;
         if (change < 0){
             JOptionPane.showMessageDialog(this, "Not Enough Balance! Recharge Husky Card!");
         }
         else{
-            String emailId = "test.s@northeastern.edu";
+            String emailId = emailID;
             studentDir.updateHuskyDollars(change, emailId);
             JOptionPane.showMessageDialog(this, "Payment Successful!!!");
             jcbPringless.setSelectedIndex(0);
@@ -823,8 +805,8 @@ public class Student extends javax.swing.JFrame {
 
         String queryType = jcbQueryType.getSelectedItem().toString();
         String description = txtQueryDesc.getText();
-        String emailId = "test.s@northeastern.edu";
-        String contact = "1234567890";
+        String emailId = emailID;
+        String contact = emailID;
         if(description.equals("") || description.equals(" ")){
             JOptionPane.showMessageDialog(this, "Description is Empty!");
         }
@@ -864,7 +846,7 @@ public class Student extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Description is Empty!");
         }
         else{
-            String emailId = "test.s@northeastern.edu";
+            String emailId = emailID;
             studentDir.addRoomChangeQuery(emailId,description,roomType);
             JOptionPane.showMessageDialog(this,"Room Change Request Submitted.");
             txtArRoomChg.setText("");
@@ -916,7 +898,7 @@ public class Student extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String mp = jcbMealPlan.getSelectedItem().toString();
-        String emailId="test.s@northeastern.edu";
+        String emailId=emailID;
         
         Double mealplan = 0.00;
         if(mp.equals("Veg : 7 meals/week - $65")){
@@ -955,14 +937,6 @@ public class Student extends javax.swing.JFrame {
             new ChartCal().setVisible(true);
         
     }//GEN-LAST:event_calculateMP1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void lblcloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcloseMouseClicked
-dispose();
-            }//GEN-LAST:event_lblcloseMouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -1015,7 +989,6 @@ dispose();
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton calculateMP;
     private javax.swing.JButton calculateMP1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -1069,8 +1042,6 @@ dispose();
     private javax.swing.JLabel lblSprite;
     private javax.swing.JLabel lblTotVal;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblclose;
-    private javax.swing.JLabel lblphoto;
     private javax.swing.JLabel mpDisplay;
     private javax.swing.JLabel mpcal;
     private javax.swing.JLabel mpcal1;
