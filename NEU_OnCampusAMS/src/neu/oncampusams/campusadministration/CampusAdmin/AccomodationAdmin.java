@@ -129,7 +129,6 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(1400, 700));
         setMinimumSize(new java.awt.Dimension(1400, 700));
-        setPreferredSize(new java.awt.Dimension(1400, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -520,9 +519,8 @@ public class AccomodationAdmin extends javax.swing.JFrame {
 
         panelUpdate.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 590, 360));
 
-        bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"))); // NOI18N
+        bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/profile_bg.jpg"))); // NOI18N
         panelUpdate.add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
-        bg5.getAccessibleContext().setAccessibleName("");
 
         jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
 
