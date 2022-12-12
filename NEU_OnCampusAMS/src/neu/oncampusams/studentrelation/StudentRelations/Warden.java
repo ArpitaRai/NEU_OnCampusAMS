@@ -61,10 +61,21 @@ public class Warden extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        resolveTable = new javax.swing.JTable();
+        queryId = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        note = new javax.swing.JTextArea();
+        status = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        updateBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -80,17 +91,6 @@ public class Warden extends javax.swing.JFrame {
         building = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         queryTable = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        resolveTable = new javax.swing.JTable();
-        queryId = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        note = new javax.swing.JTextArea();
-        status = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        updateBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Warden Portal");
@@ -140,128 +140,23 @@ public class Warden extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Management System");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel6.setText("Welcome!");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 270, 30));
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Welcome, *Warden*");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 180, 30));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 180, 30));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Management System");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 160));
 
         jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        searchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                searchFieldMouseReleased(evt);
-            }
-        });
-        searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
-            }
-        });
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldKeyReleased(evt);
-            }
-        });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 100, 140, 40));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Search Student");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 120, 30));
-
-        studentTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Room number", "Room Type ", "Email", "Phone"
-            }
-        ));
-        jScrollPane1.setViewportView(studentTable);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 320));
-
-        jTabbedPane1.addTab("Student Information", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), jPanel3); // NOI18N
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Select your campus");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 240, 40));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("This page let's you raise query on the behalf of a student to higher management.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 540, 40));
-
-        query.setColumns(20);
-        query.setRows(5);
-        jScrollPane2.setViewportView(query);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 420, 190));
-
-        submit.setBackground(new java.awt.Color(0, 0, 0));
-        submit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        submit.setForeground(new java.awt.Color(255, 255, 255));
-        submit.setText("Submit");
-        submit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
-            }
-        });
-        jPanel2.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 80, 40));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Type in your query:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 530, 40));
-
-        campus.setBackground(new java.awt.Color(204, 204, 204));
-        campus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        campus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campusActionPerformed(evt);
-            }
-        });
-        jPanel2.add(campus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 240, 30));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 530, 40));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Select your building");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 240, 40));
-
-        building.setBackground(new java.awt.Color(204, 204, 204));
-        building.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        building.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
-        building.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buildingActionPerformed(evt);
-            }
-        });
-        jPanel2.add(building, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 240, 30));
-
-        queryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Description", "Status", "Comments"
-            }
-        ));
-        jScrollPane3.setViewportView(queryTable);
-
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 500, 190));
-
-        jTabbedPane1.addTab("Raise Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query.png")), jPanel2); // NOI18N
 
         jPanel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -330,7 +225,114 @@ public class Warden extends javax.swing.JFrame {
         });
         jPanel4.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 140, 50));
 
-        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel4); // NOI18N
+        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/solved.png")), jPanel4); // NOI18N
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        searchField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        searchField.setText("Search");
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                searchFieldMouseReleased(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 140, 40));
+
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Room number", "Room Type ", "Email", "Phone"
+            }
+        ));
+        jScrollPane1.setViewportView(studentTable);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, 210));
+
+        jTabbedPane1.addTab("Student Information", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student.png")), jPanel3); // NOI18N
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel7.setText("Select your campus");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 240, 40));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel9.setText("This page let's you raise query on the behalf of a student to higher management.");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 540, 40));
+
+        query.setColumns(20);
+        query.setRows(5);
+        jScrollPane2.setViewportView(query);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, 80));
+
+        submit.setBackground(new java.awt.Color(0, 0, 0));
+        submit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        submit.setForeground(new java.awt.Color(255, 255, 255));
+        submit.setText("Submit");
+        submit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 80, 40));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("Type in your query:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 530, 40));
+
+        campus.setBackground(new java.awt.Color(204, 204, 204));
+        campus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campusActionPerformed(evt);
+            }
+        });
+        jPanel2.add(campus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 240, 30));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 530, 40));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel14.setText("Select your building");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 240, 40));
+
+        building.setBackground(new java.awt.Color(204, 204, 204));
+        building.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        building.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Building 1", "Building 2", "Building 3", "Building 4", "Building 5" }));
+        building.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buildingActionPerformed(evt);
+            }
+        });
+        jPanel2.add(building, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 240, 30));
+
+        queryTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Description", "Status", "Comments"
+            }
+        ));
+        jScrollPane3.setViewportView(queryTable);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 500, 190));
+
+        jTabbedPane1.addTab("Raise Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/ask-for-help.png")), jPanel2); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1060, 540));
 
@@ -598,12 +600,12 @@ public class Warden extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
