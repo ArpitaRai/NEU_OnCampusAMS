@@ -71,12 +71,16 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         btnAssignStd = new javax.swing.JButton();
         txtStdEmail = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
+        bg7 = new javax.swing.JLabel();
         panelBuilding = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblBuilding = new javax.swing.JTable();
         txtBuildingSrch = new javax.swing.JTextField();
         btnBuildingSrch = new javax.swing.JButton();
         btnBuildingRefresh = new javax.swing.JButton();
+        lblBuildingList1 = new javax.swing.JLabel();
+        bg8 = new javax.swing.JLabel();
         panelWardenAssignment = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         lblBuildingList = new javax.swing.JLabel();
@@ -84,7 +88,9 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         lblWardenList = new javax.swing.JLabel();
         jcbWardenList = new javax.swing.JComboBox<>();
         btnAssignWarden = new javax.swing.JButton();
+        bg4 = new javax.swing.JLabel();
         panelQuery = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAccQuery = new javax.swing.JTable();
         txtQueryId = new javax.swing.JTextField();
@@ -95,7 +101,10 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jcbStatus = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
+        lblBuildingList2 = new javax.swing.JLabel();
+        bg6 = new javax.swing.JLabel();
         panelUpdate = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         lblEmailId = new javax.swing.JLabel();
         updateEmail = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
@@ -105,22 +114,22 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         lblNewPass1 = new javax.swing.JLabel();
         pwdPass1 = new javax.swing.JPasswordField();
         updateMailAdmin = new javax.swing.JButton();
+        bg5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Accomodation Administrator Portal");
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(1500, 700));
+        setMaximumSize(new java.awt.Dimension(1400, 700));
+        setMinimumSize(new java.awt.Dimension(1400, 700));
+        setPreferredSize(new java.awt.Dimension(1400, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -139,12 +148,12 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         lblRoomAssignment.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblRoomAssignment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRoomAssignment.setText("Student Room Assignment");
-        jPanel8.add(lblRoomAssignment, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 780, 40));
+        jPanel8.add(lblRoomAssignment, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 780, 40));
 
         lblAvailableRooms.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAvailableRooms.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAvailableRooms.setText("List of available rooms");
-        jPanel8.add(lblAvailableRooms, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 450, 40));
+        jPanel8.add(lblAvailableRooms, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 530, 40));
 
         tblAvailRooms.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblAvailRooms.setModel(new javax.swing.table.DefaultTableModel(
@@ -165,15 +174,15 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblAvailRooms);
 
-        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 170, 530, 290));
+        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 530, 290));
 
         lblStdEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblStdEmail.setText("Student Email");
-        jPanel8.add(lblStdEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 170, 40));
+        jPanel8.add(lblStdEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 170, 40));
 
         lblBuildingNameRoom.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblBuildingNameRoom.setText("Building name");
-        jPanel8.add(lblBuildingNameRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 170, 40));
+        jPanel8.add(lblBuildingNameRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 170, 40));
 
         jcbBuildingListRoom.setBackground(new java.awt.Color(204, 204, 204));
         jcbBuildingListRoom.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -183,11 +192,11 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jcbBuildingListRoomActionPerformed(evt);
             }
         });
-        jPanel8.add(jcbBuildingListRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 240, 30));
+        jPanel8.add(jcbBuildingListRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 240, 30));
 
         lblRoomType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblRoomType.setText("Room Type");
-        jPanel8.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 170, 40));
+        jPanel8.add(lblRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 170, 40));
 
         jcbRoomType.setBackground(new java.awt.Color(204, 204, 204));
         jcbRoomType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -197,7 +206,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jcbRoomTypeActionPerformed(evt);
             }
         });
-        jPanel8.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 240, 30));
+        jPanel8.add(jcbRoomType, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 240, 30));
 
         btnRefreshRoom.setBackground(new java.awt.Color(0, 0, 0));
         btnRefreshRoom.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -209,7 +218,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnRefreshRoomActionPerformed(evt);
             }
         });
-        jPanel8.add(btnRefreshRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 90, 30));
+        jPanel8.add(btnRefreshRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 90, 30));
 
         btnAssignStd.setBackground(new java.awt.Color(255, 0, 0));
         btnAssignStd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -220,7 +229,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnAssignStdActionPerformed(evt);
             }
         });
-        jPanel8.add(btnAssignStd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 200, 40));
+        jPanel8.add(btnAssignStd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 200, 40));
 
         txtStdEmail.setBackground(new java.awt.Color(204, 204, 204));
         txtStdEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -230,18 +239,24 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 txtStdEmailActionPerformed(evt);
             }
         });
-        jPanel8.add(txtStdEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 220, 30));
+        jPanel8.add(txtStdEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 220, 30));
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 220, 10));
+        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 220, 10));
 
-        panelRoomAssignment.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 930, 570));
+        panelRoomAssignment.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 890, 540));
 
-        jTabbedPane1.addTab("Room Assignment", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/student-with-graduation-cap.png")), panelRoomAssignment); // NOI18N
+        bg7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/room_bg.jpg"))); // NOI18N
+        panelRoomAssignment.add(bg7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
+
+        jTabbedPane1.addTab("Room Assignment", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/living-room.png")), panelRoomAssignment); // NOI18N
 
         panelBuilding.setBackground(new java.awt.Color(204, 204, 204));
         panelBuilding.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         panelBuilding.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblBuilding.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblBuilding.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -263,8 +278,8 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblBuilding);
 
-        panelBuilding.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1210, 110));
-        panelBuilding.add(txtBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 210, 40));
+        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 700, 110));
+        jPanel3.add(txtBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 210, 40));
 
         btnBuildingSrch.setText("Search");
         btnBuildingSrch.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +287,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnBuildingSrchActionPerformed(evt);
             }
         });
-        panelBuilding.add(btnBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 110, 50));
+        jPanel3.add(btnBuildingSrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 110, 50));
 
         btnBuildingRefresh.setText("Refresh");
         btnBuildingRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -280,9 +295,19 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnBuildingRefreshActionPerformed(evt);
             }
         });
-        panelBuilding.add(btnBuildingRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 110, 50));
+        jPanel3.add(btnBuildingRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 110, 50));
 
-        jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building.png")), panelBuilding); // NOI18N
+        lblBuildingList1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBuildingList1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBuildingList1.setText("View Building Details");
+        jPanel3.add(lblBuildingList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 700, 40));
+
+        panelBuilding.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 830, 320));
+
+        bg8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/building_bg.jpg"))); // NOI18N
+        panelBuilding.add(bg8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
+
+        jTabbedPane1.addTab("Building Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/office-building.png")), panelBuilding); // NOI18N
 
         panelWardenAssignment.setBackground(new java.awt.Color(204, 204, 204));
         panelWardenAssignment.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -294,7 +319,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         lblBuildingList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblBuildingList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBuildingList.setText("Select a Building");
-        jPanel7.add(lblBuildingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 250, 40));
+        jPanel7.add(lblBuildingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, 40));
 
         jcbBuildingList.setBackground(new java.awt.Color(204, 204, 204));
         jcbBuildingList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -304,12 +329,12 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jcbBuildingListActionPerformed(evt);
             }
         });
-        jPanel7.add(jcbBuildingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 250, 30));
+        jPanel7.add(jcbBuildingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 250, 30));
 
         lblWardenList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblWardenList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWardenList.setText("Select a Warden");
-        jPanel7.add(lblWardenList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 250, 40));
+        jPanel7.add(lblWardenList, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 250, 40));
 
         jcbWardenList.setBackground(new java.awt.Color(204, 204, 204));
         jcbWardenList.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -319,7 +344,7 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jcbWardenListActionPerformed(evt);
             }
         });
-        jPanel7.add(jcbWardenList, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 250, 30));
+        jPanel7.add(jcbWardenList, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 250, 30));
 
         btnAssignWarden.setBackground(new java.awt.Color(255, 0, 0));
         btnAssignWarden.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -330,14 +355,20 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnAssignWardenActionPerformed(evt);
             }
         });
-        jPanel7.add(btnAssignWarden, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 160, 40));
+        jPanel7.add(btnAssignWarden, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 160, 40));
 
-        panelWardenAssignment.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 930, 500));
+        panelWardenAssignment.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 420, 500));
 
-        jTabbedPane1.addTab("Warden Assignment", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin-with-cogwheels.png")), panelWardenAssignment); // NOI18N
+        bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin_bg.jpg"))); // NOI18N
+        panelWardenAssignment.add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 660));
+
+        jTabbedPane1.addTab("Warden Assignment", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/admin.png")), panelWardenAssignment); // NOI18N
 
         panelQuery.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         panelQuery.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblAccQuery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblAccQuery.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -364,26 +395,28 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblAccQuery);
 
-        panelQuery.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1170, 110));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1020, 110));
 
         txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        panelQuery.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 120, 40));
+        jPanel4.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 120, 40));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel11.setText("Status");
-        panelQuery.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 90, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 90, -1));
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel18.setText("Query ID");
-        panelQuery.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 90, -1));
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 90, -1));
 
         txtArNote.setColumns(20);
         txtArNote.setRows(5);
         jScrollPane1.setViewportView(txtArNote);
 
-        panelQuery.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, -1));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
 
         jcbStatus.setBackground(new java.awt.Color(204, 204, 204));
         jcbStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -393,15 +426,16 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jcbStatusActionPerformed(evt);
             }
         });
-        panelQuery.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 250, 40));
+        jPanel4.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 250, 40));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel19.setText("Note");
-        panelQuery.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 90, -1));
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 90, -1));
 
         btnUpdate.setBackground(new java.awt.Color(255, 0, 0));
-        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update Query");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -409,58 +443,71 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        panelQuery.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 140, 50));
+        jPanel4.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 140, 50));
 
-        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), panelQuery); // NOI18N
+        lblBuildingList2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBuildingList2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBuildingList2.setText("View and update Queries by Students or Wardens");
+        jPanel4.add(lblBuildingList2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1020, 40));
+
+        panelQuery.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1040, 470));
+
+        bg6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/query_bg.jpg"))); // NOI18N
+        panelQuery.add(bg6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
+
+        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/solved.png")), panelQuery); // NOI18N
 
         panelUpdate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblEmailId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblEmailId.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblEmailId.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblEmailId.setText("Email Id");
-        panelUpdate.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 170, 40));
+        jPanel2.add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, 40));
 
-        updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updateEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         updateEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEmailActionPerformed(evt);
             }
         });
-        panelUpdate.add(updateEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 290, 40));
+        jPanel2.add(updateEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 290, 40));
 
-        lblPhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPhone.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPhone.setText("Phone Number");
-        panelUpdate.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 170, 40));
+        jPanel2.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 170, 40));
 
-        updatePhone.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        updatePhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         updatePhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updatePhoneActionPerformed(evt);
             }
         });
-        panelUpdate.add(updatePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 290, 40));
+        jPanel2.add(updatePhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 290, 40));
 
-        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPassword.setText("Password");
-        panelUpdate.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 170, 40));
+        jPanel2.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 40));
 
-        pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pwdPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         pwdPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwdPassActionPerformed(evt);
             }
         });
-        panelUpdate.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 290, 40));
+        jPanel2.add(pwdPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 290, 40));
 
-        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNewPass1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblNewPass1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblNewPass1.setText("Re-Enter New Password");
-        panelUpdate.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 210, 40));
+        jPanel2.add(lblNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 210, 40));
 
-        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        panelUpdate.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 290, 40));
+        pwdPass1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel2.add(pwdPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 290, 40));
 
         updateMailAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         updateMailAdmin.setText("Update");
@@ -469,11 +516,16 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 updateMailAdminActionPerformed(evt);
             }
         });
-        panelUpdate.add(updateMailAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 120, 50));
+        jPanel2.add(updateMailAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 120, 50));
 
-        jTabbedPane1.addTab("Update Details", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/refresh-page-option.png")), panelUpdate); // NOI18N
+        panelUpdate.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 590, 360));
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 1000));
+        bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg"))); // NOI18N
+        panelUpdate.add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 660));
+
+        jTabbedPane1.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/updated.png")), panelUpdate); // NOI18N
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 1090, 700));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -499,33 +551,14 @@ public class AccomodationAdmin extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/neulogo1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 170, 150));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Campus ID:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Name:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Address:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Campus:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
-
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEmail.setText("Email:");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 280, 30));
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Logout");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -533,9 +566,15 @@ public class AccomodationAdmin extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 90, 40));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, 90, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 1000));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Welcome!");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 280, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -799,6 +838,11 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg4;
+    private javax.swing.JLabel bg5;
+    private javax.swing.JLabel bg6;
+    private javax.swing.JLabel bg7;
+    private javax.swing.JLabel bg8;
     private javax.swing.JButton btnAssignStd;
     private javax.swing.JButton btnAssignWarden;
     private javax.swing.JButton btnBuildingRefresh;
@@ -807,17 +851,17 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -833,6 +877,8 @@ public class AccomodationAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbWardenList;
     private javax.swing.JLabel lblAvailableRooms;
     private javax.swing.JLabel lblBuildingList;
+    private javax.swing.JLabel lblBuildingList1;
+    private javax.swing.JLabel lblBuildingList2;
     private javax.swing.JLabel lblBuildingNameRoom;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmailId;
