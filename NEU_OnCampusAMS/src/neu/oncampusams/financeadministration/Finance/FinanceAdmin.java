@@ -61,29 +61,35 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         campus = new javax.swing.JComboBox<>();
+        viewIncome1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         finBuilding = new javax.swing.JTable();
         viewIncome = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblFinQuery = new javax.swing.JTable();
         txtQueryId = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNote = new javax.swing.JTextArea();
         jcbStatus = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance Administrator Portal");
+        setMaximumSize(new java.awt.Dimension(1060, 700));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -117,7 +123,7 @@ public class FinanceAdmin extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 90, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, 90, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,50 +135,59 @@ public class FinanceAdmin extends javax.swing.JFrame {
         jLabel3.setText("On-Campus Accommodation");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 270, -1));
 
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblEmail.setText("Management System");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 340, 30));
+        lblEmail.setText("email");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 230, 30));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Management System");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel15.setText("Welcome!");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 270, 30));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Management System");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 270, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 160));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel7.setText("Select the campus for which you want to see expenses");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 460, 40));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 400, 40));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel9.setText("View details of income by student rent and meal plans:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 540, 40));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Export as Excel");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 170, 50));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 410, 40));
 
         campus.setBackground(new java.awt.Color(242, 242, 242));
-        campus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        campus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         campus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Charlotte", "San Francisco", "Seattle", "Silicon Valley", "Portland (Maine)", "Toronto", "Vancouver", "London" }));
         campus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campusActionPerformed(evt);
             }
         });
-        jPanel2.add(campus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 240, 40));
+        jPanel3.add(campus, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 240, 40));
+
+        viewIncome1.setBackground(new java.awt.Color(0, 0, 0));
+        viewIncome1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        viewIncome1.setForeground(new java.awt.Color(255, 255, 255));
+        viewIncome1.setText("Export as PDF");
+        viewIncome1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        viewIncome1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewIncome1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(viewIncome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 120, 40));
 
         finBuilding.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         finBuilding.setModel(new javax.swing.table.DefaultTableModel(
@@ -185,10 +200,10 @@ public class FinanceAdmin extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(finBuilding);
 
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, -1, 340));
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, 120));
 
         viewIncome.setBackground(new java.awt.Color(0, 0, 0));
-        viewIncome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewIncome.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         viewIncome.setForeground(new java.awt.Color(255, 255, 255));
         viewIncome.setText("View");
         viewIncome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -197,11 +212,20 @@ public class FinanceAdmin extends javax.swing.JFrame {
                 viewIncomeActionPerformed(evt);
             }
         });
-        jPanel2.add(viewIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 100, 50));
+        jPanel3.add(viewIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 90, 40));
 
-        jTabbedPane1.addTab("Income", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/income.png")), jPanel2); // NOI18N
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 530, 380));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/finanace_bg.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
+
+        jTabbedPane1.addTab("Income", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/salary.png")), jPanel2); // NOI18N
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblFinQuery.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblFinQuery.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -215,48 +239,30 @@ public class FinanceAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblFinQuery);
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 960, 110));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 770, 110));
 
-        txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel4.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 120, 40));
-
-        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel12.setText("Status");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
-
-        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel18.setText("Query ID");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 110, 40));
+        txtQueryId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jPanel5.add(txtQueryId, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 120, 40));
 
         txtNote.setColumns(20);
-        txtNote.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNote.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtNote.setRows(5);
         jScrollPane3.setViewportView(txtNote);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 560, 90));
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, 230, 90));
 
         jcbStatus.setBackground(new java.awt.Color(204, 204, 204));
-        jcbStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcbStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jcbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Under review", "Processed" }));
         jcbStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbStatusActionPerformed(evt);
             }
         });
-        jPanel4.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 250, 40));
-
-        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel19.setText("Note");
-        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 110, 40));
+        jPanel5.add(jcbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 250, 40));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Update Query");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -264,9 +270,33 @@ public class FinanceAdmin extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 170, 50));
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 140, 40));
 
-        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/question.png")), jPanel4); // NOI18N
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel12.setText("Status");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 110, 40));
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel18.setText("Query ID");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 110, 40));
+
+        jLabel19.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel19.setText("Note");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 110, 40));
+
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 850, 450));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/finanace_bg.jpg"))); // NOI18N
+        jLabel5.setText("jLabel4");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 500));
+
+        jTabbedPane1.addTab("Resolve Query", new javax.swing.ImageIcon(getClass().getResource("/neu/oncampusams/images/solved.png")), jPanel4); // NOI18N
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1060, 540));
 
@@ -337,8 +367,22 @@ public class FinanceAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_viewIncomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void viewIncome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIncome1ActionPerformed
         // TODO add your handling code here:
+
+        String datefrom = "Campus";
+        String dateto = "Total Income";
+
+        MessageFormat header = new MessageFormat("Report of  Campus " + datefrom + " Total Income " + dateto);
+        MessageFormat footer = new MessageFormat("page{0,number,integer}");
+        try {
+            finBuilding.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+
+        } catch (Exception e) {
+            e.getMessage();
+
+        }
+    }//GEN-LAST:event_viewIncome1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,7 +423,6 @@ public class FinanceAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> campus;
     private javax.swing.JTable finBuilding;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -387,16 +430,21 @@ public class FinanceAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -407,6 +455,7 @@ public class FinanceAdmin extends javax.swing.JFrame {
     private javax.swing.JTextArea txtNote;
     private javax.swing.JTextField txtQueryId;
     private javax.swing.JButton viewIncome;
+    private javax.swing.JButton viewIncome1;
     // End of variables declaration//GEN-END:variables
 
     public void SetEmailID() {
